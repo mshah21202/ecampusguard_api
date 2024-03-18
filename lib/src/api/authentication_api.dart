@@ -7,7 +7,9 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_value/json_object.dart';
+import 'package:ecampusguardapi/src/model/auth_response_dto.dart';
+import 'package:ecampusguardapi/src/model/login_dto.dart';
+import 'package:ecampusguardapi/src/model/register_dto.dart';
 
 class AuthenticationApi {
 
@@ -21,7 +23,7 @@ class AuthenticationApi {
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [loginDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -29,10 +31,10 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [AuthResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> authenticationLoginPost({ 
-    JsonObject? body,
+  Future<Response<AuthResponseDto>> authenticationLoginPost({ 
+    LoginDto? loginDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -57,7 +59,8 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(LoginDto);
+      _bodyData = loginDto == null ? null : _serializers.serialize(loginDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -80,14 +83,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    AuthResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(AuthResponseDto),
+      ) as AuthResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -99,7 +102,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<AuthResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -115,7 +118,7 @@ class AuthenticationApi {
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [registerDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -123,10 +126,10 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [AuthResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> authenticationRegisterPost({ 
-    JsonObject? body,
+  Future<Response<AuthResponseDto>> authenticationRegisterPost({ 
+    RegisterDto? registerDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -151,7 +154,8 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(RegisterDto);
+      _bodyData = registerDto == null ? null : _serializers.serialize(registerDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -174,14 +178,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    AuthResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(AuthResponseDto),
+      ) as AuthResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -193,7 +197,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<AuthResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

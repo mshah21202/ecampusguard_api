@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **authenticationLoginPost**
-> JsonObject authenticationLoginPost(body)
+> AuthResponseDto authenticationLoginPost(loginDto)
 
 
 
@@ -23,10 +23,10 @@ Method | HTTP request | Description
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getAuthenticationApi();
-final JsonObject body = Object; // JsonObject | 
+final LoginDto loginDto = ; // LoginDto | 
 
 try {
-    final response = api.authenticationLoginPost(body);
+    final response = api.authenticationLoginPost(loginDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->authenticationLoginPost: $e\n');
@@ -37,11 +37,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **loginDto** | [**LoginDto**](LoginDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**AuthResponseDto**](AuthResponseDto.md)
 
 ### Authorization
 
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authenticationRegisterPost**
-> JsonObject authenticationRegisterPost(body)
+> AuthResponseDto authenticationRegisterPost(registerDto)
 
 
 
@@ -64,10 +64,10 @@ No authorization required
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getAuthenticationApi();
-final JsonObject body = Object; // JsonObject | 
+final RegisterDto registerDto = ; // RegisterDto | 
 
 try {
-    final response = api.authenticationRegisterPost(body);
+    final response = api.authenticationRegisterPost(registerDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->authenticationRegisterPost: $e\n');
@@ -78,11 +78,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **registerDto** | [**RegisterDto**](RegisterDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**AuthResponseDto**](AuthResponseDto.md)
 
 ### Authorization
 

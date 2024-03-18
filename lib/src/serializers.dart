@@ -14,10 +14,18 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:ecampusguardapi/src/date_serializer.dart';
 import 'package:ecampusguardapi/src/model/date.dart';
 
+import 'package:ecampusguardapi/src/model/auth_response_code.dart';
+import 'package:ecampusguardapi/src/model/auth_response_dto.dart';
+import 'package:ecampusguardapi/src/model/login_dto.dart';
+import 'package:ecampusguardapi/src/model/register_dto.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
+  AuthResponseCode,
+  AuthResponseDto,
+  LoginDto,
+  RegisterDto,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

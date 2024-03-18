@@ -6,6 +6,11 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()).build();
+Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(AuthResponseCode.serializer)
+      ..add(AuthResponseDto.serializer)
+      ..add(LoginDto.serializer)
+      ..add(RegisterDto.serializer))
+    .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

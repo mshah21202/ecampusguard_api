@@ -17,3 +17,7 @@ export 'package:ecampusguardapi/src/api/search_api.dart';
 export 'package:ecampusguardapi/src/api/user_api.dart';
 export 'package:ecampusguardapi/src/api/user_permit_api.dart';
 
+export 'package:ecampusguardapi/src/model/auth_response_code.dart';
+export 'package:ecampusguardapi/src/model/auth_response_dto.dart';
+export 'package:ecampusguardapi/src/model/login_dto.dart';
+export 'package:ecampusguardapi/src/model/register_dto.dart';
