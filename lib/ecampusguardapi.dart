@@ -6,6 +6,7 @@ export 'package:ecampusguardapi/src/api.dart';
 export 'package:ecampusguardapi/src/auth/api_key_auth.dart';
 export 'package:ecampusguardapi/src/auth/basic_auth.dart';
 export 'package:ecampusguardapi/src/auth/oauth.dart';
+export 'package:ecampusguardapi/src/auth/bearer_auth.dart';
 export 'package:ecampusguardapi/src/serializers.dart';
 export 'package:ecampusguardapi/src/model/date.dart';
 
