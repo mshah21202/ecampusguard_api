@@ -1,0 +1,263 @@
+# ecampusguardapi.api.AreaApi
+
+## Load the API package
+```dart
+import 'package:ecampusguardapi/api.dart';
+```
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**areaDetailsIdGet**](AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
+[**areaGet**](AreaApi.md#areaget) | **GET** /Area | 
+[**areaIdDelete**](AreaApi.md#areaiddelete) | **DELETE** /Area/{id} | 
+[**areaIdGet**](AreaApi.md#areaidget) | **GET** /Area/{id} | 
+[**areaIdPost**](AreaApi.md#areaidpost) | **POST** /Area/{id} | 
+[**areaPost**](AreaApi.md#areapost) | **POST** /Area | 
+
+
+# **areaDetailsIdGet**
+> JsonObject areaDetailsIdGet(id)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.areaDetailsIdGet(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaDetailsIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **areaGet**
+> BuiltList<JsonObject> areaGet()
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+
+try {
+    final response = api.areaGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **areaIdDelete**
+> JsonObject areaIdDelete(id)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.areaIdDelete(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaIdDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **areaIdGet**
+> JsonObject areaIdGet(id)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.areaIdGet(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **areaIdPost**
+> JsonObject areaIdPost(id, body)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | 
+final JsonObject body = Object; // JsonObject | 
+
+try {
+    final response = api.areaIdPost(id, body);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaIdPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **body** | **JsonObject**|  | [optional] 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **areaPost**
+> JsonObject areaPost(body)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final JsonObject body = Object; // JsonObject | 
+
+try {
+    final response = api.areaPost(body);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **JsonObject**|  | [optional] 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
