@@ -11,10 +11,10 @@ import 'package:ecampusguardapi/src/auth/bearer_auth.dart';
 import 'package:ecampusguardapi/src/auth/oauth.dart';
 import 'package:ecampusguardapi/src/api/area_api.dart';
 import 'package:ecampusguardapi/src/api/authentication_api.dart';
+import 'package:ecampusguardapi/src/api/home_screen_api.dart';
 import 'package:ecampusguardapi/src/api/permit_application_api.dart';
 import 'package:ecampusguardapi/src/api/permits_api.dart';
 import 'package:ecampusguardapi/src/api/search_api.dart';
-import 'package:ecampusguardapi/src/api/user_api.dart';
 import 'package:ecampusguardapi/src/api/user_permit_api.dart';
 
 class Ecampusguardapi {
@@ -83,6 +83,12 @@ class Ecampusguardapi {
     return AuthenticationApi(dio, serializers);
   }
 
+  /// Get HomeScreenApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  HomeScreenApi getHomeScreenApi() {
+    return HomeScreenApi(dio, serializers);
+  }
+
   /// Get PermitApplicationApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   PermitApplicationApi getPermitApplicationApi() {
@@ -99,12 +105,6 @@ class Ecampusguardapi {
   /// by doing that all interceptors will not be executed
   SearchApi getSearchApi() {
     return SearchApi(dio, serializers);
-  }
-
-  /// Get UserApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  UserApi getUserApi() {
-    return UserApi(dio, serializers);
   }
 
   /// Get UserPermitApi instance, base route and serializer can be overridden by a given but be careful,

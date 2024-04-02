@@ -9,68 +9,31 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userPermitDetailsIdPost**](UserPermitApi.md#userpermitdetailsidpost) | **POST** /UserPermit/details/{id} | 
-[**userPermitGet**](UserPermitApi.md#userpermitget) | **GET** /UserPermit | 
-[**userPermitIdGet**](UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | 
+[**userPermitGet**](UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
+[**userPermitIdGet**](UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
 [**userPermitTransferIdPost**](UserPermitApi.md#userpermittransferidpost) | **POST** /UserPermit/transfer/{id} | 
 
 
-# **userPermitDetailsIdPost**
-> JsonObject userPermitDetailsIdPost(id, body)
-
-
-
-### Example
-```dart
-import 'package:ecampusguardapi/api.dart';
-
-final api = Ecampusguardapi().getUserPermitApi();
-final String id = id_example; // String | 
-final JsonObject body = Object; // JsonObject | 
-
-try {
-    final response = api.userPermitDetailsIdPost(id, body);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling UserPermitApi->userPermitDetailsIdPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **body** | **JsonObject**|  | [optional] 
-
-### Return type
-
-[**JsonObject**](JsonObject.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **userPermitGet**
-> BuiltList<JsonObject> userPermitGet()
+> BuiltList<JsonObject> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
 
-
+Gets all user permit for user, or gets all user permits for all users if user is admin
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
+final String studentId = studentId_example; // String | 
+final String plateNumber = plateNumber_example; // String | 
+final UserPermitStatus status = ; // UserPermitStatus | 
+final UserPermitOrderBy orderBy = ; // UserPermitOrderBy | 
+final String orderByDirection = orderByDirection_example; // String | 
+final int pageNumber = 56; // int | 
+final int pageSize = 56; // int | 
 
 try {
-    final response = api.userPermitGet();
+    final response = api.userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UserPermitApi->userPermitGet: $e\n');
@@ -78,7 +41,16 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **studentId** | **String**|  | [optional] 
+ **plateNumber** | **String**|  | [optional] 
+ **status** | [**UserPermitStatus**](.md)|  | [optional] 
+ **orderBy** | [**UserPermitOrderBy**](.md)|  | [optional] 
+ **orderByDirection** | **String**|  | [optional] 
+ **pageNumber** | **int**|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
 
 ### Return type
 
@@ -98,14 +70,14 @@ This endpoint does not need any parameter.
 # **userPermitIdGet**
 > JsonObject userPermitIdGet(id)
 
-
+Gets user permit
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
-final int id = 56; // int | 
+final int id = 56; // int | Permit Id
 
 try {
     final response = api.userPermitIdGet(id);
@@ -119,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **int**| Permit Id | 
 
 ### Return type
 
@@ -137,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPermitTransferIdPost**
-> JsonObject userPermitTransferIdPost(id, body)
+> ResponseDto userPermitTransferIdPost(id, transferRequestDto)
 
 
 
@@ -146,11 +118,11 @@ Name | Type | Description  | Notes
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
-final String id = id_example; // String | 
-final JsonObject body = Object; // JsonObject | 
+final int id = 56; // int | Permit Id
+final TransferRequestDto transferRequestDto = ; // TransferRequestDto | 
 
 try {
-    final response = api.userPermitTransferIdPost(id, body);
+    final response = api.userPermitTransferIdPost(id, transferRequestDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UserPermitApi->userPermitTransferIdPost: $e\n');
@@ -161,12 +133,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **body** | **JsonObject**|  | [optional] 
+ **id** | **int**| Permit Id | 
+ **transferRequestDto** | [**TransferRequestDto**](TransferRequestDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 

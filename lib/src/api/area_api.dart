@@ -8,8 +8,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 import 'package:ecampusguardapi/src/api_util.dart';
+import 'package:ecampusguardapi/src/model/area_dto.dart';
+import 'package:ecampusguardapi/src/model/area_screen_dto.dart';
+import 'package:ecampusguardapi/src/model/response_dto.dart';
 
 class AreaApi {
 
@@ -31,9 +33,9 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [AreaScreenDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> areaDetailsIdGet({ 
+  Future<Response<AreaScreenDto>> areaDetailsIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -49,7 +51,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,
@@ -63,14 +71,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    AreaScreenDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(AreaScreenDto),
+      ) as AreaScreenDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -82,7 +90,7 @@ class AreaApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<AreaScreenDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -105,9 +113,9 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<AreaDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<JsonObject>>> areaGet({ 
+  Future<Response<BuiltList<AreaDto>>> areaGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -122,7 +130,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,
@@ -136,14 +150,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<JsonObject>? _responseData;
+    BuiltList<AreaDto>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-      ) as BuiltList<JsonObject>;
+        specifiedType: const FullType(BuiltList, [FullType(AreaDto)]),
+      ) as BuiltList<AreaDto>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -155,7 +169,7 @@ class AreaApi {
       );
     }
 
-    return Response<BuiltList<JsonObject>>(
+    return Response<BuiltList<AreaDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -179,9 +193,9 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> areaIdDelete({ 
+  Future<Response<ResponseDto>> areaIdDelete({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -197,7 +211,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,
@@ -211,14 +231,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -230,7 +250,7 @@ class AreaApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -254,9 +274,9 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [AreaDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> areaIdGet({ 
+  Future<Response<AreaDto>> areaIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -272,7 +292,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,
@@ -286,14 +312,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    AreaDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(AreaDto),
+      ) as AreaDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -305,7 +331,7 @@ class AreaApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<AreaDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -322,7 +348,7 @@ class AreaApi {
   ///
   /// Parameters:
   /// * [id] 
-  /// * [body] 
+  /// * [areaDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -330,11 +356,11 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> areaIdPost({ 
+  Future<Response<ResponseDto>> areaIdPost({ 
     required int id,
-    JsonObject? body,
+    AreaDto? areaDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -349,7 +375,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       contentType: 'application/json',
@@ -359,7 +391,8 @@ class AreaApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(AreaDto);
+      _bodyData = areaDto == null ? null : _serializers.serialize(areaDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -382,14 +415,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -401,7 +434,7 @@ class AreaApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -417,7 +450,7 @@ class AreaApi {
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [areaDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -425,10 +458,10 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> areaPost({ 
-    JsonObject? body,
+  Future<Response<ResponseDto>> areaPost({ 
+    AreaDto? areaDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -443,7 +476,13 @@ class AreaApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
       contentType: 'application/json',
@@ -453,7 +492,8 @@ class AreaApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(AreaDto);
+      _bodyData = areaDto == null ? null : _serializers.serialize(areaDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -476,14 +516,14 @@ class AreaApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -495,7 +535,7 @@ class AreaApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

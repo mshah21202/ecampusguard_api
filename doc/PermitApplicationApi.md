@@ -9,26 +9,26 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**permitApplicationApplyPost**](PermitApplicationApi.md#permitapplicationapplypost) | **POST** /PermitApplication/apply | 
-[**permitApplicationGet**](PermitApplicationApi.md#permitapplicationget) | **GET** /PermitApplication | 
-[**permitApplicationIdGet**](PermitApplicationApi.md#permitapplicationidget) | **GET** /PermitApplication/{id} | 
-[**permitApplicationResponseIdPost**](PermitApplicationApi.md#permitapplicationresponseidpost) | **POST** /PermitApplication/response/{id} | 
+[**permitApplicationApplyPost**](PermitApplicationApi.md#permitapplicationapplypost) | **POST** /PermitApplication/apply | Submits permit application for user
+[**permitApplicationGet**](PermitApplicationApi.md#permitapplicationget) | **GET** /PermitApplication | Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
+[**permitApplicationIdGet**](PermitApplicationApi.md#permitapplicationidget) | **GET** /PermitApplication/{id} | Gets permit application
+[**permitApplicationResponseIdPost**](PermitApplicationApi.md#permitapplicationresponseidpost) | **POST** /PermitApplication/response/{id} | Submits application response. For admin only
 
 
 # **permitApplicationApplyPost**
-> JsonObject permitApplicationApplyPost(body)
+> ResponseDto permitApplicationApplyPost(createPermitApplicationDto)
 
-
+Submits permit application for user
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitApplicationApi();
-final JsonObject body = Object; // JsonObject | 
+final CreatePermitApplicationDto createPermitApplicationDto = ; // CreatePermitApplicationDto | 
 
 try {
-    final response = api.permitApplicationApplyPost(body);
+    final response = api.permitApplicationApplyPost(createPermitApplicationDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitApplicationApi->permitApplicationApplyPost: $e\n');
@@ -39,11 +39,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **createPermitApplicationDto** | [**CreatePermitApplicationDto**](CreatePermitApplicationDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
@@ -57,18 +57,27 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitApplicationGet**
-> BuiltList<JsonObject> permitApplicationGet()
+> BuiltList<PermitApplicationInfoDto> permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
 
-
+Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitApplicationApi();
+final String studentId = studentId_example; // String | 
+final String name = name_example; // String | 
+final int academicYear = 56; // int | 
+final int permitId = 56; // int | 
+final int status = 56; // int | 
+final PermitApplicationOrderBy orderBy = ; // PermitApplicationOrderBy | 
+final String orderByDirection = orderByDirection_example; // String | 
+final int pageNumber = 56; // int | 
+final int pageSize = 56; // int | 
 
 try {
-    final response = api.permitApplicationGet();
+    final response = api.permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitApplicationApi->permitApplicationGet: $e\n');
@@ -76,11 +85,22 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **studentId** | **String**|  | [optional] 
+ **name** | **String**|  | [optional] 
+ **academicYear** | **int**|  | [optional] 
+ **permitId** | **int**|  | [optional] 
+ **status** | **int**|  | [optional] 
+ **orderBy** | [**PermitApplicationOrderBy**](.md)|  | [optional] 
+ **orderByDirection** | **String**|  | [optional] 
+ **pageNumber** | **int**|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+[**BuiltList&lt;PermitApplicationInfoDto&gt;**](PermitApplicationInfoDto.md)
 
 ### Authorization
 
@@ -94,9 +114,9 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitApplicationIdGet**
-> JsonObject permitApplicationIdGet(id)
+> PermitApplicationDto permitApplicationIdGet(id)
 
-
+Gets permit application
 
 ### Example
 ```dart
@@ -121,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**PermitApplicationDto**](PermitApplicationDto.md)
 
 ### Authorization
 
@@ -135,20 +155,20 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitApplicationResponseIdPost**
-> JsonObject permitApplicationResponseIdPost(id, body)
+> ResponseDto permitApplicationResponseIdPost(id, permitApplicationDto)
 
-
+Submits application response. For admin only
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitApplicationApi();
-final String id = id_example; // String | 
-final JsonObject body = Object; // JsonObject | 
+final int id = 56; // int | 
+final PermitApplicationDto permitApplicationDto = ; // PermitApplicationDto | 
 
 try {
-    final response = api.permitApplicationResponseIdPost(id, body);
+    final response = api.permitApplicationResponseIdPost(id, permitApplicationDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitApplicationApi->permitApplicationResponseIdPost: $e\n');
@@ -159,12 +179,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **body** | **JsonObject**|  | [optional] 
+ **id** | **int**|  | 
+ **permitApplicationDto** | [**PermitApplicationDto**](PermitApplicationDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 

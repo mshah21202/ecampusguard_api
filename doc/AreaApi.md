@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **areaDetailsIdGet**
-> JsonObject areaDetailsIdGet(id)
+> AreaScreenDto areaDetailsIdGet(id)
 
 
 
@@ -45,11 +45,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**AreaScreenDto**](AreaScreenDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -59,7 +59,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaGet**
-> BuiltList<JsonObject> areaGet()
+> BuiltList<AreaDto> areaGet()
 
 
 
@@ -82,11 +82,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+[**BuiltList&lt;AreaDto&gt;**](AreaDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -96,7 +96,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaIdDelete**
-> JsonObject areaIdDelete(id)
+> ResponseDto areaIdDelete(id)
 
 
 
@@ -123,11 +123,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaIdGet**
-> JsonObject areaIdGet(id)
+> AreaDto areaIdGet(id)
 
 
 
@@ -164,11 +164,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**AreaDto**](AreaDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -178,7 +178,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaIdPost**
-> JsonObject areaIdPost(id, body)
+> ResponseDto areaIdPost(id, areaDto)
 
 
 
@@ -188,10 +188,10 @@ import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getAreaApi();
 final int id = 56; // int | 
-final JsonObject body = Object; // JsonObject | 
+final AreaDto areaDto = ; // AreaDto | 
 
 try {
-    final response = api.areaIdPost(id, body);
+    final response = api.areaIdPost(id, areaDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AreaApi->areaIdPost: $e\n');
@@ -203,15 +203,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **body** | **JsonObject**|  | [optional] 
+ **areaDto** | [**AreaDto**](AreaDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -221,7 +221,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaPost**
-> JsonObject areaPost(body)
+> ResponseDto areaPost(areaDto)
 
 
 
@@ -230,10 +230,10 @@ No authorization required
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getAreaApi();
-final JsonObject body = Object; // JsonObject | 
+final AreaDto areaDto = ; // AreaDto | 
 
 try {
-    final response = api.areaPost(body);
+    final response = api.areaPost(areaDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AreaApi->areaPost: $e\n');
@@ -244,15 +244,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **areaDto** | [**AreaDto**](AreaDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

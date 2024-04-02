@@ -9,17 +9,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**permitsGet**](PermitsApi.md#permitsget) | **GET** /Permits | 
+[**permitsGet**](PermitsApi.md#permitsget) | **GET** /Permits | Gets all permits
 [**permitsIdDelete**](PermitsApi.md#permitsiddelete) | **DELETE** /Permits/{id} | 
-[**permitsIdGet**](PermitsApi.md#permitsidget) | **GET** /Permits/{id} | 
+[**permitsIdGet**](PermitsApi.md#permitsidget) | **GET** /Permits/{id} | Gets a permit
 [**permitsIdPost**](PermitsApi.md#permitsidpost) | **POST** /Permits/{id} | 
 [**permitsPost**](PermitsApi.md#permitspost) | **POST** /Permits | 
 
 
 # **permitsGet**
-> BuiltList<JsonObject> permitsGet()
+> BuiltList<PermitDto> permitsGet()
 
-
+Gets all permits
 
 ### Example
 ```dart
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+[**BuiltList&lt;PermitDto&gt;**](PermitDto.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitsIdDelete**
-> JsonObject permitsIdDelete(id)
+> ResponseDto permitsIdDelete(id)
 
 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitsIdGet**
-> JsonObject permitsIdGet(id)
+> PermitDto permitsIdGet(id)
 
-
+Gets a permit
 
 ### Example
 ```dart
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**PermitDto**](PermitDto.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitsIdPost**
-> JsonObject permitsIdPost(id, body)
+> ResponseDto permitsIdPost(id, createPermitDto)
 
 
 
@@ -146,10 +146,10 @@ import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitsApi();
 final int id = 56; // int | 
-final JsonObject body = Object; // JsonObject | 
+final CreatePermitDto createPermitDto = ; // CreatePermitDto | 
 
 try {
-    final response = api.permitsIdPost(id, body);
+    final response = api.permitsIdPost(id, createPermitDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitsApi->permitsIdPost: $e\n');
@@ -161,11 +161,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **body** | **JsonObject**|  | [optional] 
+ **createPermitDto** | [**CreatePermitDto**](CreatePermitDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitsPost**
-> JsonObject permitsPost(body)
+> ResponseDto permitsPost(createPermitDto)
 
 
 
@@ -188,10 +188,10 @@ Name | Type | Description  | Notes
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitsApi();
-final JsonObject body = Object; // JsonObject | 
+final CreatePermitDto createPermitDto = ; // CreatePermitDto | 
 
 try {
-    final response = api.permitsPost(body);
+    final response = api.permitsPost(createPermitDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitsApi->permitsPost: $e\n');
@@ -202,11 +202,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **createPermitDto** | [**CreatePermitDto**](CreatePermitDto.md)|  | [optional] 
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 

@@ -8,8 +8,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 import 'package:ecampusguardapi/src/api_util.dart';
+import 'package:ecampusguardapi/src/model/create_permit_dto.dart';
+import 'package:ecampusguardapi/src/model/permit_dto.dart';
+import 'package:ecampusguardapi/src/model/response_dto.dart';
 
 class PermitsApi {
 
@@ -19,7 +21,7 @@ class PermitsApi {
 
   const PermitsApi(this._dio, this._serializers);
 
-  /// permitsGet
+  /// Gets all permits
   /// 
   ///
   /// Parameters:
@@ -30,9 +32,9 @@ class PermitsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<PermitDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<JsonObject>>> permitsGet({ 
+  Future<Response<BuiltList<PermitDto>>> permitsGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -67,14 +69,14 @@ class PermitsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<JsonObject>? _responseData;
+    BuiltList<PermitDto>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-      ) as BuiltList<JsonObject>;
+        specifiedType: const FullType(BuiltList, [FullType(PermitDto)]),
+      ) as BuiltList<PermitDto>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -86,7 +88,7 @@ class PermitsApi {
       );
     }
 
-    return Response<BuiltList<JsonObject>>(
+    return Response<BuiltList<PermitDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -110,9 +112,9 @@ class PermitsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> permitsIdDelete({ 
+  Future<Response<ResponseDto>> permitsIdDelete({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -148,14 +150,14 @@ class PermitsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -167,7 +169,7 @@ class PermitsApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -179,11 +181,11 @@ class PermitsApi {
     );
   }
 
-  /// permitsIdGet
+  /// Gets a permit
   /// 
   ///
   /// Parameters:
-  /// * [id] 
+  /// * [id] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -191,9 +193,9 @@ class PermitsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [PermitDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> permitsIdGet({ 
+  Future<Response<PermitDto>> permitsIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -229,14 +231,14 @@ class PermitsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    PermitDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(PermitDto),
+      ) as PermitDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -248,7 +250,7 @@ class PermitsApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<PermitDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -265,7 +267,7 @@ class PermitsApi {
   ///
   /// Parameters:
   /// * [id] 
-  /// * [body] 
+  /// * [createPermitDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -273,11 +275,11 @@ class PermitsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> permitsIdPost({ 
+  Future<Response<ResponseDto>> permitsIdPost({ 
     required int id,
-    JsonObject? body,
+    CreatePermitDto? createPermitDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -308,7 +310,8 @@ class PermitsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(CreatePermitDto);
+      _bodyData = createPermitDto == null ? null : _serializers.serialize(createPermitDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -331,14 +334,14 @@ class PermitsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -350,7 +353,7 @@ class PermitsApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -366,7 +369,7 @@ class PermitsApi {
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [createPermitDto] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -374,10 +377,10 @@ class PermitsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> permitsPost({ 
-    JsonObject? body,
+  Future<Response<ResponseDto>> permitsPost({ 
+    CreatePermitDto? createPermitDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -408,7 +411,8 @@ class PermitsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
+      const _type = FullType(CreatePermitDto);
+      _bodyData = createPermitDto == null ? null : _serializers.serialize(createPermitDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -431,14 +435,14 @@ class PermitsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseDto? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseDto),
+      ) as ResponseDto;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -450,7 +454,7 @@ class PermitsApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
