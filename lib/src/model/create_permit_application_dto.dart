@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
+import 'package:ecampusguardapi/src/model/academic_year_enum.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -29,7 +30,8 @@ abstract class CreatePermitApplicationDto implements Built<CreatePermitApplicati
   int? get siblingsCount;
 
   @BuiltValueField(wireName: r'academicYear')
-  String? get academicYear;
+  AcademicYearEnum? get academicYear;
+  // enum academicYearEnum {  0,  1,  2,  3,  };
 
   @BuiltValueField(wireName: r'licenseImgPath')
   String? get licenseImgPath;
@@ -84,7 +86,7 @@ class _$CreatePermitApplicationDtoSerializer implements PrimitiveSerializer<Crea
       yield r'academicYear';
       yield serializers.serialize(
         object.academicYear,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(AcademicYearEnum),
       );
     }
     if (object.licenseImgPath != null) {
@@ -156,9 +158,8 @@ class _$CreatePermitApplicationDtoSerializer implements PrimitiveSerializer<Crea
         case r'academicYear':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(AcademicYearEnum),
+          ) as AcademicYearEnum;
           result.academicYear = valueDes;
           break;
         case r'licenseImgPath':

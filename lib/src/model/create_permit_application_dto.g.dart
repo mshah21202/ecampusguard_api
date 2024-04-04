@@ -12,7 +12,7 @@ class _$CreatePermitApplicationDto extends CreatePermitApplicationDto {
   @override
   final int? siblingsCount;
   @override
-  final String? academicYear;
+  final AcademicYearEnum? academicYear;
   @override
   final String? licenseImgPath;
   @override
@@ -102,9 +102,10 @@ class CreatePermitApplicationDtoBuilder
   set siblingsCount(int? siblingsCount) =>
       _$this._siblingsCount = siblingsCount;
 
-  String? _academicYear;
-  String? get academicYear => _$this._academicYear;
-  set academicYear(String? academicYear) => _$this._academicYear = academicYear;
+  AcademicYearEnum? _academicYear;
+  AcademicYearEnum? get academicYear => _$this._academicYear;
+  set academicYear(AcademicYearEnum? academicYear) =>
+      _$this._academicYear = academicYear;
 
   String? _licenseImgPath;
   String? get licenseImgPath => _$this._licenseImgPath;

@@ -14,6 +14,7 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:ecampusguardapi/src/date_serializer.dart';
 import 'package:ecampusguardapi/src/model/date.dart';
 
+import 'package:ecampusguardapi/src/model/academic_year_enum.dart';
 import 'package:ecampusguardapi/src/model/access_log_dto.dart';
 import 'package:ecampusguardapi/src/model/access_log_type.dart';
 import 'package:ecampusguardapi/src/model/area_dto.dart';
@@ -42,6 +43,7 @@ import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
+  AcademicYearEnum,
   AccessLogDto,
   AccessLogType,
   AreaDto,

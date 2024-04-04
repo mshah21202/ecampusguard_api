@@ -7,6 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(AcademicYearEnum.serializer)
       ..add(AccessLogDto.serializer)
       ..add(AccessLogType.serializer)
       ..add(AreaDto.serializer)

@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AcademicYearEnum](doc/AcademicYearEnum.md)
  - [AccessLogDto](doc/AccessLogDto.md)
  - [AccessLogType](doc/AccessLogType.md)
  - [AreaDto](doc/AreaDto.md)
