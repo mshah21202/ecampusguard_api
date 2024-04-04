@@ -8,6 +8,8 @@ part of 'permit_dto.dart';
 
 class _$PermitDto extends PermitDto {
   @override
+  final int? id;
+  @override
   final String? name;
   @override
   final BuiltList<bool>? days;
@@ -24,7 +26,8 @@ class _$PermitDto extends PermitDto {
       (new PermitDtoBuilder()..update(updates))._build();
 
   _$PermitDto._(
-      {this.name,
+      {this.id,
+      this.name,
       this.days,
       this.price,
       this.occupied,
@@ -43,6 +46,7 @@ class _$PermitDto extends PermitDto {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PermitDto &&
+        id == other.id &&
         name == other.name &&
         days == other.days &&
         price == other.price &&
@@ -54,6 +58,7 @@ class _$PermitDto extends PermitDto {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, days.hashCode);
     _$hash = $jc(_$hash, price.hashCode);
@@ -67,6 +72,7 @@ class _$PermitDto extends PermitDto {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PermitDto')
+          ..add('id', id)
           ..add('name', name)
           ..add('days', days)
           ..add('price', price)
@@ -79,6 +85,10 @@ class _$PermitDto extends PermitDto {
 
 class PermitDtoBuilder implements Builder<PermitDto, PermitDtoBuilder> {
   _$PermitDto? _$v;
+
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -111,6 +121,7 @@ class PermitDtoBuilder implements Builder<PermitDto, PermitDtoBuilder> {
   PermitDtoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _name = $v.name;
       _days = $v.days?.toBuilder();
       _price = $v.price;
@@ -141,6 +152,7 @@ class PermitDtoBuilder implements Builder<PermitDto, PermitDtoBuilder> {
     try {
       _$result = _$v ??
           new _$PermitDto._(
+              id: id,
               name: name,
               days: _days?.build(),
               price: price,

@@ -13,6 +13,7 @@ part 'permit_dto.g.dart';
 /// PermitDto
 ///
 /// Properties:
+/// * [id] 
 /// * [name] 
 /// * [days] 
 /// * [price] 
@@ -21,6 +22,9 @@ part 'permit_dto.g.dart';
 /// * [area] 
 @BuiltValue()
 abstract class PermitDto implements Built<PermitDto, PermitDtoBuilder> {
+  @BuiltValueField(wireName: r'id')
+  int? get id;
+
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -62,6 +66,13 @@ class _$PermitDtoSerializer implements PrimitiveSerializer<PermitDto> {
     PermitDto object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.id != null) {
+      yield r'id';
+      yield serializers.serialize(
+        object.id,
+        specifiedType: const FullType(int),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
@@ -127,6 +138,13 @@ class _$PermitDtoSerializer implements PrimitiveSerializer<PermitDto> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.id = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,

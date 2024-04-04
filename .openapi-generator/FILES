@@ -77,4 +77,3 @@ lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/academic_year_enum_test.dart
