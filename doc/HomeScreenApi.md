@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **homeScreenNotificationsGet**
-> BuiltList<NotificationDto> homeScreenNotificationsGet()
+> List<NotificationDto> homeScreenNotificationsGet()
 
 
 
@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;NotificationDto&gt;**](NotificationDto.md)
+[**List&lt;NotificationDto&gt;**](NotificationDto.md)
 
 ### Authorization
 

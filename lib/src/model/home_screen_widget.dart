@@ -3,42 +3,29 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'home_screen_widget.g.dart';
 
-class HomeScreenWidget extends EnumClass {
+enum HomeScreenWidget {
+  @JsonValue(0)
+  PermitStatus('0'),
+  @JsonValue(1)
+  UserApplications('1'),
+  @JsonValue(2)
+  AccessLogs('2'),
+  @JsonValue(3)
+  PreviousPermits('3'),
+  @JsonValue(4)
+  ApplicationsSummary('4'),
+  @JsonValue(5)
+  AreasSummary('5'),
+  @JsonValue(11184809)
+  unknownDefaultOpenApi('11184809');
 
-  @BuiltValueEnumConst(wireNumber: 0)
-  static const HomeScreenWidget PermitStatus = _$PermitStatus;
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const HomeScreenWidget UserApplications = _$UserApplications;
-  @BuiltValueEnumConst(wireNumber: 2)
-  static const HomeScreenWidget AccessLogs = _$AccessLogs;
-  @BuiltValueEnumConst(wireNumber: 3)
-  static const HomeScreenWidget PreviousPermits = _$PreviousPermits;
-  @BuiltValueEnumConst(wireNumber: 4)
-  static const HomeScreenWidget ApplicationsSummary = _$ApplicationsSummary;
-  @BuiltValueEnumConst(wireNumber: 5)
-  static const HomeScreenWidget AreasSummary = _$AreasSummary;
-  @BuiltValueEnumConst(wireNumber: 11184809, fallback: true)
-  static const HomeScreenWidget unknownDefaultOpenApi = _$unknownDefaultOpenApi;
+  const HomeScreenWidget(this.value);
 
-  static Serializer<HomeScreenWidget> get serializer => _$homeScreenWidgetSerializer;
+  final String value;
 
-  const HomeScreenWidget._(String name): super(name);
-
-  static BuiltSet<HomeScreenWidget> get values => _$values;
-  static HomeScreenWidget valueOf(String name) => _$valueOf(name);
+  @override
+  String toString() => value;
 }
-
-/// Optionally, enum_class can generate a mixin to go with your enum for use
-/// with Angular. It exposes your enum constants as getters. So, if you mix it
-/// in to your Dart component class, the values become available to the
-/// corresponding Angular template.
-///
-/// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class HomeScreenWidgetMixin = Object with _$HomeScreenWidgetMixin;
-

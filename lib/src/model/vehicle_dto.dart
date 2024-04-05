@@ -3,220 +3,148 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'vehicle_dto.g.dart';
 
-/// VehicleDto
-///
-/// Properties:
-/// * [plateNumber] 
-/// * [nationality] 
-/// * [make] 
-/// * [model] 
-/// * [year] 
-/// * [color] 
-/// * [registrationDocImgPath] 
-@BuiltValue()
-abstract class VehicleDto implements Built<VehicleDto, VehicleDtoBuilder> {
-  @BuiltValueField(wireName: r'plateNumber')
-  String? get plateNumber;
 
-  @BuiltValueField(wireName: r'nationality')
-  String? get nationality;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class VehicleDto {
+  /// Returns a new [VehicleDto] instance.
+  VehicleDto({
 
-  @BuiltValueField(wireName: r'make')
-  String? get make;
+     this.plateNumber,
 
-  @BuiltValueField(wireName: r'model')
-  String? get model;
+     this.nationality,
 
-  @BuiltValueField(wireName: r'year')
-  int? get year;
+     this.make,
 
-  @BuiltValueField(wireName: r'color')
-  String? get color;
+     this.model,
 
-  @BuiltValueField(wireName: r'registrationDocImgPath')
-  String? get registrationDocImgPath;
+     this.year,
 
-  VehicleDto._();
+     this.color,
 
-  factory VehicleDto([void updates(VehicleDtoBuilder b)]) = _$VehicleDto;
+     this.registrationDocImgPath,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(VehicleDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'plateNumber',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<VehicleDto> get serializer => _$VehicleDtoSerializer();
-}
 
-class _$VehicleDtoSerializer implements PrimitiveSerializer<VehicleDto> {
-  @override
-  final Iterable<Type> types = const [VehicleDto, _$VehicleDto];
+  final String? plateNumber;
 
-  @override
-  final String wireName = r'VehicleDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    VehicleDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.plateNumber != null) {
-      yield r'plateNumber';
-      yield serializers.serialize(
-        object.plateNumber,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.nationality != null) {
-      yield r'nationality';
-      yield serializers.serialize(
-        object.nationality,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.make != null) {
-      yield r'make';
-      yield serializers.serialize(
-        object.make,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.model != null) {
-      yield r'model';
-      yield serializers.serialize(
-        object.model,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.year != null) {
-      yield r'year';
-      yield serializers.serialize(
-        object.year,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.color != null) {
-      yield r'color';
-      yield serializers.serialize(
-        object.color,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.registrationDocImgPath != null) {
-      yield r'registrationDocImgPath';
-      yield serializers.serialize(
-        object.registrationDocImgPath,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    VehicleDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'nationality',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required VehicleDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'plateNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.plateNumber = valueDes;
-          break;
-        case r'nationality':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.nationality = valueDes;
-          break;
-        case r'make':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.make = valueDes;
-          break;
-        case r'model':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.model = valueDes;
-          break;
-        case r'year':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.year = valueDes;
-          break;
-        case r'color':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.color = valueDes;
-          break;
-        case r'registrationDocImgPath':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.registrationDocImgPath = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? nationality;
+
+
+
+  @JsonKey(
+    
+    name: r'make',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? make;
+
+
+
+  @JsonKey(
+    
+    name: r'model',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? model;
+
+
+
+  @JsonKey(
+    
+    name: r'year',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? year;
+
+
+
+  @JsonKey(
+    
+    name: r'color',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? color;
+
+
+
+  @JsonKey(
+    
+    name: r'registrationDocImgPath',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? registrationDocImgPath;
+
+
 
   @override
-  VehicleDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = VehicleDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is VehicleDto &&
+     other.plateNumber == plateNumber &&
+     other.nationality == nationality &&
+     other.make == make &&
+     other.model == model &&
+     other.year == year &&
+     other.color == color &&
+     other.registrationDocImgPath == registrationDocImgPath;
+
+  @override
+  int get hashCode =>
+    (plateNumber == null ? 0 : plateNumber.hashCode) +
+    (nationality == null ? 0 : nationality.hashCode) +
+    (make == null ? 0 : make.hashCode) +
+    (model == null ? 0 : model.hashCode) +
+    year.hashCode +
+    (color == null ? 0 : color.hashCode) +
+    (registrationDocImgPath == null ? 0 : registrationDocImgPath.hashCode);
+
+  factory VehicleDto.fromJson(Map<String, dynamic> json) => _$VehicleDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VehicleDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

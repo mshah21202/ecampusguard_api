@@ -3,180 +3,116 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'area_dto.g.dart';
 
-/// AreaDto
-///
-/// Properties:
-/// * [id] 
-/// * [name] 
-/// * [gate] 
-/// * [occupied] 
-/// * [capacity] 
-@BuiltValue()
-abstract class AreaDto implements Built<AreaDto, AreaDtoBuilder> {
-  @BuiltValueField(wireName: r'id')
-  int? get id;
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AreaDto {
+  /// Returns a new [AreaDto] instance.
+  AreaDto({
 
-  @BuiltValueField(wireName: r'gate')
-  String? get gate;
+     this.id,
 
-  @BuiltValueField(wireName: r'occupied')
-  int? get occupied;
+     this.name,
 
-  @BuiltValueField(wireName: r'capacity')
-  int? get capacity;
+     this.gate,
 
-  AreaDto._();
+     this.occupied,
 
-  factory AreaDto([void updates(AreaDtoBuilder b)]) = _$AreaDto;
+     this.capacity,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AreaDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AreaDto> get serializer => _$AreaDtoSerializer();
-}
 
-class _$AreaDtoSerializer implements PrimitiveSerializer<AreaDto> {
-  @override
-  final Iterable<Type> types = const [AreaDto, _$AreaDto];
+  final int? id;
 
-  @override
-  final String wireName = r'AreaDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AreaDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.gate != null) {
-      yield r'gate';
-      yield serializers.serialize(
-        object.gate,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.occupied != null) {
-      yield r'occupied';
-      yield serializers.serialize(
-        object.occupied,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.capacity != null) {
-      yield r'capacity';
-      yield serializers.serialize(
-        object.capacity,
-        specifiedType: const FullType(int),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'gate',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? gate;
+
+
+
+  @JsonKey(
+    
+    name: r'occupied',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? occupied;
+
+
+
+  @JsonKey(
+    
+    name: r'capacity',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? capacity;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AreaDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AreaDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'gate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.gate = valueDes;
-          break;
-        case r'occupied':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.occupied = valueDes;
-          break;
-        case r'capacity':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.capacity = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AreaDto &&
+     other.id == id &&
+     other.name == name &&
+     other.gate == gate &&
+     other.occupied == occupied &&
+     other.capacity == capacity;
 
   @override
-  AreaDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AreaDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    id.hashCode +
+    (name == null ? 0 : name.hashCode) +
+    (gate == null ? 0 : gate.hashCode) +
+    occupied.hashCode +
+    capacity.hashCode;
+
+  factory AreaDto.fromJson(Map<String, dynamic> json) => _$AreaDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AreaDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitApplicationGet**
-> BuiltList<PermitApplicationInfoDto> permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
+> List<PermitApplicationInfoDto> permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
 
 Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;PermitApplicationInfoDto&gt;**](PermitApplicationInfoDto.md)
+[**List&lt;PermitApplicationInfoDto&gt;**](PermitApplicationInfoDto.md)
 
 ### Authorization
 

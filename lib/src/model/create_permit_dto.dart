@@ -3,181 +3,116 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'create_permit_dto.g.dart';
 
-/// CreatePermitDto
-///
-/// Properties:
-/// * [name] 
-/// * [days] 
-/// * [price] 
-/// * [capacity] 
-/// * [areaId] 
-@BuiltValue()
-abstract class CreatePermitDto implements Built<CreatePermitDto, CreatePermitDtoBuilder> {
-  @BuiltValueField(wireName: r'name')
-  String? get name;
 
-  @BuiltValueField(wireName: r'days')
-  BuiltList<bool>? get days;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CreatePermitDto {
+  /// Returns a new [CreatePermitDto] instance.
+  CreatePermitDto({
 
-  @BuiltValueField(wireName: r'price')
-  double? get price;
+     this.name,
 
-  @BuiltValueField(wireName: r'capacity')
-  int? get capacity;
+     this.days,
 
-  @BuiltValueField(wireName: r'areaId')
-  int? get areaId;
+     this.price,
 
-  CreatePermitDto._();
+     this.capacity,
 
-  factory CreatePermitDto([void updates(CreatePermitDtoBuilder b)]) = _$CreatePermitDto;
+     this.areaId,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreatePermitDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CreatePermitDto> get serializer => _$CreatePermitDtoSerializer();
-}
 
-class _$CreatePermitDtoSerializer implements PrimitiveSerializer<CreatePermitDto> {
-  @override
-  final Iterable<Type> types = const [CreatePermitDto, _$CreatePermitDto];
+  final String? name;
 
-  @override
-  final String wireName = r'CreatePermitDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CreatePermitDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.days != null) {
-      yield r'days';
-      yield serializers.serialize(
-        object.days,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(bool)]),
-      );
-    }
-    if (object.price != null) {
-      yield r'price';
-      yield serializers.serialize(
-        object.price,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.capacity != null) {
-      yield r'capacity';
-      yield serializers.serialize(
-        object.capacity,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.areaId != null) {
-      yield r'areaId';
-      yield serializers.serialize(
-        object.areaId,
-        specifiedType: const FullType(int),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'days',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<bool>? days;
+
+
+
+  @JsonKey(
+    
+    name: r'price',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final double? price;
+
+
+
+  @JsonKey(
+    
+    name: r'capacity',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? capacity;
+
+
+
+  @JsonKey(
+    
+    name: r'areaId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? areaId;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    CreatePermitDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CreatePermitDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'days':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(bool)]),
-          ) as BuiltList<bool>?;
-          if (valueDes == null) continue;
-          result.days.replace(valueDes);
-          break;
-        case r'price':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.price = valueDes;
-          break;
-        case r'capacity':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.capacity = valueDes;
-          break;
-        case r'areaId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.areaId = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is CreatePermitDto &&
+     other.name == name &&
+     other.days == days &&
+     other.price == price &&
+     other.capacity == capacity &&
+     other.areaId == areaId;
 
   @override
-  CreatePermitDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CreatePermitDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (name == null ? 0 : name.hashCode) +
+    (days == null ? 0 : days.hashCode) +
+    price.hashCode +
+    capacity.hashCode +
+    areaId.hashCode;
+
+  factory CreatePermitDto.fromJson(Map<String, dynamic> json) => _$CreatePermitDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreatePermitDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

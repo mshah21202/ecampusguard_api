@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **searchGet**
-> BuiltList<JsonObject> searchGet(body)
+> List<Object> searchGet(body)
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getSearchApi();
-final JsonObject body = Object; // JsonObject | 
+final Object body = Object; // Object | 
 
 try {
     final response = api.searchGet(body);
@@ -36,11 +36,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | [optional] 
+ **body** | **Object**|  | [optional] 
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+**List&lt;Object&gt;**
 
 ### Authorization
 

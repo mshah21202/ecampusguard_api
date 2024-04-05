@@ -5,219 +5,148 @@
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 import 'package:ecampusguardapi/src/model/academic_year_enum.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'create_permit_application_dto.g.dart';
 
-/// CreatePermitApplicationDto
-///
-/// Properties:
-/// * [attendingDays] 
-/// * [siblingsCount] 
-/// * [academicYear] 
-/// * [licenseImgPath] 
-/// * [phoneNumber] 
-/// * [vehicle] 
-/// * [permitId] 
-@BuiltValue()
-abstract class CreatePermitApplicationDto implements Built<CreatePermitApplicationDto, CreatePermitApplicationDtoBuilder> {
-  @BuiltValueField(wireName: r'attendingDays')
-  BuiltList<bool>? get attendingDays;
 
-  @BuiltValueField(wireName: r'siblingsCount')
-  int? get siblingsCount;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CreatePermitApplicationDto {
+  /// Returns a new [CreatePermitApplicationDto] instance.
+  CreatePermitApplicationDto({
 
-  @BuiltValueField(wireName: r'academicYear')
-  AcademicYearEnum? get academicYear;
-  // enum academicYearEnum {  0,  1,  2,  3,  };
+     this.attendingDays,
 
-  @BuiltValueField(wireName: r'licenseImgPath')
-  String? get licenseImgPath;
+     this.siblingsCount,
 
-  @BuiltValueField(wireName: r'phoneNumber')
-  String? get phoneNumber;
+     this.academicYear,
 
-  @BuiltValueField(wireName: r'vehicle')
-  VehicleDto? get vehicle;
+     this.licenseImgPath,
 
-  @BuiltValueField(wireName: r'permitId')
-  int? get permitId;
+     this.phoneNumber,
 
-  CreatePermitApplicationDto._();
+     this.vehicle,
 
-  factory CreatePermitApplicationDto([void updates(CreatePermitApplicationDtoBuilder b)]) = _$CreatePermitApplicationDto;
+     this.permitId,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreatePermitApplicationDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'attendingDays',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CreatePermitApplicationDto> get serializer => _$CreatePermitApplicationDtoSerializer();
-}
 
-class _$CreatePermitApplicationDtoSerializer implements PrimitiveSerializer<CreatePermitApplicationDto> {
-  @override
-  final Iterable<Type> types = const [CreatePermitApplicationDto, _$CreatePermitApplicationDto];
+  final List<bool>? attendingDays;
 
-  @override
-  final String wireName = r'CreatePermitApplicationDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CreatePermitApplicationDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.attendingDays != null) {
-      yield r'attendingDays';
-      yield serializers.serialize(
-        object.attendingDays,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(bool)]),
-      );
-    }
-    if (object.siblingsCount != null) {
-      yield r'siblingsCount';
-      yield serializers.serialize(
-        object.siblingsCount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.academicYear != null) {
-      yield r'academicYear';
-      yield serializers.serialize(
-        object.academicYear,
-        specifiedType: const FullType(AcademicYearEnum),
-      );
-    }
-    if (object.licenseImgPath != null) {
-      yield r'licenseImgPath';
-      yield serializers.serialize(
-        object.licenseImgPath,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.phoneNumber != null) {
-      yield r'phoneNumber';
-      yield serializers.serialize(
-        object.phoneNumber,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.vehicle != null) {
-      yield r'vehicle';
-      yield serializers.serialize(
-        object.vehicle,
-        specifiedType: const FullType(VehicleDto),
-      );
-    }
-    if (object.permitId != null) {
-      yield r'permitId';
-      yield serializers.serialize(
-        object.permitId,
-        specifiedType: const FullType(int),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    CreatePermitApplicationDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'siblingsCount',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CreatePermitApplicationDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'attendingDays':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(bool)]),
-          ) as BuiltList<bool>?;
-          if (valueDes == null) continue;
-          result.attendingDays.replace(valueDes);
-          break;
-        case r'siblingsCount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.siblingsCount = valueDes;
-          break;
-        case r'academicYear':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(AcademicYearEnum),
-          ) as AcademicYearEnum;
-          result.academicYear = valueDes;
-          break;
-        case r'licenseImgPath':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.licenseImgPath = valueDes;
-          break;
-        case r'phoneNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.phoneNumber = valueDes;
-          break;
-        case r'vehicle':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(VehicleDto),
-          ) as VehicleDto;
-          result.vehicle.replace(valueDes);
-          break;
-        case r'permitId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.permitId = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? siblingsCount;
+
+
+
+  @JsonKey(
+    
+    name: r'academicYear',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final AcademicYearEnum? academicYear;
+
+
+
+  @JsonKey(
+    
+    name: r'licenseImgPath',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? licenseImgPath;
+
+
+
+  @JsonKey(
+    
+    name: r'phoneNumber',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? phoneNumber;
+
+
+
+  @JsonKey(
+    
+    name: r'vehicle',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final VehicleDto? vehicle;
+
+
+
+  @JsonKey(
+    
+    name: r'permitId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? permitId;
+
+
 
   @override
-  CreatePermitApplicationDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CreatePermitApplicationDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is CreatePermitApplicationDto &&
+     other.attendingDays == attendingDays &&
+     other.siblingsCount == siblingsCount &&
+     other.academicYear == academicYear &&
+     other.licenseImgPath == licenseImgPath &&
+     other.phoneNumber == phoneNumber &&
+     other.vehicle == vehicle &&
+     other.permitId == permitId;
+
+  @override
+  int get hashCode =>
+    (attendingDays == null ? 0 : attendingDays.hashCode) +
+    siblingsCount.hashCode +
+    academicYear.hashCode +
+    (licenseImgPath == null ? 0 : licenseImgPath.hashCode) +
+    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
+    vehicle.hashCode +
+    permitId.hashCode;
+
+  factory CreatePermitApplicationDto.fromJson(Map<String, dynamic> json) => _$CreatePermitApplicationDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreatePermitApplicationDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **permitsGet**
-> BuiltList<PermitDto> permitsGet()
+> List<PermitDto> permitsGet()
 
 Gets all permits
 
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;PermitDto&gt;**](PermitDto.md)
+[**List&lt;PermitDto&gt;**](PermitDto.md)
 
 ### Authorization
 

@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:ecampusguardapi/src/model/home_screen_dto.dart';
 import 'package:ecampusguardapi/src/model/notification_dto.dart';
 
@@ -15,9 +16,7 @@ class HomeScreenApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const HomeScreenApi(this._dio, this._serializers);
+  const HomeScreenApi(this._dio);
 
   /// homeScreenGet
   /// 
@@ -70,12 +69,8 @@ class HomeScreenApi {
     HomeScreenDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(HomeScreenDto),
-      ) as HomeScreenDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<HomeScreenDto, HomeScreenDto>(rawData, 'HomeScreenDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -109,9 +104,9 @@ class HomeScreenApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<NotificationDto>] as data
+  /// Returns a [Future] containing a [Response] with a [List<NotificationDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<NotificationDto>>> homeScreenNotificationsGet({ 
+  Future<Response<List<NotificationDto>>> homeScreenNotificationsGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -146,15 +141,11 @@ class HomeScreenApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<NotificationDto>? _responseData;
+    List<NotificationDto>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(NotificationDto)]),
-      ) as BuiltList<NotificationDto>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<NotificationDto>, NotificationDto>(rawData, 'List<NotificationDto>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -165,7 +156,7 @@ class HomeScreenApi {
       );
     }
 
-    return Response<BuiltList<NotificationDto>>(
+    return Response<List<NotificationDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

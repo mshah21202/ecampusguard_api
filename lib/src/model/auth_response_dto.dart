@@ -4,146 +4,84 @@
 
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/auth_response_code.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_response_dto.g.dart';
 
-/// AuthResponseDto
-///
-/// Properties:
-/// * [code] 
-/// * [token] 
-/// * [error] 
-@BuiltValue()
-abstract class AuthResponseDto implements Built<AuthResponseDto, AuthResponseDtoBuilder> {
-  @BuiltValueField(wireName: r'code')
-  AuthResponseCode? get code;
-  // enum codeEnum {  0,  1,  2,  3,  4,  };
 
-  @BuiltValueField(wireName: r'token')
-  String? get token;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AuthResponseDto {
+  /// Returns a new [AuthResponseDto] instance.
+  AuthResponseDto({
 
-  @BuiltValueField(wireName: r'error')
-  JsonObject? get error;
+     this.code,
 
-  AuthResponseDto._();
+     this.token,
 
-  factory AuthResponseDto([void updates(AuthResponseDtoBuilder b)]) = _$AuthResponseDto;
+     this.error,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AuthResponseDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'code',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AuthResponseDto> get serializer => _$AuthResponseDtoSerializer();
-}
 
-class _$AuthResponseDtoSerializer implements PrimitiveSerializer<AuthResponseDto> {
-  @override
-  final Iterable<Type> types = const [AuthResponseDto, _$AuthResponseDto];
+  final AuthResponseCode? code;
 
-  @override
-  final String wireName = r'AuthResponseDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuthResponseDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.code != null) {
-      yield r'code';
-      yield serializers.serialize(
-        object.code,
-        specifiedType: const FullType(AuthResponseCode),
-      );
-    }
-    if (object.token != null) {
-      yield r'token';
-      yield serializers.serialize(
-        object.token,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.error != null) {
-      yield r'error';
-      yield serializers.serialize(
-        object.error,
-        specifiedType: const FullType.nullable(JsonObject),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'token',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? token;
+
+
+
+  @JsonKey(
+    
+    name: r'error',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final Object? error;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AuthResponseDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AuthResponseDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(AuthResponseCode),
-          ) as AuthResponseCode;
-          result.code = valueDes;
-          break;
-        case r'token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.token = valueDes;
-          break;
-        case r'error':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(JsonObject),
-          ) as JsonObject?;
-          if (valueDes == null) continue;
-          result.error = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AuthResponseDto &&
+     other.code == code &&
+     other.token == token &&
+     other.error == error;
 
   @override
-  AuthResponseDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AuthResponseDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    code.hashCode +
+    (token == null ? 0 : token.hashCode) +
+    (error == null ? 0 : error.hashCode);
+
+  factory AuthResponseDto.fromJson(Map<String, dynamic> json) => _$AuthResponseDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthResponseDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

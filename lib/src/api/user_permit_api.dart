@@ -4,12 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:ecampusguardapi/src/api_util.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
 import 'package:ecampusguardapi/src/model/transfer_request_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
@@ -19,9 +18,7 @@ class UserPermitApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const UserPermitApi(this._dio, this._serializers);
+  const UserPermitApi(this._dio);
 
   /// Gets all user permit for user, or gets all user permits for all users if user is admin
   /// 
@@ -41,9 +38,9 @@ class UserPermitApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [List<Object>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<JsonObject>>> userPermitGet({ 
+  Future<Response<List<Object>>> userPermitGet({ 
     String? studentId,
     String? plateNumber,
     UserPermitStatus? status,
@@ -78,13 +75,13 @@ class UserPermitApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (studentId != null) r'StudentId': encodeQueryParameter(_serializers, studentId, const FullType(String)),
-      if (plateNumber != null) r'PlateNumber': encodeQueryParameter(_serializers, plateNumber, const FullType(String)),
-      if (status != null) r'Status': encodeQueryParameter(_serializers, status, const FullType(UserPermitStatus)),
-      if (orderBy != null) r'OrderBy': encodeQueryParameter(_serializers, orderBy, const FullType(UserPermitOrderBy)),
-      if (orderByDirection != null) r'OrderByDirection': encodeQueryParameter(_serializers, orderByDirection, const FullType(String)),
-      if (pageNumber != null) r'PageNumber': encodeQueryParameter(_serializers, pageNumber, const FullType(int)),
-      if (pageSize != null) r'PageSize': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (studentId != null) r'StudentId': studentId,
+      if (plateNumber != null) r'PlateNumber': plateNumber,
+      if (status != null) r'Status': status,
+      if (orderBy != null) r'OrderBy': orderBy,
+      if (orderByDirection != null) r'OrderByDirection': orderByDirection,
+      if (pageNumber != null) r'PageNumber': pageNumber,
+      if (pageSize != null) r'PageSize': pageSize,
     };
 
     final _response = await _dio.request<Object>(
@@ -96,15 +93,11 @@ class UserPermitApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<JsonObject>? _responseData;
+    List<Object>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-      ) as BuiltList<JsonObject>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawData, 'List<Object>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -115,7 +108,7 @@ class UserPermitApi {
       );
     }
 
-    return Response<BuiltList<JsonObject>>(
+    return Response<List<Object>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -139,9 +132,9 @@ class UserPermitApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [Object] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> userPermitIdGet({ 
+  Future<Response<Object>> userPermitIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -150,7 +143,7 @@ class UserPermitApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/UserPermit/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/UserPermit/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -177,15 +170,11 @@ class UserPermitApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    Object? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'Object', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -196,7 +185,7 @@ class UserPermitApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<Object>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -233,7 +222,7 @@ class UserPermitApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/UserPermit/transfer/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/UserPermit/transfer/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -256,9 +245,7 @@ class UserPermitApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(TransferRequestDto);
-      _bodyData = transferRequestDto == null ? null : _serializers.serialize(transferRequestDto, specifiedType: _type);
-
+_bodyData=jsonEncode(transferRequestDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -283,12 +270,8 @@ class UserPermitApi {
     ResponseDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ResponseDto),
-      ) as ResponseDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

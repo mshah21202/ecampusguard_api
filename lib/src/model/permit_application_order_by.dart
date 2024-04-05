@@ -3,40 +3,27 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'permit_application_order_by.g.dart';
 
-class PermitApplicationOrderBy extends EnumClass {
+enum PermitApplicationOrderBy {
+  @JsonValue(0)
+  StudentId('0'),
+  @JsonValue(1)
+  Name('1'),
+  @JsonValue(2)
+  AcademicYear('2'),
+  @JsonValue(3)
+  PermitType('3'),
+  @JsonValue(4)
+  Status('4'),
+  @JsonValue(11184809)
+  unknownDefaultOpenApi('11184809');
 
-  @BuiltValueEnumConst(wireNumber: 0)
-  static const PermitApplicationOrderBy StudentId = _$StudentId;
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const PermitApplicationOrderBy Name = _$Name;
-  @BuiltValueEnumConst(wireNumber: 2)
-  static const PermitApplicationOrderBy AcademicYear = _$AcademicYear;
-  @BuiltValueEnumConst(wireNumber: 3)
-  static const PermitApplicationOrderBy PermitType = _$PermitType;
-  @BuiltValueEnumConst(wireNumber: 4)
-  static const PermitApplicationOrderBy Status = _$Status;
-  @BuiltValueEnumConst(wireNumber: 11184809, fallback: true)
-  static const PermitApplicationOrderBy unknownDefaultOpenApi = _$unknownDefaultOpenApi;
+  const PermitApplicationOrderBy(this.value);
 
-  static Serializer<PermitApplicationOrderBy> get serializer => _$permitApplicationOrderBySerializer;
+  final String value;
 
-  const PermitApplicationOrderBy._(String name): super(name);
-
-  static BuiltSet<PermitApplicationOrderBy> get values => _$values;
-  static PermitApplicationOrderBy valueOf(String name) => _$valueOf(name);
+  @override
+  String toString() => value;
 }
-
-/// Optionally, enum_class can generate a mixin to go with your enum for use
-/// with Angular. It exposes your enum constants as getters. So, if you mix it
-/// in to your Dart component class, the values become available to the
-/// corresponding Angular template.
-///
-/// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class PermitApplicationOrderByMixin = Object with _$PermitApplicationOrderByMixin;
-

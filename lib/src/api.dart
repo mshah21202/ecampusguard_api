@@ -3,8 +3,6 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:built_value/serializer.dart';
-import 'package:ecampusguardapi/src/serializers.dart';
 import 'package:ecampusguardapi/src/auth/api_key_auth.dart';
 import 'package:ecampusguardapi/src/auth/basic_auth.dart';
 import 'package:ecampusguardapi/src/auth/bearer_auth.dart';
@@ -21,14 +19,11 @@ class Ecampusguardapi {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
-  final Serializers serializers;
-
   Ecampusguardapi({
     Dio? dio,
-    Serializers? serializers,
     String? basePathOverride,
     List<Interceptor>? interceptors,
-  })  : this.serializers = serializers ?? standardSerializers,
+  })  : 
         this.dio = dio ??
             Dio(BaseOptions(
               baseUrl: basePathOverride ?? basePath,
@@ -74,42 +69,42 @@ class Ecampusguardapi {
   /// Get AreaApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AreaApi getAreaApi() {
-    return AreaApi(dio, serializers);
+    return AreaApi(dio);
   }
 
   /// Get AuthenticationApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AuthenticationApi getAuthenticationApi() {
-    return AuthenticationApi(dio, serializers);
+    return AuthenticationApi(dio);
   }
 
   /// Get HomeScreenApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   HomeScreenApi getHomeScreenApi() {
-    return HomeScreenApi(dio, serializers);
+    return HomeScreenApi(dio);
   }
 
   /// Get PermitApplicationApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   PermitApplicationApi getPermitApplicationApi() {
-    return PermitApplicationApi(dio, serializers);
+    return PermitApplicationApi(dio);
   }
 
   /// Get PermitsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   PermitsApi getPermitsApi() {
-    return PermitsApi(dio, serializers);
+    return PermitsApi(dio);
   }
 
   /// Get SearchApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   SearchApi getSearchApi() {
-    return SearchApi(dio, serializers);
+    return SearchApi(dio);
   }
 
   /// Get UserPermitApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   UserPermitApi getUserPermitApi() {
-    return UserPermitApi(dio, serializers);
+    return UserPermitApi(dio);
   }
 }

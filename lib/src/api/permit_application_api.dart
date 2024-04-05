@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:ecampusguardapi/src/api_util.dart';
 import 'package:ecampusguardapi/src/model/create_permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_info_dto.dart';
@@ -19,9 +19,7 @@ class PermitApplicationApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const PermitApplicationApi(this._dio, this._serializers);
+  const PermitApplicationApi(this._dio);
 
   /// Submits permit application for user
   /// 
@@ -69,9 +67,7 @@ class PermitApplicationApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreatePermitApplicationDto);
-      _bodyData = createPermitApplicationDto == null ? null : _serializers.serialize(createPermitApplicationDto, specifiedType: _type);
-
+_bodyData=jsonEncode(createPermitApplicationDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -96,12 +92,8 @@ class PermitApplicationApi {
     ResponseDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ResponseDto),
-      ) as ResponseDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -144,9 +136,9 @@ class PermitApplicationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<PermitApplicationInfoDto>] as data
+  /// Returns a [Future] containing a [Response] with a [List<PermitApplicationInfoDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<PermitApplicationInfoDto>>> permitApplicationGet({ 
+  Future<Response<List<PermitApplicationInfoDto>>> permitApplicationGet({ 
     String? studentId,
     String? name,
     int? academicYear,
@@ -183,15 +175,15 @@ class PermitApplicationApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (studentId != null) r'StudentId': encodeQueryParameter(_serializers, studentId, const FullType(String)),
-      if (name != null) r'Name': encodeQueryParameter(_serializers, name, const FullType(String)),
-      if (academicYear != null) r'AcademicYear': encodeQueryParameter(_serializers, academicYear, const FullType(int)),
-      if (permitId != null) r'PermitId': encodeQueryParameter(_serializers, permitId, const FullType(int)),
-      if (status != null) r'Status': encodeQueryParameter(_serializers, status, const FullType(int)),
-      if (orderBy != null) r'OrderBy': encodeQueryParameter(_serializers, orderBy, const FullType(PermitApplicationOrderBy)),
-      if (orderByDirection != null) r'OrderByDirection': encodeQueryParameter(_serializers, orderByDirection, const FullType(String)),
-      if (pageNumber != null) r'PageNumber': encodeQueryParameter(_serializers, pageNumber, const FullType(int)),
-      if (pageSize != null) r'PageSize': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (studentId != null) r'StudentId': studentId,
+      if (name != null) r'Name': name,
+      if (academicYear != null) r'AcademicYear': academicYear,
+      if (permitId != null) r'PermitId': permitId,
+      if (status != null) r'Status': status,
+      if (orderBy != null) r'OrderBy': orderBy,
+      if (orderByDirection != null) r'OrderByDirection': orderByDirection,
+      if (pageNumber != null) r'PageNumber': pageNumber,
+      if (pageSize != null) r'PageSize': pageSize,
     };
 
     final _response = await _dio.request<Object>(
@@ -203,15 +195,11 @@ class PermitApplicationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<PermitApplicationInfoDto>? _responseData;
+    List<PermitApplicationInfoDto>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(PermitApplicationInfoDto)]),
-      ) as BuiltList<PermitApplicationInfoDto>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<PermitApplicationInfoDto>, PermitApplicationInfoDto>(rawData, 'List<PermitApplicationInfoDto>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -222,7 +210,7 @@ class PermitApplicationApi {
       );
     }
 
-    return Response<BuiltList<PermitApplicationInfoDto>>(
+    return Response<List<PermitApplicationInfoDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -257,7 +245,7 @@ class PermitApplicationApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/PermitApplication/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/PermitApplication/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -287,12 +275,8 @@ class PermitApplicationApi {
     PermitApplicationDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PermitApplicationDto),
-      ) as PermitApplicationDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PermitApplicationDto, PermitApplicationDto>(rawData, 'PermitApplicationDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -340,7 +324,7 @@ class PermitApplicationApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/PermitApplication/response/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/PermitApplication/response/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -363,9 +347,7 @@ class PermitApplicationApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PermitApplicationDto);
-      _bodyData = permitApplicationDto == null ? null : _serializers.serialize(permitApplicationDto, specifiedType: _type);
-
+_bodyData=jsonEncode(permitApplicationDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -390,12 +372,8 @@ class PermitApplicationApi {
     ResponseDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ResponseDto),
-      ) as ResponseDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

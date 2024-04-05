@@ -3,40 +3,27 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'auth_response_code.g.dart';
 
-class AuthResponseCode extends EnumClass {
+enum AuthResponseCode {
+  @JsonValue(0)
+  Authenticated('0'),
+  @JsonValue(1)
+  RegisteredAndAuthenticated('1'),
+  @JsonValue(2)
+  AlreadyRegistered('2'),
+  @JsonValue(3)
+  IncorrectCreds('3'),
+  @JsonValue(4)
+  Other('4'),
+  @JsonValue(11184809)
+  unknownDefaultOpenApi('11184809');
 
-  @BuiltValueEnumConst(wireNumber: 0)
-  static const AuthResponseCode Authenticated = _$Authenticated;
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const AuthResponseCode RegisteredAndAuthenticated = _$RegisteredAndAuthenticated;
-  @BuiltValueEnumConst(wireNumber: 2)
-  static const AuthResponseCode AlreadyRegistered = _$AlreadyRegistered;
-  @BuiltValueEnumConst(wireNumber: 3)
-  static const AuthResponseCode IncorrectCreds = _$IncorrectCreds;
-  @BuiltValueEnumConst(wireNumber: 4)
-  static const AuthResponseCode Other = _$Other;
-  @BuiltValueEnumConst(wireNumber: 11184809, fallback: true)
-  static const AuthResponseCode unknownDefaultOpenApi = _$unknownDefaultOpenApi;
+  const AuthResponseCode(this.value);
 
-  static Serializer<AuthResponseCode> get serializer => _$authResponseCodeSerializer;
+  final String value;
 
-  const AuthResponseCode._(String name): super(name);
-
-  static BuiltSet<AuthResponseCode> get values => _$values;
-  static AuthResponseCode valueOf(String name) => _$valueOf(name);
+  @override
+  String toString() => value;
 }
-
-/// Optionally, enum_class can generate a mixin to go with your enum for use
-/// with Angular. It exposes your enum constants as getters. So, if you mix it
-/// in to your Dart component class, the values become available to the
-/// corresponding Angular template.
-///
-/// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class AuthResponseCodeMixin = Object with _$AuthResponseCodeMixin;
-

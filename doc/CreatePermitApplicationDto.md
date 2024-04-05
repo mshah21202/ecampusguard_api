@@ -8,7 +8,7 @@ import 'package:ecampusguardapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attendingDays** | **BuiltList&lt;bool&gt;** |  | [optional] 
+**attendingDays** | **List&lt;bool&gt;** |  | [optional] 
 **siblingsCount** | **int** |  | [optional] 
 **academicYear** | [**AcademicYearEnum**](AcademicYearEnum.md) |  | [optional] 
 **licenseImgPath** | **String** |  | [optional] 

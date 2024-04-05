@@ -3,109 +3,53 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:ecampusguardapi/src/model/access_log_dto.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'area_screen_dto.g.dart';
 
-/// AreaScreenDto
-///
-/// Properties:
-/// * [accessLogs] 
-@BuiltValue()
-abstract class AreaScreenDto implements Built<AreaScreenDto, AreaScreenDtoBuilder> {
-  @BuiltValueField(wireName: r'accessLogs')
-  BuiltList<AccessLogDto>? get accessLogs;
 
-  AreaScreenDto._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AreaScreenDto {
+  /// Returns a new [AreaScreenDto] instance.
+  AreaScreenDto({
 
-  factory AreaScreenDto([void updates(AreaScreenDtoBuilder b)]) = _$AreaScreenDto;
+     this.accessLogs,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AreaScreenDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'accessLogs',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AreaScreenDto> get serializer => _$AreaScreenDtoSerializer();
-}
 
-class _$AreaScreenDtoSerializer implements PrimitiveSerializer<AreaScreenDto> {
-  @override
-  final Iterable<Type> types = const [AreaScreenDto, _$AreaScreenDto];
+  final List<AccessLogDto>? accessLogs;
 
-  @override
-  final String wireName = r'AreaScreenDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AreaScreenDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.accessLogs != null) {
-      yield r'accessLogs';
-      yield serializers.serialize(
-        object.accessLogs,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(AccessLogDto)]),
-      );
-    }
-  }
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AreaScreenDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AreaScreenDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'accessLogs':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(AccessLogDto)]),
-          ) as BuiltList<AccessLogDto>?;
-          if (valueDes == null) continue;
-          result.accessLogs.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AreaScreenDto &&
+     other.accessLogs == accessLogs;
 
   @override
-  AreaScreenDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AreaScreenDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (accessLogs == null ? 0 : accessLogs.hashCode);
+
+  factory AreaScreenDto.fromJson(Map<String, dynamic> json) => _$AreaScreenDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AreaScreenDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

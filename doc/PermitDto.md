@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **String** |  | [optional] 
-**days** | **BuiltList&lt;bool&gt;** |  | [optional] 
+**days** | **List&lt;bool&gt;** |  | [optional] 
 **price** | **double** |  | [optional] 
 **occupied** | **int** |  | [optional] 
 **capacity** | **int** |  | [optional] 

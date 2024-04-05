@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **userPermitGet**
-> BuiltList<JsonObject> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
+> List<Object> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
 
 Gets all user permit for user, or gets all user permits for all users if user is admin
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+**List&lt;Object&gt;**
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPermitIdGet**
-> JsonObject userPermitIdGet(id)
+> Object userPermitIdGet(id)
 
 Gets user permit
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+**Object**
 
 ### Authorization
 

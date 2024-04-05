@@ -9,7 +9,7 @@ import 'package:ecampusguardapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | [optional] 
-**days** | **BuiltList&lt;bool&gt;** |  | [optional] 
+**days** | **List&lt;bool&gt;** |  | [optional] 
 **price** | **double** |  | [optional] 
 **capacity** | **int** |  | [optional] 
 **areaId** | **int** |  | [optional] 

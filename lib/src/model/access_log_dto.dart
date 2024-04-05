@@ -4,144 +4,84 @@
 
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/access_log_type.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'access_log_dto.g.dart';
 
-/// AccessLogDto
-///
-/// Properties:
-/// * [timestamp] 
-/// * [licensePlate] 
-/// * [logType] 
-@BuiltValue()
-abstract class AccessLogDto implements Built<AccessLogDto, AccessLogDtoBuilder> {
-  @BuiltValueField(wireName: r'timestamp')
-  DateTime? get timestamp;
 
-  @BuiltValueField(wireName: r'licensePlate')
-  String? get licensePlate;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AccessLogDto {
+  /// Returns a new [AccessLogDto] instance.
+  AccessLogDto({
 
-  @BuiltValueField(wireName: r'logType')
-  AccessLogType? get logType;
-  // enum logTypeEnum {  0,  1,  };
+     this.timestamp,
 
-  AccessLogDto._();
+     this.licensePlate,
 
-  factory AccessLogDto([void updates(AccessLogDtoBuilder b)]) = _$AccessLogDto;
+     this.logType,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AccessLogDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'timestamp',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AccessLogDto> get serializer => _$AccessLogDtoSerializer();
-}
 
-class _$AccessLogDtoSerializer implements PrimitiveSerializer<AccessLogDto> {
-  @override
-  final Iterable<Type> types = const [AccessLogDto, _$AccessLogDto];
+  final DateTime? timestamp;
 
-  @override
-  final String wireName = r'AccessLogDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AccessLogDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.timestamp != null) {
-      yield r'timestamp';
-      yield serializers.serialize(
-        object.timestamp,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.licensePlate != null) {
-      yield r'licensePlate';
-      yield serializers.serialize(
-        object.licensePlate,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.logType != null) {
-      yield r'logType';
-      yield serializers.serialize(
-        object.logType,
-        specifiedType: const FullType(AccessLogType),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'licensePlate',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? licensePlate;
+
+
+
+  @JsonKey(
+    
+    name: r'logType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final AccessLogType? logType;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AccessLogDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AccessLogDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'timestamp':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.timestamp = valueDes;
-          break;
-        case r'licensePlate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.licensePlate = valueDes;
-          break;
-        case r'logType':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(AccessLogType),
-          ) as AccessLogType;
-          result.logType = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AccessLogDto &&
+     other.timestamp == timestamp &&
+     other.licensePlate == licensePlate &&
+     other.logType == logType;
 
   @override
-  AccessLogDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AccessLogDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    timestamp.hashCode +
+    (licensePlate == null ? 0 : licensePlate.hashCode) +
+    logType.hashCode;
+
+  factory AccessLogDto.fromJson(Map<String, dynamic> json) => _$AccessLogDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AccessLogDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

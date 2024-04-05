@@ -4,7 +4,9 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 import 'package:ecampusguardapi/src/model/auth_response_dto.dart';
@@ -15,9 +17,7 @@ class AuthenticationApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AuthenticationApi(this._dio, this._serializers);
+  const AuthenticationApi(this._dio);
 
   /// authenticationLoginPost
   /// 
@@ -59,9 +59,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(LoginDto);
-      _bodyData = loginDto == null ? null : _serializers.serialize(loginDto, specifiedType: _type);
-
+_bodyData=jsonEncode(loginDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -86,12 +84,8 @@ class AuthenticationApi {
     AuthResponseDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AuthResponseDto),
-      ) as AuthResponseDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AuthResponseDto, AuthResponseDto>(rawData, 'AuthResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -154,9 +148,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(RegisterDto);
-      _bodyData = registerDto == null ? null : _serializers.serialize(registerDto, specifiedType: _type);
-
+_bodyData=jsonEncode(registerDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -181,12 +173,8 @@ class AuthenticationApi {
     AuthResponseDto? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AuthResponseDto),
-      ) as AuthResponseDto;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AuthResponseDto, AuthResponseDto>(rawData, 'AuthResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

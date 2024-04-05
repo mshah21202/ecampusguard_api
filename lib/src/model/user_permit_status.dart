@@ -3,36 +3,23 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'user_permit_status.g.dart';
 
-class UserPermitStatus extends EnumClass {
+enum UserPermitStatus {
+  @JsonValue(0)
+  Valid('0'),
+  @JsonValue(1)
+  Withdrawn('1'),
+  @JsonValue(2)
+  Expired('2'),
+  @JsonValue(11184809)
+  unknownDefaultOpenApi('11184809');
 
-  @BuiltValueEnumConst(wireNumber: 0)
-  static const UserPermitStatus Valid = _$Valid;
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const UserPermitStatus Withdrawn = _$Withdrawn;
-  @BuiltValueEnumConst(wireNumber: 2)
-  static const UserPermitStatus Expired = _$Expired;
-  @BuiltValueEnumConst(wireNumber: 11184809, fallback: true)
-  static const UserPermitStatus unknownDefaultOpenApi = _$unknownDefaultOpenApi;
+  const UserPermitStatus(this.value);
 
-  static Serializer<UserPermitStatus> get serializer => _$userPermitStatusSerializer;
+  final String value;
 
-  const UserPermitStatus._(String name): super(name);
-
-  static BuiltSet<UserPermitStatus> get values => _$values;
-  static UserPermitStatus valueOf(String name) => _$valueOf(name);
+  @override
+  String toString() => value;
 }
-
-/// Optionally, enum_class can generate a mixin to go with your enum for use
-/// with Angular. It exposes your enum constants as getters. So, if you mix it
-/// in to your Dart component class, the values become available to the
-/// corresponding Angular template.
-///
-/// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class UserPermitStatusMixin = Object with _$UserPermitStatusMixin;
-
