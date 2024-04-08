@@ -5,6 +5,7 @@ build.yaml
 doc/AcademicYearEnum.md
 doc/AccessLogDto.md
 doc/AccessLogType.md
+doc/ApplicationSummaryDto.md
 doc/AreaApi.md
 doc/AreaDto.md
 doc/AreaScreenDto.md
@@ -52,6 +53,7 @@ lib/src/deserialize.dart
 lib/src/model/academic_year_enum.dart
 lib/src/model/access_log_dto.dart
 lib/src/model/access_log_type.dart
+lib/src/model/application_summary_dto.dart
 lib/src/model/area_dto.dart
 lib/src/model/area_screen_dto.dart
 lib/src/model/auth_response_code.dart
@@ -75,3 +77,4 @@ lib/src/model/user_permit_order_by.dart
 lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 pubspec.yaml
+test/application_summary_dto_test.dart

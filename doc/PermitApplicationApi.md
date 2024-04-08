@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**permitApplicationGet**](PermitApplicationApi.md#permitapplicationget) | **GET** /PermitApplication | Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 [**permitApplicationIdGet**](PermitApplicationApi.md#permitapplicationidget) | **GET** /PermitApplication/{id} | Gets permit application
 [**permitApplicationResponseIdPost**](PermitApplicationApi.md#permitapplicationresponseidpost) | **POST** /PermitApplication/response/{id} | Submits application response. For admin only
+[**permitApplicationSummaryGet**](PermitApplicationApi.md#permitapplicationsummaryget) | **GET** /PermitApplication/summary | 
 
 
 # **permitApplicationApplyPost**
@@ -193,6 +194,43 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **permitApplicationSummaryGet**
+> List<ApplicationSummaryDto> permitApplicationSummaryGet()
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getPermitApplicationApi();
+
+try {
+    final response = api.permitApplicationSummaryGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling PermitApplicationApi->permitApplicationSummaryGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;ApplicationSummaryDto&gt;**](ApplicationSummaryDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

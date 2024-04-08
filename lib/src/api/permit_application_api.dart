@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
+import 'package:ecampusguardapi/src/model/application_summary_dto.dart';
 import 'package:ecampusguardapi/src/model/create_permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_info_dto.dart';
@@ -385,6 +386,81 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
     }
 
     return Response<ResponseDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// permitApplicationSummaryGet
+  /// 
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [List<ApplicationSummaryDto>] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<List<ApplicationSummaryDto>>> permitApplicationSummaryGet({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/PermitApplication/summary';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    List<ApplicationSummaryDto>? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<ApplicationSummaryDto>, ApplicationSummaryDto>(rawData, 'List<ApplicationSummaryDto>', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<List<ApplicationSummaryDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

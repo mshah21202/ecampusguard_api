@@ -19,6 +19,7 @@ export 'package:ecampusguardapi/src/api/user_permit_api.dart';
 export 'package:ecampusguardapi/src/model/academic_year_enum.dart';
 export 'package:ecampusguardapi/src/model/access_log_dto.dart';
 export 'package:ecampusguardapi/src/model/access_log_type.dart';
+export 'package:ecampusguardapi/src/model/application_summary_dto.dart';
 export 'package:ecampusguardapi/src/model/area_dto.dart';
 export 'package:ecampusguardapi/src/model/area_screen_dto.dart';
 export 'package:ecampusguardapi/src/model/auth_response_code.dart';
