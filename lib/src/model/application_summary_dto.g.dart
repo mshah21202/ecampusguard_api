@@ -15,7 +15,7 @@ ApplicationSummaryDto _$ApplicationSummaryDtoFromJson(
         final val = ApplicationSummaryDto(
           title: $checkedConvert('title', (v) => v as String?),
           count: $checkedConvert('count', (v) => v as int?),
-          icon: $checkedConvert('icon', (v) => v as int?),
+          icon: $checkedConvert('icon', (v) => v as String?),
           route: $checkedConvert('route', (v) => v as String?),
         );
         return val;

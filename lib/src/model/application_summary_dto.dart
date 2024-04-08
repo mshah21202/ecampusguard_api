@@ -59,7 +59,7 @@ class ApplicationSummaryDto {
   )
 
 
-  final int? icon;
+  final String? icon;
 
 
 
@@ -86,7 +86,7 @@ class ApplicationSummaryDto {
   int get hashCode =>
     (title == null ? 0 : title.hashCode) +
     count.hashCode +
-    icon.hashCode +
+    (icon == null ? 0 : icon.hashCode) +
     (route == null ? 0 : route.hashCode);
 
   factory ApplicationSummaryDto.fromJson(Map<String, dynamic> json) => _$ApplicationSummaryDtoFromJson(json);
