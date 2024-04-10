@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **searchGet**
-> List<Object> searchGet(body)
+> List<UserPermitDto> searchGet(body)
 
 
 
@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List&lt;Object&gt;**
+[**List&lt;UserPermitDto&gt;**](UserPermitDto.md)
 
 ### Authorization
 

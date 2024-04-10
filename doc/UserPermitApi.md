@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **userPermitGet**
-> List<Object> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
+> List<UserPermitDto> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
 
 Gets all user permit for user, or gets all user permits for all users if user is admin
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List&lt;Object&gt;**
+[**List&lt;UserPermitDto&gt;**](UserPermitDto.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPermitIdGet**
-> Object userPermitIdGet(id)
+> UserPermitDto userPermitIdGet(id)
 
 Gets user permit
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**UserPermitDto**](UserPermitDto.md)
 
 ### Authorization
 

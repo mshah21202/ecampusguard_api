@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
+import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 
 class SearchApi {
 
@@ -28,9 +29,9 @@ class SearchApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Object>] as data
+  /// Returns a [Future] containing a [Response] with a [List<UserPermitDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Object>>> searchGet({ 
+  Future<Response<List<UserPermitDto>>> searchGet({ 
     Object? body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -78,11 +79,11 @@ _bodyData=jsonEncode(body);
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Object>? _responseData;
+    List<UserPermitDto>? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawData, 'List<Object>', growable: true);
+_responseData = rawData == null ? null : deserialize<List<UserPermitDto>, UserPermitDto>(rawData, 'List<UserPermitDto>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -93,7 +94,7 @@ _responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawDa
       );
     }
 
-    return Response<List<Object>>(
+    return Response<List<UserPermitDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

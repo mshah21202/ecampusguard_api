@@ -5,8 +5,8 @@
 export 'package:ecampusguardapi/src/api.dart';
 export 'package:ecampusguardapi/src/auth/api_key_auth.dart';
 export 'package:ecampusguardapi/src/auth/basic_auth.dart';
-export 'package:ecampusguardapi/src/auth/oauth.dart';
 export 'package:ecampusguardapi/src/auth/bearer_auth.dart';
+export 'package:ecampusguardapi/src/auth/oauth.dart';
 
 export 'package:ecampusguardapi/src/api/area_api.dart';
 export 'package:ecampusguardapi/src/api/authentication_api.dart';
@@ -39,6 +39,7 @@ export 'package:ecampusguardapi/src/model/register_dto.dart';
 export 'package:ecampusguardapi/src/model/response_code_enum.dart';
 export 'package:ecampusguardapi/src/model/response_dto.dart';
 export 'package:ecampusguardapi/src/model/transfer_request_dto.dart';
+export 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 export 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
 export 'package:ecampusguardapi/src/model/user_permit_status.dart';
 export 'package:ecampusguardapi/src/model/vehicle_dto.dart';

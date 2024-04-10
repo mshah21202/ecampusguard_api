@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 
 import 'package:ecampusguardapi/src/model/response_dto.dart';
 import 'package:ecampusguardapi/src/model/transfer_request_dto.dart';
+import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
 import 'package:ecampusguardapi/src/model/user_permit_status.dart';
 
@@ -38,9 +39,9 @@ class UserPermitApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Object>] as data
+  /// Returns a [Future] containing a [Response] with a [List<UserPermitDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Object>>> userPermitGet({ 
+  Future<Response<List<UserPermitDto>>> userPermitGet({ 
     String? studentId,
     String? plateNumber,
     UserPermitStatus? status,
@@ -93,11 +94,11 @@ class UserPermitApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Object>? _responseData;
+    List<UserPermitDto>? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawData, 'List<Object>', growable: true);
+_responseData = rawData == null ? null : deserialize<List<UserPermitDto>, UserPermitDto>(rawData, 'List<UserPermitDto>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -108,7 +109,7 @@ _responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawDa
       );
     }
 
-    return Response<List<Object>>(
+    return Response<List<UserPermitDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -132,9 +133,9 @@ _responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawDa
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Object] as data
+  /// Returns a [Future] containing a [Response] with a [UserPermitDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Object>> userPermitIdGet({ 
+  Future<Response<UserPermitDto>> userPermitIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -170,11 +171,11 @@ _responseData = rawData == null ? null : deserialize<List<Object>, Object>(rawDa
       onReceiveProgress: onReceiveProgress,
     );
 
-    Object? _responseData;
+    UserPermitDto? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'Object', growable: true);
+_responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDto>(rawData, 'UserPermitDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -185,7 +186,7 @@ _responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'O
       );
     }
 
-    return Response<Object>(
+    return Response<UserPermitDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
