@@ -21,9 +21,13 @@ class PermitApplicationInfoDto {
 
      this.id,
 
-     this.permitName,
+     this.studentId,
+
+     this.studentName,
 
      this.academicYear,
+
+     this.permitName,
 
      this.status,
   });
@@ -42,13 +46,25 @@ class PermitApplicationInfoDto {
 
   @JsonKey(
     
-    name: r'permitName',
+    name: r'studentId',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? permitName;
+  final int? studentId;
+
+
+
+  @JsonKey(
+    
+    name: r'studentName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? studentName;
 
 
 
@@ -61,6 +77,18 @@ class PermitApplicationInfoDto {
 
 
   final String? academicYear;
+
+
+
+  @JsonKey(
+    
+    name: r'permitName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? permitName;
 
 
 
@@ -79,15 +107,19 @@ class PermitApplicationInfoDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is PermitApplicationInfoDto &&
      other.id == id &&
-     other.permitName == permitName &&
+     other.studentId == studentId &&
+     other.studentName == studentName &&
      other.academicYear == academicYear &&
+     other.permitName == permitName &&
      other.status == status;
 
   @override
   int get hashCode =>
     id.hashCode +
-    (permitName == null ? 0 : permitName.hashCode) +
+    studentId.hashCode +
+    (studentName == null ? 0 : studentName.hashCode) +
     (academicYear == null ? 0 : academicYear.hashCode) +
+    (permitName == null ? 0 : permitName.hashCode) +
     status.hashCode;
 
   factory PermitApplicationInfoDto.fromJson(Map<String, dynamic> json) => _$PermitApplicationInfoDtoFromJson(json);

@@ -14,8 +14,10 @@ PermitApplicationInfoDto _$PermitApplicationInfoDtoFromJson(
       ($checkedConvert) {
         final val = PermitApplicationInfoDto(
           id: $checkedConvert('id', (v) => v as int?),
-          permitName: $checkedConvert('permitName', (v) => v as String?),
+          studentId: $checkedConvert('studentId', (v) => v as int?),
+          studentName: $checkedConvert('studentName', (v) => v as String?),
           academicYear: $checkedConvert('academicYear', (v) => v as String?),
+          permitName: $checkedConvert('permitName', (v) => v as String?),
           status: $checkedConvert(
               'status',
               (v) =>
@@ -36,8 +38,10 @@ Map<String, dynamic> _$PermitApplicationInfoDtoToJson(
   }
 
   writeNotNull('id', instance.id);
-  writeNotNull('permitName', instance.permitName);
+  writeNotNull('studentId', instance.studentId);
+  writeNotNull('studentName', instance.studentName);
   writeNotNull('academicYear', instance.academicYear);
+  writeNotNull('permitName', instance.permitName);
   writeNotNull('status', _$PermitApplicationStatusEnumEnumMap[instance.status]);
   return val;
 }
