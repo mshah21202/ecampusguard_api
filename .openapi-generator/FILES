@@ -2,7 +2,7 @@
 README.md
 analysis_options.yaml
 build.yaml
-doc/AcademicYearEnum.md
+doc/AcademicYear.md
 doc/AccessLogDto.md
 doc/AccessLogType.md
 doc/ApplicationSummaryDto.md
@@ -23,11 +23,11 @@ doc/PermitApplicationApi.md
 doc/PermitApplicationDto.md
 doc/PermitApplicationInfoDto.md
 doc/PermitApplicationOrderBy.md
-doc/PermitApplicationStatusEnum.md
+doc/PermitApplicationStatus.md
 doc/PermitDto.md
 doc/PermitsApi.md
 doc/RegisterDto.md
-doc/ResponseCodeEnum.md
+doc/ResponseCode.md
 doc/ResponseDto.md
 doc/SearchApi.md
 doc/TransferRequestDto.md
@@ -51,7 +51,7 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/deserialize.dart
-lib/src/model/academic_year_enum.dart
+lib/src/model/academic_year.dart
 lib/src/model/access_log_dto.dart
 lib/src/model/access_log_type.dart
 lib/src/model/application_summary_dto.dart
@@ -68,10 +68,10 @@ lib/src/model/notification_dto.dart
 lib/src/model/permit_application_dto.dart
 lib/src/model/permit_application_info_dto.dart
 lib/src/model/permit_application_order_by.dart
-lib/src/model/permit_application_status_enum.dart
+lib/src/model/permit_application_status.dart
 lib/src/model/permit_dto.dart
 lib/src/model/register_dto.dart
-lib/src/model/response_code_enum.dart
+lib/src/model/response_code.dart
 lib/src/model/response_dto.dart
 lib/src/model/transfer_request_dto.dart
 lib/src/model/user_permit_dto.dart
@@ -79,3 +79,6 @@ lib/src/model/user_permit_order_by.dart
 lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 pubspec.yaml
+test/academic_year_test.dart
+test/permit_application_status_test.dart
+test/response_code_test.dart

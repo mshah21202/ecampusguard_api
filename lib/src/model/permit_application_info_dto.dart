@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:ecampusguardapi/src/model/permit_application_status_enum.dart';
+import 'package:ecampusguardapi/src/model/permit_application_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'permit_application_info_dto.g.dart';
@@ -100,7 +100,7 @@ class PermitApplicationInfoDto {
   )
 
 
-  final PermitApplicationStatusEnum? status;
+  final PermitApplicationStatus? status;
 
 
 

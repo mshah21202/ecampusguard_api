@@ -18,10 +18,8 @@ PermitApplicationInfoDto _$PermitApplicationInfoDtoFromJson(
           studentName: $checkedConvert('studentName', (v) => v as String?),
           academicYear: $checkedConvert('academicYear', (v) => v as String?),
           permitName: $checkedConvert('permitName', (v) => v as String?),
-          status: $checkedConvert(
-              'status',
-              (v) =>
-                  $enumDecodeNullable(_$PermitApplicationStatusEnumEnumMap, v)),
+          status: $checkedConvert('status',
+              (v) => $enumDecodeNullable(_$PermitApplicationStatusEnumMap, v)),
         );
         return val;
       },
@@ -42,14 +40,14 @@ Map<String, dynamic> _$PermitApplicationInfoDtoToJson(
   writeNotNull('studentName', instance.studentName);
   writeNotNull('academicYear', instance.academicYear);
   writeNotNull('permitName', instance.permitName);
-  writeNotNull('status', _$PermitApplicationStatusEnumEnumMap[instance.status]);
+  writeNotNull('status', _$PermitApplicationStatusEnumMap[instance.status]);
   return val;
 }
 
-const _$PermitApplicationStatusEnumEnumMap = {
-  PermitApplicationStatusEnum.Pending: 0,
-  PermitApplicationStatusEnum.AwaitingPayment: 1,
-  PermitApplicationStatusEnum.Denied: 2,
-  PermitApplicationStatusEnum.Paid: 3,
-  PermitApplicationStatusEnum.unknownDefaultOpenApi: 11184809,
+const _$PermitApplicationStatusEnumMap = {
+  PermitApplicationStatus.Pending: 0,
+  PermitApplicationStatus.AwaitingPayment: 1,
+  PermitApplicationStatus.Denied: 2,
+  PermitApplicationStatus.Paid: 3,
+  PermitApplicationStatus.unknownDefaultOpenApi: 11184809,
 };

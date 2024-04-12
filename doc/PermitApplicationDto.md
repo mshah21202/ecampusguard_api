@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **academicYear** | **String** |  | [optional] 
 **licenseImgPath** | **String** |  | [optional] 
 **phoneNumber** | **String** |  | [optional] 
-**status** | [**PermitApplicationStatusEnum**](PermitApplicationStatusEnum.md) |  | [optional] 
+**status** | [**PermitApplicationStatus**](PermitApplicationStatus.md) |  | [optional] 
 **vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 
 **permit** | [**PermitDto**](PermitDto.md) |  | [optional] 
 

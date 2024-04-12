@@ -17,7 +17,7 @@ CreatePermitApplicationDto _$CreatePermitApplicationDtoFromJson(
               (v) => (v as List<dynamic>?)?.map((e) => e as bool).toList()),
           siblingsCount: $checkedConvert('siblingsCount', (v) => v as int?),
           academicYear: $checkedConvert('academicYear',
-              (v) => $enumDecodeNullable(_$AcademicYearEnumEnumMap, v)),
+              (v) => $enumDecodeNullable(_$AcademicYearEnumMap, v)),
           licenseImgPath:
               $checkedConvert('licenseImgPath', (v) => v as String?),
           phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
@@ -44,8 +44,7 @@ Map<String, dynamic> _$CreatePermitApplicationDtoToJson(
 
   writeNotNull('attendingDays', instance.attendingDays);
   writeNotNull('siblingsCount', instance.siblingsCount);
-  writeNotNull(
-      'academicYear', _$AcademicYearEnumEnumMap[instance.academicYear]);
+  writeNotNull('academicYear', _$AcademicYearEnumMap[instance.academicYear]);
   writeNotNull('licenseImgPath', instance.licenseImgPath);
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('vehicle', instance.vehicle?.toJson());
@@ -53,10 +52,10 @@ Map<String, dynamic> _$CreatePermitApplicationDtoToJson(
   return val;
 }
 
-const _$AcademicYearEnumEnumMap = {
-  AcademicYearEnum.FirstYear: 0,
-  AcademicYearEnum.SecondYear: 1,
-  AcademicYearEnum.ThirdYear: 2,
-  AcademicYearEnum.FourthPlusYear: 3,
-  AcademicYearEnum.unknownDefaultOpenApi: 11184809,
+const _$AcademicYearEnumMap = {
+  AcademicYear.FirstYear: 0,
+  AcademicYear.SecondYear: 1,
+  AcademicYear.ThirdYear: 2,
+  AcademicYear.FourthPlusYear: 3,
+  AcademicYear.unknownDefaultOpenApi: 11184809,
 };

@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
-import 'package:ecampusguardapi/src/model/academic_year_enum.dart';
+import 'package:ecampusguardapi/src/model/academic_year.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'create_permit_application_dto.g.dart';
@@ -67,7 +67,7 @@ class CreatePermitApplicationDto {
   )
 
 
-  final AcademicYearEnum? academicYear;
+  final AcademicYear? academicYear;
 
 
 

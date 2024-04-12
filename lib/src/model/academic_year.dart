@@ -6,7 +6,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 
-enum AcademicYearEnum {
+enum AcademicYear {
   @JsonValue(0)
   FirstYear('0'),
   @JsonValue(1)
@@ -18,7 +18,7 @@ enum AcademicYearEnum {
   @JsonValue(11184809)
   unknownDefaultOpenApi('11184809');
 
-  const AcademicYearEnum(this.value);
+  const AcademicYear(this.value);
 
   final String value;
 

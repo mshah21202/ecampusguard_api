@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permitApplicationGet**
-> List<PermitApplicationInfoDto> permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
+> List<PermitApplicationInfoDto> permitApplicationGet(studentId, name, year, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
 
 Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 
@@ -69,16 +69,16 @@ import 'package:ecampusguardapi/api.dart';
 final api = Ecampusguardapi().getPermitApplicationApi();
 final String studentId = studentId_example; // String | 
 final String name = name_example; // String | 
-final int academicYear = 56; // int | 
+final AcademicYear year = ; // AcademicYear | 
 final int permitId = 56; // int | 
-final int status = 56; // int | 
+final PermitApplicationStatus status = ; // PermitApplicationStatus | 
 final PermitApplicationOrderBy orderBy = ; // PermitApplicationOrderBy | 
 final String orderByDirection = orderByDirection_example; // String | 
 final int pageNumber = 56; // int | 
 final int pageSize = 56; // int | 
 
 try {
-    final response = api.permitApplicationGet(studentId, name, academicYear, permitId, status, orderBy, orderByDirection, pageNumber, pageSize);
+    final response = api.permitApplicationGet(studentId, name, year, permitId, status, orderBy, orderByDirection, pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitApplicationApi->permitApplicationGet: $e\n');
@@ -91,9 +91,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **studentId** | **String**|  | [optional] 
  **name** | **String**|  | [optional] 
- **academicYear** | **int**|  | [optional] 
+ **year** | [**AcademicYear**](.md)|  | [optional] 
  **permitId** | **int**|  | [optional] 
- **status** | **int**|  | [optional] 
+ **status** | [**PermitApplicationStatus**](.md)|  | [optional] 
  **orderBy** | [**PermitApplicationOrderBy**](.md)|  | [optional] 
  **orderByDirection** | **String**|  | [optional] 
  **pageNumber** | **int**|  | [optional] 

@@ -12,7 +12,7 @@ ResponseDto _$ResponseDtoFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = ResponseDto(
           responseCode: $checkedConvert('responseCode',
-              (v) => $enumDecodeNullable(_$ResponseCodeEnumEnumMap, v)),
+              (v) => $enumDecodeNullable(_$ResponseCodeEnumMap, v)),
           message: $checkedConvert('message', (v) => v),
         );
         return val;
@@ -28,14 +28,13 @@ Map<String, dynamic> _$ResponseDtoToJson(ResponseDto instance) {
     }
   }
 
-  writeNotNull(
-      'responseCode', _$ResponseCodeEnumEnumMap[instance.responseCode]);
+  writeNotNull('responseCode', _$ResponseCodeEnumMap[instance.responseCode]);
   writeNotNull('message', instance.message);
   return val;
 }
 
-const _$ResponseCodeEnumEnumMap = {
-  ResponseCodeEnum.Success: 0,
-  ResponseCodeEnum.Failed: 99,
-  ResponseCodeEnum.unknownDefaultOpenApi: 11184809,
+const _$ResponseCodeEnumMap = {
+  ResponseCode.Success: 0,
+  ResponseCode.Failed: 99,
+  ResponseCode.unknownDefaultOpenApi: 11184809,
 };

@@ -35,7 +35,7 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return (valueString == 'true' || valueString == '1') as ReturnType;
         case 'double':
           return (value is double ? value : double.parse('$value')) as ReturnType;
-        case 'AcademicYearEnum':
+        case 'AcademicYear':
           
           
         case 'AccessLogDto':
@@ -74,14 +74,14 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
         case 'PermitApplicationOrderBy':
           
           
-        case 'PermitApplicationStatusEnum':
+        case 'PermitApplicationStatus':
           
           
         case 'PermitDto':
           return PermitDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'RegisterDto':
           return RegisterDto.fromJson(value as Map<String, dynamic>) as ReturnType;
-        case 'ResponseCodeEnum':
+        case 'ResponseCode':
           
           
         case 'ResponseDto':

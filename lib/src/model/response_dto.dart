@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:ecampusguardapi/src/model/response_code_enum.dart';
+import 'package:ecampusguardapi/src/model/response_code.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'response_dto.g.dart';
@@ -32,7 +32,7 @@ class ResponseDto {
   )
 
 
-  final ResponseCodeEnum? responseCode;
+  final ResponseCode? responseCode;
 
 
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attendingDays** | **List&lt;bool&gt;** |  | [optional] 
 **siblingsCount** | **int** |  | [optional] 
-**academicYear** | [**AcademicYearEnum**](AcademicYearEnum.md) |  | [optional] 
+**academicYear** | [**AcademicYear**](AcademicYear.md) |  | [optional] 
 **licenseImgPath** | **String** |  | [optional] 
 **phoneNumber** | **String** |  | [optional] 
 **vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 

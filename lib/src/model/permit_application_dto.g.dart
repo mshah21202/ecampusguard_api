@@ -20,10 +20,8 @@ PermitApplicationDto _$PermitApplicationDtoFromJson(
           licenseImgPath:
               $checkedConvert('licenseImgPath', (v) => v as String?),
           phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
-          status: $checkedConvert(
-              'status',
-              (v) =>
-                  $enumDecodeNullable(_$PermitApplicationStatusEnumEnumMap, v)),
+          status: $checkedConvert('status',
+              (v) => $enumDecodeNullable(_$PermitApplicationStatusEnumMap, v)),
           vehicle: $checkedConvert(
               'vehicle',
               (v) => v == null
@@ -54,16 +52,16 @@ Map<String, dynamic> _$PermitApplicationDtoToJson(
   writeNotNull('academicYear', instance.academicYear);
   writeNotNull('licenseImgPath', instance.licenseImgPath);
   writeNotNull('phoneNumber', instance.phoneNumber);
-  writeNotNull('status', _$PermitApplicationStatusEnumEnumMap[instance.status]);
+  writeNotNull('status', _$PermitApplicationStatusEnumMap[instance.status]);
   writeNotNull('vehicle', instance.vehicle?.toJson());
   writeNotNull('permit', instance.permit?.toJson());
   return val;
 }
 
-const _$PermitApplicationStatusEnumEnumMap = {
-  PermitApplicationStatusEnum.Pending: 0,
-  PermitApplicationStatusEnum.AwaitingPayment: 1,
-  PermitApplicationStatusEnum.Denied: 2,
-  PermitApplicationStatusEnum.Paid: 3,
-  PermitApplicationStatusEnum.unknownDefaultOpenApi: 11184809,
+const _$PermitApplicationStatusEnumMap = {
+  PermitApplicationStatus.Pending: 0,
+  PermitApplicationStatus.AwaitingPayment: 1,
+  PermitApplicationStatus.Denied: 2,
+  PermitApplicationStatus.Paid: 3,
+  PermitApplicationStatus.unknownDefaultOpenApi: 11184809,
 };

@@ -6,15 +6,19 @@
 import 'package:json_annotation/json_annotation.dart';
 
 
-enum ResponseCodeEnum {
+enum PermitApplicationStatus {
   @JsonValue(0)
-  Success('0'),
-  @JsonValue(99)
-  Failed('99'),
+  Pending('0'),
+  @JsonValue(1)
+  AwaitingPayment('1'),
+  @JsonValue(2)
+  Denied('2'),
+  @JsonValue(3)
+  Paid('3'),
   @JsonValue(11184809)
   unknownDefaultOpenApi('11184809');
 
-  const ResponseCodeEnum(this.value);
+  const PermitApplicationStatus(this.value);
 
   final String value;
 

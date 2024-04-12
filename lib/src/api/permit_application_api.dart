@@ -9,11 +9,13 @@ import 'dart:convert';
 import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
+import 'package:ecampusguardapi/src/model/academic_year.dart';
 import 'package:ecampusguardapi/src/model/application_summary_dto.dart';
 import 'package:ecampusguardapi/src/model/create_permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_info_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_application_order_by.dart';
+import 'package:ecampusguardapi/src/model/permit_application_status.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
 
 class PermitApplicationApi {
@@ -123,7 +125,7 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
   /// Parameters:
   /// * [studentId] 
   /// * [name] 
-  /// * [academicYear] 
+  /// * [year] 
   /// * [permitId] 
   /// * [status] 
   /// * [orderBy] 
@@ -142,9 +144,9 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
   Future<Response<List<PermitApplicationInfoDto>>> permitApplicationGet({ 
     String? studentId,
     String? name,
-    int? academicYear,
+    AcademicYear? year,
     int? permitId,
-    int? status,
+    PermitApplicationStatus? status,
     PermitApplicationOrderBy? orderBy,
     String? orderByDirection,
     int? pageNumber,
@@ -178,7 +180,7 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
     final _queryParameters = <String, dynamic>{
       if (studentId != null) r'StudentId': studentId,
       if (name != null) r'Name': name,
-      if (academicYear != null) r'AcademicYear': academicYear,
+      if (year != null) r'Year': year,
       if (permitId != null) r'PermitId': permitId,
       if (status != null) r'Status': status,
       if (orderBy != null) r'OrderBy': orderBy,
