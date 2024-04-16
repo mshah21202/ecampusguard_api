@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_dto.dart';
+import 'package:ecampusguardapi/src/model/academic_year.dart';
 import 'package:ecampusguardapi/src/model/permit_application_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -98,7 +99,7 @@ class PermitApplicationDto {
   )
 
 
-  final String? academicYear;
+  final AcademicYear? academicYear;
 
 
 
@@ -181,7 +182,7 @@ class PermitApplicationDto {
     (studentName == null ? 0 : studentName.hashCode) +
     (attendingDays == null ? 0 : attendingDays.hashCode) +
     siblingsCount.hashCode +
-    (academicYear == null ? 0 : academicYear.hashCode) +
+    academicYear.hashCode +
     (licenseImgPath == null ? 0 : licenseImgPath.hashCode) +
     (phoneNumber == null ? 0 : phoneNumber.hashCode) +
     status.hashCode +

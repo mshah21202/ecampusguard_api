@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **studentName** | **String** |  | [optional] 
 **attendingDays** | **List&lt;bool&gt;** |  | [optional] 
 **siblingsCount** | **int** |  | [optional] 
-**academicYear** | **String** |  | [optional] 
+**academicYear** | [**AcademicYear**](AcademicYear.md) |  | [optional] 
 **licenseImgPath** | **String** |  | [optional] 
 **phoneNumber** | **String** |  | [optional] 
 **status** | [**PermitApplicationStatus**](PermitApplicationStatus.md) |  | [optional] 
