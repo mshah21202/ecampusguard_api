@@ -13,6 +13,8 @@ CreatePermitApplicationDto _$CreatePermitApplicationDtoFromJson(
       json,
       ($checkedConvert) {
         final val = CreatePermitApplicationDto(
+          studentId: $checkedConvert('studentId', (v) => v as int?),
+          studentName: $checkedConvert('studentName', (v) => v as String?),
           attendingDays: $checkedConvert('attendingDays',
               (v) => (v as List<dynamic>?)?.map((e) => e as bool).toList()),
           siblingsCount: $checkedConvert('siblingsCount', (v) => v as int?),
@@ -42,6 +44,8 @@ Map<String, dynamic> _$CreatePermitApplicationDtoToJson(
     }
   }
 
+  writeNotNull('studentId', instance.studentId);
+  writeNotNull('studentName', instance.studentName);
   writeNotNull('attendingDays', instance.attendingDays);
   writeNotNull('siblingsCount', instance.siblingsCount);
   writeNotNull('academicYear', _$AcademicYearEnumMap[instance.academicYear]);

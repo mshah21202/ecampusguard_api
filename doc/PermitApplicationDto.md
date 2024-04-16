@@ -8,6 +8,8 @@ import 'package:ecampusguardapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**studentId** | **int** |  | [optional] 
+**studentName** | **String** |  | [optional] 
 **attendingDays** | **List&lt;bool&gt;** |  | [optional] 
 **siblingsCount** | **int** |  | [optional] 
 **academicYear** | **String** |  | [optional] 

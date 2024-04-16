@@ -20,6 +20,10 @@ class CreatePermitApplicationDto {
   /// Returns a new [CreatePermitApplicationDto] instance.
   CreatePermitApplicationDto({
 
+     this.studentId,
+
+     this.studentName,
+
      this.attendingDays,
 
      this.siblingsCount,
@@ -34,6 +38,30 @@ class CreatePermitApplicationDto {
 
      this.permitId,
   });
+
+  @JsonKey(
+    
+    name: r'studentId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? studentId;
+
+
+
+  @JsonKey(
+    
+    name: r'studentName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? studentName;
+
+
 
   @JsonKey(
     
@@ -121,6 +149,8 @@ class CreatePermitApplicationDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreatePermitApplicationDto &&
+     other.studentId == studentId &&
+     other.studentName == studentName &&
      other.attendingDays == attendingDays &&
      other.siblingsCount == siblingsCount &&
      other.academicYear == academicYear &&
@@ -131,6 +161,8 @@ class CreatePermitApplicationDto {
 
   @override
   int get hashCode =>
+    studentId.hashCode +
+    (studentName == null ? 0 : studentName.hashCode) +
     (attendingDays == null ? 0 : attendingDays.hashCode) +
     siblingsCount.hashCode +
     academicYear.hashCode +
