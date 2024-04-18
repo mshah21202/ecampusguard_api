@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **studentId** | **int** |  | [optional] 
 **studentName** | **String** |  | [optional] 
-**academicYear** | **String** |  | [optional] 
+**academicYear** | [**AcademicYear**](AcademicYear.md) |  | [optional] 
 **permitName** | **String** |  | [optional] 
 **status** | [**PermitApplicationStatus**](PermitApplicationStatus.md) |  | [optional] 
 

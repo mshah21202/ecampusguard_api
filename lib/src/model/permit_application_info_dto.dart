@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:ecampusguardapi/src/model/academic_year.dart';
 import 'package:ecampusguardapi/src/model/permit_application_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -76,7 +77,7 @@ class PermitApplicationInfoDto {
   )
 
 
-  final String? academicYear;
+  final AcademicYear? academicYear;
 
 
 
@@ -118,7 +119,7 @@ class PermitApplicationInfoDto {
     id.hashCode +
     studentId.hashCode +
     (studentName == null ? 0 : studentName.hashCode) +
-    (academicYear == null ? 0 : academicYear.hashCode) +
+    academicYear.hashCode +
     (permitName == null ? 0 : permitName.hashCode) +
     status.hashCode;
 
