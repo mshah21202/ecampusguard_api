@@ -178,7 +178,7 @@ class PermitApplicationDto {
 
   @override
   int get hashCode =>
-    studentId.hashCode +
+    (studentId == null ? 0 : studentId.hashCode) +
     (studentName == null ? 0 : studentName.hashCode) +
     (attendingDays == null ? 0 : attendingDays.hashCode) +
     siblingsCount.hashCode +

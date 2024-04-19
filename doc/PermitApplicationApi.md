@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**permitApplicationApplyPost**](PermitApplicationApi.md#permitapplicationapplypost) | **POST** /PermitApplication/apply | Submits permit application for user
 [**permitApplicationGet**](PermitApplicationApi.md#permitapplicationget) | **GET** /PermitApplication | Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 [**permitApplicationIdGet**](PermitApplicationApi.md#permitapplicationidget) | **GET** /PermitApplication/{id} | Gets permit application
+[**permitApplicationPayIdGet**](PermitApplicationApi.md#permitapplicationpayidget) | **GET** /PermitApplication/pay/{id} | 
 [**permitApplicationResponseIdPost**](PermitApplicationApi.md#permitapplicationresponseidpost) | **POST** /PermitApplication/response/{id} | Submits application response. For admin only
 [**permitApplicationSummaryGet**](PermitApplicationApi.md#permitapplicationsummaryget) | **GET** /PermitApplication/summary | 
 
@@ -143,6 +144,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PermitApplicationDto**](PermitApplicationDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **permitApplicationPayIdGet**
+> ResponseDto permitApplicationPayIdGet(id)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getPermitApplicationApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.permitApplicationPayIdGet(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling PermitApplicationApi->permitApplicationPayIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ResponseDto**](ResponseDto.md)
 
 ### Authorization
 

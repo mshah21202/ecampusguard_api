@@ -100,6 +100,8 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
   /// 
   ///
   /// Parameters:
+  /// * [pageNumber] 
+  /// * [pageSize] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -110,6 +112,8 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
   /// Returns a [Future] containing a [Response] with a [List<AreaDto>] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<List<AreaDto>>> areaGet({ 
+    int? pageNumber,
+    int? pageSize,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -136,9 +140,15 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (pageNumber != null) r'PageNumber': pageNumber,
+      if (pageSize != null) r'PageSize': pageSize,
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

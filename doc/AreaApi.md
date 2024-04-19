@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaGet**
-> List<AreaDto> areaGet()
+> List<AreaDto> areaGet(pageNumber, pageSize)
 
 
 
@@ -68,9 +68,11 @@ Name | Type | Description  | Notes
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getAreaApi();
+final int pageNumber = 56; // int | 
+final int pageSize = 56; // int | 
 
 try {
-    final response = api.areaGet();
+    final response = api.areaGet(pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AreaApi->areaGet: $e\n');
@@ -78,7 +80,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageNumber** | **int**|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
 
 ### Return type
 

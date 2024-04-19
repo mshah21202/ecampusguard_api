@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **permitsGet**
-> List<PermitDto> permitsGet()
+> List<PermitDto> permitsGet(pageNumber, pageSize)
 
 Gets all permits
 
@@ -26,9 +26,11 @@ Gets all permits
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getPermitsApi();
+final int pageNumber = 56; // int | 
+final int pageSize = 56; // int | 
 
 try {
-    final response = api.permitsGet();
+    final response = api.permitsGet(pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PermitsApi->permitsGet: $e\n');
@@ -36,7 +38,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageNumber** | **int**|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
 
 ### Return type
 
