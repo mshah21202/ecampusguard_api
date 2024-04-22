@@ -11,7 +11,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userPermitGet**](UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [**userPermitIdGet**](UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
-[**userPermitTransferIdPost**](UserPermitApi.md#userpermittransferidpost) | **POST** /UserPermit/transfer/{id} | 
+[**userPermitIdUpdatePost**](UserPermitApi.md#userpermitidupdatepost) | **POST** /UserPermit/{id}/update | Submits an update request for user permit
+[**userPermitUpdateRequestsGet**](UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
+[**userPermitUpdateRequestsIdGet**](UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
+[**userPermitUpdateRequestsIdResponsePost**](UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
 
 
 # **userPermitGet**
@@ -110,24 +113,24 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userPermitTransferIdPost**
-> ResponseDto userPermitTransferIdPost(id, transferRequestDto)
+# **userPermitIdUpdatePost**
+> ResponseDto userPermitIdUpdatePost(id, createUpdateRequestDto)
 
-
+Submits an update request for user permit
 
 ### Example
 ```dart
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
-final int id = 56; // int | Permit Id
-final TransferRequestDto transferRequestDto = ; // TransferRequestDto | 
+final int id = 56; // int | 
+final CreateUpdateRequestDto createUpdateRequestDto = ; // CreateUpdateRequestDto | 
 
 try {
-    final response = api.userPermitTransferIdPost(id, transferRequestDto);
+    final response = api.userPermitIdUpdatePost(id, createUpdateRequestDto);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling UserPermitApi->userPermitTransferIdPost: $e\n');
+    print('Exception when calling UserPermitApi->userPermitIdUpdatePost: $e\n');
 }
 ```
 
@@ -135,8 +138,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Permit Id | 
- **transferRequestDto** | [**TransferRequestDto**](TransferRequestDto.md)|  | [optional] 
+ **id** | **int**|  | 
+ **createUpdateRequestDto** | [**CreateUpdateRequestDto**](CreateUpdateRequestDto.md)|  | [optional] 
 
 ### Return type
 
@@ -149,6 +152,143 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPermitUpdateRequestsGet**
+> List<UpdateRequestDto> userPermitUpdateRequestsGet(id, studentId, plateNumber, permitId, status, pageNumber, pageSize)
+
+Get all update requests
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final int id = 56; // int | 
+final String studentId = studentId_example; // String | 
+final String plateNumber = plateNumber_example; // String | 
+final int permitId = 56; // int | 
+final UpdateRequestStatus status = ; // UpdateRequestStatus | 
+final int pageNumber = 56; // int | 
+final int pageSize = 56; // int | 
+
+try {
+    final response = api.userPermitUpdateRequestsGet(id, studentId, plateNumber, permitId, status, pageNumber, pageSize);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->userPermitUpdateRequestsGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | [optional] 
+ **studentId** | **String**|  | [optional] 
+ **plateNumber** | **String**|  | [optional] 
+ **permitId** | **int**|  | [optional] 
+ **status** | [**UpdateRequestStatus**](.md)|  | [optional] 
+ **pageNumber** | **int**|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
+
+### Return type
+
+[**List&lt;UpdateRequestDto&gt;**](UpdateRequestDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPermitUpdateRequestsIdGet**
+> UpdateRequestDto userPermitUpdateRequestsIdGet(id)
+
+Get update request
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.userPermitUpdateRequestsIdGet(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->userPermitUpdateRequestsIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**UpdateRequestDto**](UpdateRequestDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPermitUpdateRequestsIdResponsePost**
+> ResponseDto userPermitUpdateRequestsIdResponsePost(id, accept)
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final int id = 56; // int | 
+final bool accept = true; // bool | 
+
+try {
+    final response = api.userPermitUpdateRequestsIdResponsePost(id, accept);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->userPermitUpdateRequestsIdResponsePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **accept** | **bool**|  | [optional] 
+
+### Return type
+
+[**ResponseDto**](ResponseDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

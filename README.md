@@ -90,7 +90,10 @@ Class | Method | HTTP request | Description
 [*SearchApi*](doc/SearchApi.md) | [**searchGet**](doc/SearchApi.md#searchget) | **GET** /Search | 
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitGet**](doc/UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdGet**](doc/UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitTransferIdPost**](doc/UserPermitApi.md#userpermittransferidpost) | **POST** /UserPermit/transfer/{id} | 
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdUpdatePost**](doc/UserPermitApi.md#userpermitidupdatepost) | **POST** /UserPermit/{id}/update | Submits an update request for user permit
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsGet**](doc/UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdGet**](doc/UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdResponsePost**](doc/UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
 
 
 ## Documentation For Models
@@ -105,6 +108,7 @@ Class | Method | HTTP request | Description
  - [AuthResponseDto](doc/AuthResponseDto.md)
  - [CreatePermitApplicationDto](doc/CreatePermitApplicationDto.md)
  - [CreatePermitDto](doc/CreatePermitDto.md)
+ - [CreateUpdateRequestDto](doc/CreateUpdateRequestDto.md)
  - [HomeScreenDto](doc/HomeScreenDto.md)
  - [HomeScreenWidget](doc/HomeScreenWidget.md)
  - [LoginDto](doc/LoginDto.md)
@@ -117,7 +121,8 @@ Class | Method | HTTP request | Description
  - [RegisterDto](doc/RegisterDto.md)
  - [ResponseCode](doc/ResponseCode.md)
  - [ResponseDto](doc/ResponseDto.md)
- - [TransferRequestDto](doc/TransferRequestDto.md)
+ - [UpdateRequestDto](doc/UpdateRequestDto.md)
+ - [UpdateRequestStatus](doc/UpdateRequestStatus.md)
  - [UserDto](doc/UserDto.md)
  - [UserPermitDto](doc/UserPermitDto.md)
  - [UserPermitOrderBy](doc/UserPermitOrderBy.md)

@@ -5,6 +5,7 @@ import 'package:ecampusguardapi/src/model/area_screen_dto.dart';
 import 'package:ecampusguardapi/src/model/auth_response_dto.dart';
 import 'package:ecampusguardapi/src/model/create_permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/create_permit_dto.dart';
+import 'package:ecampusguardapi/src/model/create_update_request_dto.dart';
 import 'package:ecampusguardapi/src/model/home_screen_dto.dart';
 import 'package:ecampusguardapi/src/model/login_dto.dart';
 import 'package:ecampusguardapi/src/model/notification_dto.dart';
@@ -13,7 +14,7 @@ import 'package:ecampusguardapi/src/model/permit_application_info_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/register_dto.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
-import 'package:ecampusguardapi/src/model/transfer_request_dto.dart';
+import 'package:ecampusguardapi/src/model/update_request_dto.dart';
 import 'package:ecampusguardapi/src/model/user_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
@@ -59,6 +60,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return CreatePermitApplicationDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'CreatePermitDto':
           return CreatePermitDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'CreateUpdateRequestDto':
+          return CreateUpdateRequestDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'HomeScreenDto':
           return HomeScreenDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'HomeScreenWidget':
@@ -87,8 +90,11 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           
         case 'ResponseDto':
           return ResponseDto.fromJson(value as Map<String, dynamic>) as ReturnType;
-        case 'TransferRequestDto':
-          return TransferRequestDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdateRequestDto':
+          return UpdateRequestDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdateRequestStatus':
+          
+          
         case 'UserDto':
           return UserDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UserPermitDto':
