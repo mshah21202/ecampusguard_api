@@ -1,4 +1,4 @@
-# ecampusguardapi.model.UserPermitDto
+# ecampusguardapi.model.UserDto
 
 ## Load the model package
 ```dart
@@ -8,10 +8,8 @@ import 'package:ecampusguardapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**UserPermitStatus**](UserPermitStatus.md) |  | [optional] 
-**user** | [**UserDto**](UserDto.md) |  | [optional] 
-**permit** | [**PermitDto**](PermitDto.md) |  | [optional] 
-**vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 
+**studentId** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

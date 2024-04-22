@@ -39,6 +39,7 @@ export 'package:ecampusguardapi/src/model/register_dto.dart';
 export 'package:ecampusguardapi/src/model/response_code.dart';
 export 'package:ecampusguardapi/src/model/response_dto.dart';
 export 'package:ecampusguardapi/src/model/transfer_request_dto.dart';
+export 'package:ecampusguardapi/src/model/user_dto.dart';
 export 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 export 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
 export 'package:ecampusguardapi/src/model/user_permit_status.dart';

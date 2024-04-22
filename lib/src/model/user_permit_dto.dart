@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
+import 'package:ecampusguardapi/src/model/user_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_status.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -23,6 +24,8 @@ class UserPermitDto {
 
      this.status,
 
+     this.user,
+
      this.permit,
 
      this.vehicle,
@@ -37,6 +40,18 @@ class UserPermitDto {
 
 
   final UserPermitStatus? status;
+
+
+
+  @JsonKey(
+    
+    name: r'user',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final UserDto? user;
 
 
 
@@ -67,12 +82,14 @@ class UserPermitDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserPermitDto &&
      other.status == status &&
+     other.user == user &&
      other.permit == permit &&
      other.vehicle == vehicle;
 
   @override
   int get hashCode =>
     status.hashCode +
+    user.hashCode +
     permit.hashCode +
     vehicle.hashCode;
 

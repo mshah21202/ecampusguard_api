@@ -31,6 +31,7 @@ doc/ResponseCode.md
 doc/ResponseDto.md
 doc/SearchApi.md
 doc/TransferRequestDto.md
+doc/UserDto.md
 doc/UserPermitApi.md
 doc/UserPermitDto.md
 doc/UserPermitOrderBy.md
@@ -74,8 +75,10 @@ lib/src/model/register_dto.dart
 lib/src/model/response_code.dart
 lib/src/model/response_dto.dart
 lib/src/model/transfer_request_dto.dart
+lib/src/model/user_dto.dart
 lib/src/model/user_permit_dto.dart
 lib/src/model/user_permit_order_by.dart
 lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 pubspec.yaml
+test/user_dto_test.dart

@@ -302,7 +302,7 @@ _responseData = rawData == null ? null : deserialize<PermitApplicationDto, Permi
     );
   }
 
-  /// permitApplicationPayIdGet
+  /// permitApplicationPayIdPost
   /// 
   ///
   /// Parameters:
@@ -316,7 +316,7 @@ _responseData = rawData == null ? null : deserialize<PermitApplicationDto, Permi
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseDto>> permitApplicationPayIdGet({ 
+  Future<Response<ResponseDto>> permitApplicationPayIdPost({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -327,7 +327,7 @@ _responseData = rawData == null ? null : deserialize<PermitApplicationDto, Permi
   }) async {
     final _path = r'/PermitApplication/pay/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
-      method: r'GET',
+      method: r'POST',
       headers: <String, dynamic>{
         ...?headers,
       },
