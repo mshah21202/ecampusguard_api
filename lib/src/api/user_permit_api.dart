@@ -27,6 +27,7 @@ class UserPermitApi {
   /// Parameters:
   /// * [studentId] 
   /// * [plateNumber] 
+  /// * [permitId] 
   /// * [status] 
   /// * [orderBy] 
   /// * [orderByDirection] 
@@ -44,6 +45,7 @@ class UserPermitApi {
   Future<Response<List<UserPermitDto>>> userPermitGet({ 
     String? studentId,
     String? plateNumber,
+    int? permitId,
     UserPermitStatus? status,
     UserPermitOrderBy? orderBy,
     String? orderByDirection,
@@ -78,6 +80,7 @@ class UserPermitApi {
     final _queryParameters = <String, dynamic>{
       if (studentId != null) r'StudentId': studentId,
       if (plateNumber != null) r'PlateNumber': plateNumber,
+      if (permitId != null) r'PermitId': permitId,
       if (status != null) r'Status': status,
       if (orderBy != null) r'OrderBy': orderBy,
       if (orderByDirection != null) r'OrderByDirection': orderByDirection,

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **userPermitGet**
-> List<UserPermitDto> userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize)
+> List<UserPermitDto> userPermitGet(studentId, plateNumber, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
 
 Gets all user permit for user, or gets all user permits for all users if user is admin
 
@@ -26,6 +26,7 @@ import 'package:ecampusguardapi/api.dart';
 final api = Ecampusguardapi().getUserPermitApi();
 final String studentId = studentId_example; // String | 
 final String plateNumber = plateNumber_example; // String | 
+final int permitId = 56; // int | 
 final UserPermitStatus status = ; // UserPermitStatus | 
 final UserPermitOrderBy orderBy = ; // UserPermitOrderBy | 
 final String orderByDirection = orderByDirection_example; // String | 
@@ -33,7 +34,7 @@ final int pageNumber = 56; // int |
 final int pageSize = 56; // int | 
 
 try {
-    final response = api.userPermitGet(studentId, plateNumber, status, orderBy, orderByDirection, pageNumber, pageSize);
+    final response = api.userPermitGet(studentId, plateNumber, permitId, status, orderBy, orderByDirection, pageNumber, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UserPermitApi->userPermitGet: $e\n');
@@ -46,6 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **studentId** | **String**|  | [optional] 
  **plateNumber** | **String**|  | [optional] 
+ **permitId** | **int**|  | [optional] 
  **status** | [**UserPermitStatus**](.md)|  | [optional] 
  **orderBy** | [**UserPermitOrderBy**](.md)|  | [optional] 
  **orderByDirection** | **String**|  | [optional] 
