@@ -9,6 +9,7 @@ import 'package:ecampusguardapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**UserPermitStatus**](UserPermitStatus.md) |  | [optional] 
+**expiry** | [**DateTime**](DateTime.md) |  | [optional] 
 **user** | [**UserDto**](UserDto.md) |  | [optional] 
 **permit** | [**PermitDto**](PermitDto.md) |  | [optional] 
 **vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 

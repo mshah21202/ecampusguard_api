@@ -14,6 +14,8 @@ UserPermitDto _$UserPermitDtoFromJson(Map<String, dynamic> json) =>
         final val = UserPermitDto(
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$UserPermitStatusEnumMap, v)),
+          expiry: $checkedConvert(
+              'expiry', (v) => v == null ? null : DateTime.parse(v as String)),
           user: $checkedConvert(
               'user',
               (v) => v == null
@@ -44,6 +46,7 @@ Map<String, dynamic> _$UserPermitDtoToJson(UserPermitDto instance) {
   }
 
   writeNotNull('status', _$UserPermitStatusEnumMap[instance.status]);
+  writeNotNull('expiry', instance.expiry?.toIso8601String());
   writeNotNull('user', instance.user?.toJson());
   writeNotNull('permit', instance.permit?.toJson());
   writeNotNull('vehicle', instance.vehicle?.toJson());

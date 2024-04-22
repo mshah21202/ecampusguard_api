@@ -24,6 +24,8 @@ class UserPermitDto {
 
      this.status,
 
+     this.expiry,
+
      this.user,
 
      this.permit,
@@ -40,6 +42,18 @@ class UserPermitDto {
 
 
   final UserPermitStatus? status;
+
+
+
+  @JsonKey(
+    
+    name: r'expiry',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final DateTime? expiry;
 
 
 
@@ -82,6 +96,7 @@ class UserPermitDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserPermitDto &&
      other.status == status &&
+     other.expiry == expiry &&
      other.user == user &&
      other.permit == permit &&
      other.vehicle == vehicle;
@@ -89,6 +104,7 @@ class UserPermitDto {
   @override
   int get hashCode =>
     status.hashCode +
+    expiry.hashCode +
     user.hashCode +
     permit.hashCode +
     vehicle.hashCode;
