@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **user** | [**UserDto**](UserDto.md) |  | [optional] 
 **permit** | [**PermitDto**](PermitDto.md) |  | [optional] 
 **vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 
+**accessLogs** | [**List&lt;AccessLogDto&gt;**](AccessLogDto.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

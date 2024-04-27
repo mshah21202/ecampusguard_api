@@ -7,6 +7,7 @@ import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 import 'package:ecampusguardapi/src/model/user_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_status.dart';
+import 'package:ecampusguardapi/src/model/access_log_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_permit_dto.g.dart';
@@ -31,6 +32,8 @@ class UserPermitDto {
      this.permit,
 
      this.vehicle,
+
+     this.accessLogs,
   });
 
   @JsonKey(
@@ -93,13 +96,26 @@ class UserPermitDto {
 
 
 
+  @JsonKey(
+    
+    name: r'accessLogs',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<AccessLogDto>? accessLogs;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserPermitDto &&
      other.status == status &&
      other.expiry == expiry &&
      other.user == user &&
      other.permit == permit &&
-     other.vehicle == vehicle;
+     other.vehicle == vehicle &&
+     other.accessLogs == accessLogs;
 
   @override
   int get hashCode =>
@@ -107,7 +123,8 @@ class UserPermitDto {
     expiry.hashCode +
     user.hashCode +
     permit.hashCode +
-    vehicle.hashCode;
+    vehicle.hashCode +
+    (accessLogs == null ? 0 : accessLogs.hashCode);
 
   factory UserPermitDto.fromJson(Map<String, dynamic> json) => _$UserPermitDtoFromJson(json);
 
