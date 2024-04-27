@@ -46,5 +46,6 @@ const _$HomeScreenWidgetEnumMap = {
   HomeScreenWidget.PreviousPermits: 3,
   HomeScreenWidget.ApplicationsSummary: 4,
   HomeScreenWidget.AreasSummary: 5,
+  HomeScreenWidget.ApplicationStatus: 6,
   HomeScreenWidget.unknownDefaultOpenApi: 11184809,
 };

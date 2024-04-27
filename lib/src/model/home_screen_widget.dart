@@ -19,6 +19,8 @@ enum HomeScreenWidget {
   ApplicationsSummary('4'),
   @JsonValue(5)
   AreasSummary('5'),
+  @JsonValue(6)
+  ApplicationStatus('6'),
   @JsonValue(11184809)
   unknownDefaultOpenApi('11184809');
 
