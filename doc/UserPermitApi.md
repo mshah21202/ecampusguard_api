@@ -124,7 +124,7 @@ Submits an update request for user permit
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
-final int id = 56; // int | 
+final String id = id_example; // String | 
 final CreateUpdateRequestDto createUpdateRequestDto = ; // CreateUpdateRequestDto | 
 
 try {
@@ -139,7 +139,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **String**|  | 
  **createUpdateRequestDto** | [**CreateUpdateRequestDto**](CreateUpdateRequestDto.md)|  | [optional] 
 
 ### Return type

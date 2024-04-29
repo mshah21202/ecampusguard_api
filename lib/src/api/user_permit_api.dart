@@ -207,7 +207,7 @@ _responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDt
   /// 
   ///
   /// Parameters:
-  /// * [id] - 
+  /// * [id] 
   /// * [createUpdateRequestDto] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -219,7 +219,7 @@ _responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDt
   /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseDto>> userPermitIdUpdatePost({ 
-    required int id,
+    required String id,
     CreateUpdateRequestDto? createUpdateRequestDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

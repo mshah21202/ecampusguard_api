@@ -21,7 +21,11 @@ class CreateUpdateRequestDto {
 
      this.vehicle,
 
-     this.permitId,
+     this.phoneNumber,
+
+     this.phoneNumberCountry,
+
+     this.drivingLicenseImgPath,
   });
 
   @JsonKey(
@@ -38,25 +42,53 @@ class CreateUpdateRequestDto {
 
   @JsonKey(
     
-    name: r'permitId',
+    name: r'phoneNumber',
     required: false,
     includeIfNull: false
   )
 
 
-  final int? permitId;
+  final String? phoneNumber;
+
+
+
+  @JsonKey(
+    
+    name: r'phoneNumberCountry',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? phoneNumberCountry;
+
+
+
+  @JsonKey(
+    
+    name: r'drivingLicenseImgPath',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? drivingLicenseImgPath;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateUpdateRequestDto &&
      other.vehicle == vehicle &&
-     other.permitId == permitId;
+     other.phoneNumber == phoneNumber &&
+     other.phoneNumberCountry == phoneNumberCountry &&
+     other.drivingLicenseImgPath == drivingLicenseImgPath;
 
   @override
   int get hashCode =>
     vehicle.hashCode +
-    permitId.hashCode;
+    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
+    (phoneNumberCountry == null ? 0 : phoneNumberCountry.hashCode) +
+    (drivingLicenseImgPath == null ? 0 : drivingLicenseImgPath.hashCode);
 
   factory CreateUpdateRequestDto.fromJson(Map<String, dynamic> json) => _$CreateUpdateRequestDtoFromJson(json);
 

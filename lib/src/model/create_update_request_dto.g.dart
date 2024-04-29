@@ -18,7 +18,11 @@ CreateUpdateRequestDto _$CreateUpdateRequestDtoFromJson(
               (v) => v == null
                   ? null
                   : VehicleDto.fromJson(v as Map<String, dynamic>)),
-          permitId: $checkedConvert('permitId', (v) => v as int?),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
+          phoneNumberCountry:
+              $checkedConvert('phoneNumberCountry', (v) => v as String?),
+          drivingLicenseImgPath:
+              $checkedConvert('drivingLicenseImgPath', (v) => v as String?),
         );
         return val;
       },
@@ -35,6 +39,8 @@ Map<String, dynamic> _$CreateUpdateRequestDtoToJson(
   }
 
   writeNotNull('vehicle', instance.vehicle?.toJson());
-  writeNotNull('permitId', instance.permitId);
+  writeNotNull('phoneNumber', instance.phoneNumber);
+  writeNotNull('phoneNumberCountry', instance.phoneNumberCountry);
+  writeNotNull('drivingLicenseImgPath', instance.drivingLicenseImgPath);
   return val;
 }
