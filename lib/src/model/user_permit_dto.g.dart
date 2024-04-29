@@ -31,6 +31,11 @@ UserPermitDto _$UserPermitDtoFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : VehicleDto.fromJson(v as Map<String, dynamic>)),
+          permitApplication: $checkedConvert(
+              'permitApplication',
+              (v) => v == null
+                  ? null
+                  : PermitApplicationDto.fromJson(v as Map<String, dynamic>)),
           accessLogs: $checkedConvert(
               'accessLogs',
               (v) => (v as List<dynamic>?)
@@ -55,6 +60,7 @@ Map<String, dynamic> _$UserPermitDtoToJson(UserPermitDto instance) {
   writeNotNull('user', instance.user?.toJson());
   writeNotNull('permit', instance.permit?.toJson());
   writeNotNull('vehicle', instance.vehicle?.toJson());
+  writeNotNull('permitApplication', instance.permitApplication?.toJson());
   writeNotNull(
       'accessLogs', instance.accessLogs?.map((e) => e.toJson()).toList());
   return val;

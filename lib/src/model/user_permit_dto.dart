@@ -7,6 +7,7 @@ import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 import 'package:ecampusguardapi/src/model/user_dto.dart';
 import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_status.dart';
+import 'package:ecampusguardapi/src/model/permit_application_dto.dart';
 import 'package:ecampusguardapi/src/model/access_log_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -32,6 +33,8 @@ class UserPermitDto {
      this.permit,
 
      this.vehicle,
+
+     this.permitApplication,
 
      this.accessLogs,
   });
@@ -98,6 +101,18 @@ class UserPermitDto {
 
   @JsonKey(
     
+    name: r'permitApplication',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final PermitApplicationDto? permitApplication;
+
+
+
+  @JsonKey(
+    
     name: r'accessLogs',
     required: false,
     includeIfNull: false
@@ -115,6 +130,7 @@ class UserPermitDto {
      other.user == user &&
      other.permit == permit &&
      other.vehicle == vehicle &&
+     other.permitApplication == permitApplication &&
      other.accessLogs == accessLogs;
 
   @override
@@ -124,6 +140,7 @@ class UserPermitDto {
     user.hashCode +
     permit.hashCode +
     vehicle.hashCode +
+    permitApplication.hashCode +
     (accessLogs == null ? 0 : accessLogs.hashCode);
 
   factory UserPermitDto.fromJson(Map<String, dynamic> json) => _$UserPermitDtoFromJson(json);
