@@ -22,6 +22,8 @@ PermitApplicationDto _$PermitApplicationDtoFromJson(
               (v) => $enumDecodeNullable(_$AcademicYearEnumMap, v)),
           licenseImgPath:
               $checkedConvert('licenseImgPath', (v) => v as String?),
+          phoneNumberCountry:
+              $checkedConvert('phoneNumberCountry', (v) => v as String?),
           phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$PermitApplicationStatusEnumMap, v)),
@@ -56,6 +58,7 @@ Map<String, dynamic> _$PermitApplicationDtoToJson(
   writeNotNull('siblingsCount', instance.siblingsCount);
   writeNotNull('academicYear', _$AcademicYearEnumMap[instance.academicYear]);
   writeNotNull('licenseImgPath', instance.licenseImgPath);
+  writeNotNull('phoneNumberCountry', instance.phoneNumberCountry);
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('status', _$PermitApplicationStatusEnumMap[instance.status]);
   writeNotNull('vehicle', instance.vehicle?.toJson());

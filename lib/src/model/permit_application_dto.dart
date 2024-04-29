@@ -34,6 +34,8 @@ class PermitApplicationDto {
 
      this.licenseImgPath,
 
+     this.phoneNumberCountry,
+
      this.phoneNumber,
 
      this.status,
@@ -117,6 +119,18 @@ class PermitApplicationDto {
 
   @JsonKey(
     
+    name: r'phoneNumberCountry',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? phoneNumberCountry;
+
+
+
+  @JsonKey(
+    
     name: r'phoneNumber',
     required: false,
     includeIfNull: false
@@ -171,6 +185,7 @@ class PermitApplicationDto {
      other.siblingsCount == siblingsCount &&
      other.academicYear == academicYear &&
      other.licenseImgPath == licenseImgPath &&
+     other.phoneNumberCountry == phoneNumberCountry &&
      other.phoneNumber == phoneNumber &&
      other.status == status &&
      other.vehicle == vehicle &&
@@ -184,6 +199,7 @@ class PermitApplicationDto {
     siblingsCount.hashCode +
     academicYear.hashCode +
     (licenseImgPath == null ? 0 : licenseImgPath.hashCode) +
+    (phoneNumberCountry == null ? 0 : phoneNumberCountry.hashCode) +
     (phoneNumber == null ? 0 : phoneNumber.hashCode) +
     status.hashCode +
     vehicle.hashCode +

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **siblingsCount** | **int** |  | [optional] 
 **academicYear** | [**AcademicYear**](AcademicYear.md) |  | [optional] 
 **licenseImgPath** | **String** |  | [optional] 
+**phoneNumberCountry** | **String** |  | [optional] 
 **phoneNumber** | **String** |  | [optional] 
 **status** | [**PermitApplicationStatus**](PermitApplicationStatus.md) |  | [optional] 
 **vehicle** | [**VehicleDto**](VehicleDto.md) |  | [optional] 
