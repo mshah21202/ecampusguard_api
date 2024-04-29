@@ -9,14 +9,55 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**updatePost**](UserPermitApi.md#updatepost) | **POST** /update | Submits an update request for user permit
 [**userPermitGet**](UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [**userPermitIdGet**](UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
-[**userPermitIdUpdatePost**](UserPermitApi.md#userpermitidupdatepost) | **POST** /UserPermit/{id}/update | Submits an update request for user permit
 [**userPermitRelevantGet**](UserPermitApi.md#userpermitrelevantget) | **GET** /UserPermit/relevant | Gets the relevant user permit, mainly used for the home screen.
 [**userPermitUpdateRequestsGet**](UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [**userPermitUpdateRequestsIdGet**](UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
 [**userPermitUpdateRequestsIdResponsePost**](UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
 
+
+# **updatePost**
+> ResponseDto updatePost(createUpdateRequestDto)
+
+Submits an update request for user permit
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final CreateUpdateRequestDto createUpdateRequestDto = ; // CreateUpdateRequestDto | 
+
+try {
+    final response = api.updatePost(createUpdateRequestDto);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->updatePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createUpdateRequestDto** | [**CreateUpdateRequestDto**](CreateUpdateRequestDto.md)|  | [optional] 
+
+### Return type
+
+[**ResponseDto**](ResponseDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPermitGet**
 > List<UserPermitDto> userPermitGet(studentId, plateNumber, permitId, status, orderBy, orderByDirection, pageNumber, pageSize)
@@ -110,49 +151,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **userPermitIdUpdatePost**
-> ResponseDto userPermitIdUpdatePost(id, createUpdateRequestDto)
-
-Submits an update request for user permit
-
-### Example
-```dart
-import 'package:ecampusguardapi/api.dart';
-
-final api = Ecampusguardapi().getUserPermitApi();
-final String id = id_example; // String | 
-final CreateUpdateRequestDto createUpdateRequestDto = ; // CreateUpdateRequestDto | 
-
-try {
-    final response = api.userPermitIdUpdatePost(id, createUpdateRequestDto);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling UserPermitApi->userPermitIdUpdatePost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **createUpdateRequestDto** | [**CreateUpdateRequestDto**](CreateUpdateRequestDto.md)|  | [optional] 
-
-### Return type
-
-[**ResponseDto**](ResponseDto.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
