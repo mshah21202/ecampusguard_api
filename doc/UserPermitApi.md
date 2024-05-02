@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userPermitIdPost**
-> ResponseDto userPermitIdPost(id, userPermitDto)
+> ResponseDto userPermitIdPost(id, updateUserPermitDto)
 
 Updates user permit details. Admin only
 
@@ -167,10 +167,10 @@ import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
 final int id = 56; // int | 
-final UserPermitDto userPermitDto = ; // UserPermitDto | 
+final UpdateUserPermitDto updateUserPermitDto = ; // UpdateUserPermitDto | 
 
 try {
-    final response = api.userPermitIdPost(id, userPermitDto);
+    final response = api.userPermitIdPost(id, updateUserPermitDto);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UserPermitApi->userPermitIdPost: $e\n');
@@ -182,7 +182,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **userPermitDto** | [**UserPermitDto**](UserPermitDto.md)|  | [optional] 
+ **updateUserPermitDto** | [**UpdateUserPermitDto**](UpdateUserPermitDto.md)|  | [optional] 
 
 ### Return type
 

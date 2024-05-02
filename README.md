@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
  - [ResponseDto](doc/ResponseDto.md)
  - [UpdateRequestDto](doc/UpdateRequestDto.md)
  - [UpdateRequestStatus](doc/UpdateRequestStatus.md)
+ - [UpdateUserPermitDto](doc/UpdateUserPermitDto.md)
  - [UserDto](doc/UserDto.md)
  - [UserPermitDto](doc/UserPermitDto.md)
  - [UserPermitOrderBy](doc/UserPermitOrderBy.md)

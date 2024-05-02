@@ -15,6 +15,7 @@ import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/register_dto.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
 import 'package:ecampusguardapi/src/model/update_request_dto.dart';
+import 'package:ecampusguardapi/src/model/update_user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
@@ -95,6 +96,8 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
         case 'UpdateRequestStatus':
           
           
+        case 'UpdateUserPermitDto':
+          return UpdateUserPermitDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UserDto':
           return UserDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UserPermitDto':

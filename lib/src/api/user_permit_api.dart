@@ -13,6 +13,7 @@ import 'package:ecampusguardapi/src/model/create_update_request_dto.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
 import 'package:ecampusguardapi/src/model/update_request_dto.dart';
 import 'package:ecampusguardapi/src/model/update_request_status.dart';
+import 'package:ecampusguardapi/src/model/update_user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
 import 'package:ecampusguardapi/src/model/user_permit_status.dart';
@@ -303,7 +304,7 @@ _responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDt
   ///
   /// Parameters:
   /// * [id] - 
-  /// * [userPermitDto] - 
+  /// * [updateUserPermitDto] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -315,7 +316,7 @@ _responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDt
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseDto>> userPermitIdPost({ 
     required int id,
-    UserPermitDto? userPermitDto,
+    UpdateUserPermitDto? updateUserPermitDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -346,7 +347,7 @@ _responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDt
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(userPermitDto);
+_bodyData=jsonEncode(updateUserPermitDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
