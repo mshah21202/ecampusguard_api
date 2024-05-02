@@ -27,6 +27,8 @@ class CreatePermitDto {
     required  this.capacity,
 
     required  this.areaId,
+
+    required  this.expiry,
   });
 
   @JsonKey(
@@ -89,13 +91,26 @@ class CreatePermitDto {
 
 
 
+  @JsonKey(
+    
+    name: r'expiry',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final DateTime expiry;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreatePermitDto &&
      other.name == name &&
      other.days == days &&
      other.price == price &&
      other.capacity == capacity &&
-     other.areaId == areaId;
+     other.areaId == areaId &&
+     other.expiry == expiry;
 
   @override
   int get hashCode =>
@@ -103,7 +118,8 @@ class CreatePermitDto {
     days.hashCode +
     price.hashCode +
     capacity.hashCode +
-    areaId.hashCode;
+    areaId.hashCode +
+    expiry.hashCode;
 
   factory CreatePermitDto.fromJson(Map<String, dynamic> json) => _$CreatePermitDtoFromJson(json);
 

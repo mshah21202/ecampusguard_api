@@ -23,6 +23,8 @@ PermitDto _$PermitDtoFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null
                   ? null
                   : AreaDto.fromJson(v as Map<String, dynamic>)),
+          expiry: $checkedConvert(
+              'expiry', (v) => v == null ? null : DateTime.parse(v as String)),
         );
         return val;
       },
@@ -44,5 +46,6 @@ Map<String, dynamic> _$PermitDtoToJson(PermitDto instance) {
   writeNotNull('occupied', instance.occupied);
   writeNotNull('capacity', instance.capacity);
   writeNotNull('area', instance.area?.toJson());
+  writeNotNull('expiry', instance.expiry?.toIso8601String());
   return val;
 }

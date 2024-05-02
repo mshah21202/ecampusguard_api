@@ -13,7 +13,14 @@ CreatePermitDto _$CreatePermitDtoFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['name', 'days', 'price', 'capacity', 'areaId'],
+          requiredKeys: const [
+            'name',
+            'days',
+            'price',
+            'capacity',
+            'areaId',
+            'expiry'
+          ],
         );
         final val = CreatePermitDto(
           name: $checkedConvert('name', (v) => v as String),
@@ -22,6 +29,7 @@ CreatePermitDto _$CreatePermitDtoFromJson(Map<String, dynamic> json) =>
           price: $checkedConvert('price', (v) => (v as num).toDouble()),
           capacity: $checkedConvert('capacity', (v) => v as int),
           areaId: $checkedConvert('areaId', (v) => v as int),
+          expiry: $checkedConvert('expiry', (v) => DateTime.parse(v as String)),
         );
         return val;
       },
@@ -34,4 +42,5 @@ Map<String, dynamic> _$CreatePermitDtoToJson(CreatePermitDto instance) =>
       'price': instance.price,
       'capacity': instance.capacity,
       'areaId': instance.areaId,
+      'expiry': instance.expiry.toIso8601String(),
     };
