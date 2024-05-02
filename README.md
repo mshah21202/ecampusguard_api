@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
 [*UserPermitApi*](doc/UserPermitApi.md) | [**updatePost**](doc/UserPermitApi.md#updatepost) | **POST** /update | Submits an update request for user permit
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitGet**](doc/UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdGet**](doc/UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdPost**](doc/UserPermitApi.md#userpermitidpost) | **POST** /UserPermit/{id} | Updates user permit details. Admin only
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitRelevantGet**](doc/UserPermitApi.md#userpermitrelevantget) | **GET** /UserPermit/relevant | Gets the relevant user permit, mainly used for the home screen.
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsGet**](doc/UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdGet**](doc/UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
