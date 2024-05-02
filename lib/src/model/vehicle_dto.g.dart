@@ -10,13 +10,24 @@ VehicleDto _$VehicleDtoFromJson(Map<String, dynamic> json) => $checkedCreate(
       'VehicleDto',
       json,
       ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const [
+            'plateNumber',
+            'nationality',
+            'make',
+            'model',
+            'year',
+            'color'
+          ],
+        );
         final val = VehicleDto(
-          plateNumber: $checkedConvert('plateNumber', (v) => v as String?),
-          nationality: $checkedConvert('nationality', (v) => v as String?),
-          make: $checkedConvert('make', (v) => v as String?),
-          model: $checkedConvert('model', (v) => v as String?),
-          year: $checkedConvert('year', (v) => v as int?),
-          color: $checkedConvert('color', (v) => v as String?),
+          plateNumber: $checkedConvert('plateNumber', (v) => v as String),
+          nationality: $checkedConvert('nationality', (v) => v as String),
+          make: $checkedConvert('make', (v) => v as String),
+          model: $checkedConvert('model', (v) => v as String),
+          year: $checkedConvert('year', (v) => v as int),
+          color: $checkedConvert('color', (v) => v as String),
           registrationDocImgPath:
               $checkedConvert('registrationDocImgPath', (v) => v as String?),
         );
@@ -25,7 +36,14 @@ VehicleDto _$VehicleDtoFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$VehicleDtoToJson(VehicleDto instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'plateNumber': instance.plateNumber,
+    'nationality': instance.nationality,
+    'make': instance.make,
+    'model': instance.model,
+    'year': instance.year,
+    'color': instance.color,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -33,12 +51,6 @@ Map<String, dynamic> _$VehicleDtoToJson(VehicleDto instance) {
     }
   }
 
-  writeNotNull('plateNumber', instance.plateNumber);
-  writeNotNull('nationality', instance.nationality);
-  writeNotNull('make', instance.make);
-  writeNotNull('model', instance.model);
-  writeNotNull('year', instance.year);
-  writeNotNull('color', instance.color);
   writeNotNull('registrationDocImgPath', instance.registrationDocImgPath);
   return val;
 }

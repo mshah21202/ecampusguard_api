@@ -24,6 +24,8 @@ class UserPermitDto {
   /// Returns a new [UserPermitDto] instance.
   UserPermitDto({
 
+     this.id,
+
      this.status,
 
      this.expiry,
@@ -38,6 +40,18 @@ class UserPermitDto {
 
      this.accessLogs,
   });
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? id;
+
+
 
   @JsonKey(
     
@@ -125,6 +139,7 @@ class UserPermitDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserPermitDto &&
+     other.id == id &&
      other.status == status &&
      other.expiry == expiry &&
      other.user == user &&
@@ -135,6 +150,7 @@ class UserPermitDto {
 
   @override
   int get hashCode =>
+    id.hashCode +
     status.hashCode +
     expiry.hashCode +
     user.hashCode +

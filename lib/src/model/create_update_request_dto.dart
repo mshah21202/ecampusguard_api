@@ -19,11 +19,11 @@ class CreateUpdateRequestDto {
   /// Returns a new [CreateUpdateRequestDto] instance.
   CreateUpdateRequestDto({
 
-     this.vehicle,
+    required  this.vehicle,
 
-     this.phoneNumber,
+    required  this.phoneNumber,
 
-     this.phoneNumberCountry,
+    required  this.phoneNumberCountry,
 
      this.drivingLicenseImgPath,
   });
@@ -31,36 +31,36 @@ class CreateUpdateRequestDto {
   @JsonKey(
     
     name: r'vehicle',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final VehicleDto? vehicle;
+  final VehicleDto vehicle;
 
 
 
   @JsonKey(
     
     name: r'phoneNumber',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? phoneNumber;
+  final String phoneNumber;
 
 
 
   @JsonKey(
     
     name: r'phoneNumberCountry',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? phoneNumberCountry;
+  final String phoneNumberCountry;
 
 
 
@@ -86,8 +86,8 @@ class CreateUpdateRequestDto {
   @override
   int get hashCode =>
     vehicle.hashCode +
-    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
-    (phoneNumberCountry == null ? 0 : phoneNumberCountry.hashCode) +
+    phoneNumber.hashCode +
+    phoneNumberCountry.hashCode +
     (drivingLicenseImgPath == null ? 0 : drivingLicenseImgPath.hashCode);
 
   factory CreateUpdateRequestDto.fromJson(Map<String, dynamic> json) => _$CreateUpdateRequestDtoFromJson(json);

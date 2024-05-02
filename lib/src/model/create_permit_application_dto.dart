@@ -20,144 +20,144 @@ class CreatePermitApplicationDto {
   /// Returns a new [CreatePermitApplicationDto] instance.
   CreatePermitApplicationDto({
 
-     this.studentId,
+    required  this.studentId,
 
-     this.studentName,
+    required  this.studentName,
 
-     this.attendingDays,
+    required  this.attendingDays,
 
-     this.siblingsCount,
+    required  this.siblingsCount,
 
-     this.academicYear,
+    required  this.academicYear,
 
-     this.licenseImgPath,
+    required  this.licenseImgPath,
 
-     this.phoneNumberCountry,
+    required  this.phoneNumberCountry,
 
-     this.phoneNumber,
+    required  this.phoneNumber,
 
-     this.vehicle,
+    required  this.vehicle,
 
-     this.permitId,
+    required  this.permitId,
   });
 
   @JsonKey(
     
     name: r'studentId',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? studentId;
+  final int studentId;
 
 
 
   @JsonKey(
     
     name: r'studentName',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? studentName;
+  final String studentName;
 
 
 
   @JsonKey(
     
     name: r'attendingDays',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final List<bool>? attendingDays;
+  final List<bool> attendingDays;
 
 
 
   @JsonKey(
     
     name: r'siblingsCount',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? siblingsCount;
+  final int siblingsCount;
 
 
 
   @JsonKey(
     
     name: r'academicYear',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final AcademicYear? academicYear;
+  final AcademicYear academicYear;
 
 
 
   @JsonKey(
     
     name: r'licenseImgPath',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? licenseImgPath;
+  final String licenseImgPath;
 
 
 
   @JsonKey(
     
     name: r'phoneNumberCountry',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? phoneNumberCountry;
+  final String phoneNumberCountry;
 
 
 
   @JsonKey(
     
     name: r'phoneNumber',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? phoneNumber;
+  final String phoneNumber;
 
 
 
   @JsonKey(
     
     name: r'vehicle',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final VehicleDto? vehicle;
+  final VehicleDto vehicle;
 
 
 
   @JsonKey(
     
     name: r'permitId',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? permitId;
+  final int permitId;
 
 
 
@@ -177,13 +177,13 @@ class CreatePermitApplicationDto {
   @override
   int get hashCode =>
     studentId.hashCode +
-    (studentName == null ? 0 : studentName.hashCode) +
-    (attendingDays == null ? 0 : attendingDays.hashCode) +
+    studentName.hashCode +
+    attendingDays.hashCode +
     siblingsCount.hashCode +
     academicYear.hashCode +
-    (licenseImgPath == null ? 0 : licenseImgPath.hashCode) +
-    (phoneNumberCountry == null ? 0 : phoneNumberCountry.hashCode) +
-    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
+    licenseImgPath.hashCode +
+    phoneNumberCountry.hashCode +
+    phoneNumber.hashCode +
     vehicle.hashCode +
     permitId.hashCode;
 

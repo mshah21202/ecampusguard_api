@@ -10,6 +10,8 @@ import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
+import 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
+import 'package:ecampusguardapi/src/model/user_permit_status.dart';
 
 class SearchApi {
 
@@ -21,7 +23,14 @@ class SearchApi {
   /// 
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [studentId] 
+  /// * [plateNumber] 
+  /// * [permitId] 
+  /// * [status] 
+  /// * [orderBy] 
+  /// * [orderByDirection] 
+  /// * [pageNumber] 
+  /// * [pageSize] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -32,7 +41,14 @@ class SearchApi {
   /// Returns a [Future] containing a [Response] with a [List<UserPermitDto>] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<List<UserPermitDto>>> searchGet({ 
-    Object? body,
+    String? studentId,
+    String? plateNumber,
+    int? permitId,
+    UserPermitStatus? status,
+    UserPermitOrderBy? orderBy,
+    String? orderByDirection,
+    int? pageNumber,
+    int? pageSize,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -47,33 +63,33 @@ class SearchApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
         ...?extra,
       },
-      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
-
-    try {
-_bodyData=jsonEncode(body);
-    } catch(error, stackTrace) {
-      throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    final _queryParameters = <String, dynamic>{
+      if (studentId != null) r'StudentId': studentId,
+      if (plateNumber != null) r'PlateNumber': plateNumber,
+      if (permitId != null) r'PermitId': permitId,
+      if (status != null) r'Status': status,
+      if (orderBy != null) r'OrderBy': orderBy,
+      if (orderByDirection != null) r'OrderByDirection': orderByDirection,
+      if (pageNumber != null) r'PageNumber': pageNumber,
+      if (pageSize != null) r'PageSize': pageSize,
+    };
 
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

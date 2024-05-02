@@ -225,7 +225,7 @@ _responseData = rawData == null ? null : deserialize<List<UserPermitDto>, UserPe
   /// 
   ///
   /// Parameters:
-  /// * [id] - Permit Id
+  /// * [id] - UserPermit Id
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

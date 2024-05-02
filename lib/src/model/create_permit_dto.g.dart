@@ -11,31 +11,27 @@ CreatePermitDto _$CreatePermitDtoFromJson(Map<String, dynamic> json) =>
       'CreatePermitDto',
       json,
       ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const ['name', 'days', 'price', 'capacity', 'areaId'],
+        );
         final val = CreatePermitDto(
-          name: $checkedConvert('name', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String),
           days: $checkedConvert('days',
-              (v) => (v as List<dynamic>?)?.map((e) => e as bool).toList()),
-          price: $checkedConvert('price', (v) => (v as num?)?.toDouble()),
-          capacity: $checkedConvert('capacity', (v) => v as int?),
-          areaId: $checkedConvert('areaId', (v) => v as int?),
+              (v) => (v as List<dynamic>).map((e) => e as bool).toList()),
+          price: $checkedConvert('price', (v) => (v as num).toDouble()),
+          capacity: $checkedConvert('capacity', (v) => v as int),
+          areaId: $checkedConvert('areaId', (v) => v as int),
         );
         return val;
       },
     );
 
-Map<String, dynamic> _$CreatePermitDtoToJson(CreatePermitDto instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('days', instance.days);
-  writeNotNull('price', instance.price);
-  writeNotNull('capacity', instance.capacity);
-  writeNotNull('areaId', instance.areaId);
-  return val;
-}
+Map<String, dynamic> _$CreatePermitDtoToJson(CreatePermitDto instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'days': instance.days,
+      'price': instance.price,
+      'capacity': instance.capacity,
+      'areaId': instance.areaId,
+    };

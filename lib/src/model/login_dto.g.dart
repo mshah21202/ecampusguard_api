@@ -10,24 +10,19 @@ LoginDto _$LoginDtoFromJson(Map<String, dynamic> json) => $checkedCreate(
       'LoginDto',
       json,
       ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const ['username', 'password'],
+        );
         final val = LoginDto(
-          username: $checkedConvert('username', (v) => v as String?),
-          password: $checkedConvert('password', (v) => v as String?),
+          username: $checkedConvert('username', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
         );
         return val;
       },
     );
 
-Map<String, dynamic> _$LoginDtoToJson(LoginDto instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('username', instance.username);
-  writeNotNull('password', instance.password);
-  return val;
-}
+Map<String, dynamic> _$LoginDtoToJson(LoginDto instance) => <String, dynamic>{
+      'username': instance.username,
+      'password': instance.password,
+    };

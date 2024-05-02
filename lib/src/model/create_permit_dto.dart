@@ -18,74 +18,74 @@ class CreatePermitDto {
   /// Returns a new [CreatePermitDto] instance.
   CreatePermitDto({
 
-     this.name,
+    required  this.name,
 
-     this.days,
+    required  this.days,
 
-     this.price,
+    required  this.price,
 
-     this.capacity,
+    required  this.capacity,
 
-     this.areaId,
+    required  this.areaId,
   });
 
   @JsonKey(
     
     name: r'name',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? name;
+  final String name;
 
 
 
   @JsonKey(
     
     name: r'days',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final List<bool>? days;
+  final List<bool> days;
 
 
 
   @JsonKey(
     
     name: r'price',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final double? price;
+  final double price;
 
 
 
   @JsonKey(
     
     name: r'capacity',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? capacity;
+  final int capacity;
 
 
 
   @JsonKey(
     
     name: r'areaId',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? areaId;
+  final int areaId;
 
 
 
@@ -99,8 +99,8 @@ class CreatePermitDto {
 
   @override
   int get hashCode =>
-    (name == null ? 0 : name.hashCode) +
-    (days == null ? 0 : days.hashCode) +
+    name.hashCode +
+    days.hashCode +
     price.hashCode +
     capacity.hashCode +
     areaId.hashCode;

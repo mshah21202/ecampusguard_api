@@ -18,46 +18,46 @@ class RegisterDto {
   /// Returns a new [RegisterDto] instance.
   RegisterDto({
 
-     this.name,
+    required  this.name,
 
-     this.username,
+    required  this.username,
 
-     this.password,
+    required  this.password,
   });
 
   @JsonKey(
     
     name: r'name',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? name;
+  final String name;
 
 
 
   @JsonKey(
     
     name: r'username',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? username;
+  final String username;
 
 
 
   @JsonKey(
     
     name: r'password',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? password;
+  final String password;
 
 
 
@@ -69,9 +69,9 @@ class RegisterDto {
 
   @override
   int get hashCode =>
-    (name == null ? 0 : name.hashCode) +
-    (username == null ? 0 : username.hashCode) +
-    (password == null ? 0 : password.hashCode);
+    name.hashCode +
+    username.hashCode +
+    password.hashCode;
 
   factory RegisterDto.fromJson(Map<String, dynamic> json) => _$RegisterDtoFromJson(json);
 

@@ -18,32 +18,32 @@ class LoginDto {
   /// Returns a new [LoginDto] instance.
   LoginDto({
 
-     this.username,
+    required  this.username,
 
-     this.password,
+    required  this.password,
   });
 
   @JsonKey(
     
     name: r'username',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? username;
+  final String username;
 
 
 
   @JsonKey(
     
     name: r'password',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? password;
+  final String password;
 
 
 
@@ -54,8 +54,8 @@ class LoginDto {
 
   @override
   int get hashCode =>
-    (username == null ? 0 : username.hashCode) +
-    (password == null ? 0 : password.hashCode);
+    username.hashCode +
+    password.hashCode;
 
   factory LoginDto.fromJson(Map<String, dynamic> json) => _$LoginDtoFromJson(json);
 

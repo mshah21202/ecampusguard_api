@@ -18,17 +18,17 @@ class VehicleDto {
   /// Returns a new [VehicleDto] instance.
   VehicleDto({
 
-     this.plateNumber,
+    required  this.plateNumber,
 
-     this.nationality,
+    required  this.nationality,
 
-     this.make,
+    required  this.make,
 
-     this.model,
+    required  this.model,
 
-     this.year,
+    required  this.year,
 
-     this.color,
+    required  this.color,
 
      this.registrationDocImgPath,
   });
@@ -36,72 +36,72 @@ class VehicleDto {
   @JsonKey(
     
     name: r'plateNumber',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? plateNumber;
+  final String plateNumber;
 
 
 
   @JsonKey(
     
     name: r'nationality',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? nationality;
+  final String nationality;
 
 
 
   @JsonKey(
     
     name: r'make',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? make;
+  final String make;
 
 
 
   @JsonKey(
     
     name: r'model',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? model;
+  final String model;
 
 
 
   @JsonKey(
     
     name: r'year',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final int? year;
+  final int year;
 
 
 
   @JsonKey(
     
     name: r'color',
-    required: false,
+    required: true,
     includeIfNull: false
   )
 
 
-  final String? color;
+  final String color;
 
 
 
@@ -129,12 +129,12 @@ class VehicleDto {
 
   @override
   int get hashCode =>
-    (plateNumber == null ? 0 : plateNumber.hashCode) +
-    (nationality == null ? 0 : nationality.hashCode) +
-    (make == null ? 0 : make.hashCode) +
-    (model == null ? 0 : model.hashCode) +
+    plateNumber.hashCode +
+    nationality.hashCode +
+    make.hashCode +
+    model.hashCode +
     year.hashCode +
-    (color == null ? 0 : color.hashCode) +
+    color.hashCode +
     (registrationDocImgPath == null ? 0 : registrationDocImgPath.hashCode);
 
   factory VehicleDto.fromJson(Map<String, dynamic> json) => _$VehicleDtoFromJson(json);

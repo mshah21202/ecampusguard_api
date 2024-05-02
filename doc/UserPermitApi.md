@@ -124,7 +124,7 @@ Gets user permit
 import 'package:ecampusguardapi/api.dart';
 
 final api = Ecampusguardapi().getUserPermitApi();
-final int id = 56; // int | Permit Id
+final int id = 56; // int | UserPermit Id
 
 try {
     final response = api.userPermitIdGet(id);
@@ -138,7 +138,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Permit Id | 
+ **id** | **int**| UserPermit Id | 
 
 ### Return type
 

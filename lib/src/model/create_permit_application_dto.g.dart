@@ -12,52 +12,55 @@ CreatePermitApplicationDto _$CreatePermitApplicationDtoFromJson(
       'CreatePermitApplicationDto',
       json,
       ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const [
+            'studentId',
+            'studentName',
+            'attendingDays',
+            'siblingsCount',
+            'academicYear',
+            'licenseImgPath',
+            'phoneNumberCountry',
+            'phoneNumber',
+            'vehicle',
+            'permitId'
+          ],
+        );
         final val = CreatePermitApplicationDto(
-          studentId: $checkedConvert('studentId', (v) => v as int?),
-          studentName: $checkedConvert('studentName', (v) => v as String?),
+          studentId: $checkedConvert('studentId', (v) => v as int),
+          studentName: $checkedConvert('studentName', (v) => v as String),
           attendingDays: $checkedConvert('attendingDays',
-              (v) => (v as List<dynamic>?)?.map((e) => e as bool).toList()),
-          siblingsCount: $checkedConvert('siblingsCount', (v) => v as int?),
-          academicYear: $checkedConvert('academicYear',
-              (v) => $enumDecodeNullable(_$AcademicYearEnumMap, v)),
-          licenseImgPath:
-              $checkedConvert('licenseImgPath', (v) => v as String?),
+              (v) => (v as List<dynamic>).map((e) => e as bool).toList()),
+          siblingsCount: $checkedConvert('siblingsCount', (v) => v as int),
+          academicYear: $checkedConvert(
+              'academicYear', (v) => $enumDecode(_$AcademicYearEnumMap, v)),
+          licenseImgPath: $checkedConvert('licenseImgPath', (v) => v as String),
           phoneNumberCountry:
-              $checkedConvert('phoneNumberCountry', (v) => v as String?),
-          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
+              $checkedConvert('phoneNumberCountry', (v) => v as String),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String),
           vehicle: $checkedConvert(
-              'vehicle',
-              (v) => v == null
-                  ? null
-                  : VehicleDto.fromJson(v as Map<String, dynamic>)),
-          permitId: $checkedConvert('permitId', (v) => v as int?),
+              'vehicle', (v) => VehicleDto.fromJson(v as Map<String, dynamic>)),
+          permitId: $checkedConvert('permitId', (v) => v as int),
         );
         return val;
       },
     );
 
 Map<String, dynamic> _$CreatePermitApplicationDtoToJson(
-    CreatePermitApplicationDto instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('studentId', instance.studentId);
-  writeNotNull('studentName', instance.studentName);
-  writeNotNull('attendingDays', instance.attendingDays);
-  writeNotNull('siblingsCount', instance.siblingsCount);
-  writeNotNull('academicYear', _$AcademicYearEnumMap[instance.academicYear]);
-  writeNotNull('licenseImgPath', instance.licenseImgPath);
-  writeNotNull('phoneNumberCountry', instance.phoneNumberCountry);
-  writeNotNull('phoneNumber', instance.phoneNumber);
-  writeNotNull('vehicle', instance.vehicle?.toJson());
-  writeNotNull('permitId', instance.permitId);
-  return val;
-}
+        CreatePermitApplicationDto instance) =>
+    <String, dynamic>{
+      'studentId': instance.studentId,
+      'studentName': instance.studentName,
+      'attendingDays': instance.attendingDays,
+      'siblingsCount': instance.siblingsCount,
+      'academicYear': _$AcademicYearEnumMap[instance.academicYear]!,
+      'licenseImgPath': instance.licenseImgPath,
+      'phoneNumberCountry': instance.phoneNumberCountry,
+      'phoneNumber': instance.phoneNumber,
+      'vehicle': instance.vehicle.toJson(),
+      'permitId': instance.permitId,
+    };
 
 const _$AcademicYearEnumMap = {
   AcademicYear.FirstYear: 0,
