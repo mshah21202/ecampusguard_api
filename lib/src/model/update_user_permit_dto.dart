@@ -25,6 +25,8 @@ class UpdateUserPermitDto {
 
      this.licenseImgPath,
 
+     this.permitId,
+
      this.vehicle,
   });
 
@@ -66,6 +68,18 @@ class UpdateUserPermitDto {
 
   @JsonKey(
     
+    name: r'permitId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? permitId;
+
+
+
+  @JsonKey(
+    
     name: r'vehicle',
     required: false,
     includeIfNull: false
@@ -81,6 +95,7 @@ class UpdateUserPermitDto {
      other.phoneNumber == phoneNumber &&
      other.phoneNumberCountry == phoneNumberCountry &&
      other.licenseImgPath == licenseImgPath &&
+     other.permitId == permitId &&
      other.vehicle == vehicle;
 
   @override
@@ -88,6 +103,7 @@ class UpdateUserPermitDto {
     (phoneNumber == null ? 0 : phoneNumber.hashCode) +
     (phoneNumberCountry == null ? 0 : phoneNumberCountry.hashCode) +
     (licenseImgPath == null ? 0 : licenseImgPath.hashCode) +
+    (permitId == null ? 0 : permitId.hashCode) +
     vehicle.hashCode;
 
   factory UpdateUserPermitDto.fromJson(Map<String, dynamic> json) => _$UpdateUserPermitDtoFromJson(json);

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**userPermitUpdateRequestsGet**](UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [**userPermitUpdateRequestsIdGet**](UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
 [**userPermitUpdateRequestsIdResponsePost**](UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
+[**userPermitWithdrawIdPost**](UserPermitApi.md#userpermitwithdrawidpost) | **POST** /UserPermit/withdraw/{id} | Withdraws user permit. Admin only.
 
 
 # **updatePost**
@@ -357,6 +358,47 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **accept** | **bool**|  | [optional] 
+
+### Return type
+
+[**ResponseDto**](ResponseDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPermitWithdrawIdPost**
+> ResponseDto userPermitWithdrawIdPost(id)
+
+Withdraws user permit. Admin only.
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final int id = 56; // int | 
+
+try {
+    final response = api.userPermitWithdrawIdPost(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->userPermitWithdrawIdPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
 
 ### Return type
 

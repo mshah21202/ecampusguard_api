@@ -17,6 +17,7 @@ UpdateUserPermitDto _$UpdateUserPermitDtoFromJson(Map<String, dynamic> json) =>
               $checkedConvert('phoneNumberCountry', (v) => v as String?),
           licenseImgPath:
               $checkedConvert('licenseImgPath', (v) => v as String?),
+          permitId: $checkedConvert('permitId', (v) => v as int?),
           vehicle: $checkedConvert(
               'vehicle',
               (v) => v == null
@@ -39,6 +40,7 @@ Map<String, dynamic> _$UpdateUserPermitDtoToJson(UpdateUserPermitDto instance) {
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('phoneNumberCountry', instance.phoneNumberCountry);
   writeNotNull('licenseImgPath', instance.licenseImgPath);
+  writeNotNull('permitId', instance.permitId);
   writeNotNull('vehicle', instance.vehicle?.toJson());
   return val;
 }

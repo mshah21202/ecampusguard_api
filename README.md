@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsGet**](doc/UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdGet**](doc/UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdResponsePost**](doc/UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitWithdrawIdPost**](doc/UserPermitApi.md#userpermitwithdrawidpost) | **POST** /UserPermit/withdraw/{id} | Withdraws user permit. Admin only.
 
 
 ## Documentation For Models
