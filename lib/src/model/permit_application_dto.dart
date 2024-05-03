@@ -43,6 +43,8 @@ class PermitApplicationDto {
      this.vehicle,
 
      this.permit,
+
+     this.userPermitId,
   });
 
   @JsonKey(
@@ -177,6 +179,18 @@ class PermitApplicationDto {
 
 
 
+  @JsonKey(
+    
+    name: r'userPermitId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? userPermitId;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PermitApplicationDto &&
      other.studentId == studentId &&
@@ -189,7 +203,8 @@ class PermitApplicationDto {
      other.phoneNumber == phoneNumber &&
      other.status == status &&
      other.vehicle == vehicle &&
-     other.permit == permit;
+     other.permit == permit &&
+     other.userPermitId == userPermitId;
 
   @override
   int get hashCode =>
@@ -203,7 +218,8 @@ class PermitApplicationDto {
     (phoneNumber == null ? 0 : phoneNumber.hashCode) +
     status.hashCode +
     vehicle.hashCode +
-    permit.hashCode;
+    permit.hashCode +
+    (userPermitId == null ? 0 : userPermitId.hashCode);
 
   factory PermitApplicationDto.fromJson(Map<String, dynamic> json) => _$PermitApplicationDtoFromJson(json);
 

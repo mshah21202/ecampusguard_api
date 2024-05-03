@@ -37,6 +37,7 @@ PermitApplicationDto _$PermitApplicationDtoFromJson(
               (v) => v == null
                   ? null
                   : PermitDto.fromJson(v as Map<String, dynamic>)),
+          userPermitId: $checkedConvert('userPermitId', (v) => v as int?),
         );
         return val;
       },
@@ -63,6 +64,7 @@ Map<String, dynamic> _$PermitApplicationDtoToJson(
   writeNotNull('status', _$PermitApplicationStatusEnumMap[instance.status]);
   writeNotNull('vehicle', instance.vehicle?.toJson());
   writeNotNull('permit', instance.permit?.toJson());
+  writeNotNull('userPermitId', instance.userPermitId);
   return val;
 }
 
