@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**areaDetailsGet**](AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [**areaDetailsIdGet**](AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [**areaGet**](AreaApi.md#areaget) | **GET** /Area | 
 [**areaIdDelete**](AreaApi.md#areaiddelete) | **DELETE** /Area/{id} | 
@@ -16,6 +17,43 @@ Method | HTTP request | Description
 [**areaIdPost**](AreaApi.md#areaidpost) | **POST** /Area/{id} | 
 [**areaPost**](AreaApi.md#areapost) | **POST** /Area | 
 
+
+# **areaDetailsGet**
+> List<AreaScreenDto> areaDetailsGet()
+
+
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+
+try {
+    final response = api.areaDetailsGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaDetailsGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;AreaScreenDto&gt;**](AreaScreenDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaDetailsIdGet**
 > AreaScreenDto areaDetailsIdGet(id)

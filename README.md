@@ -49,13 +49,12 @@ import 'package:ecampusguardapi/ecampusguardapi.dart';
 
 
 final api = Ecampusguardapi().getAreaApi();
-final int id = 56; // int | 
 
 try {
-    final response = await api.areaDetailsIdGet(id);
+    final response = await api.areaDetailsGet();
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling AreaApi->areaDetailsIdGet: $e\n");
+    print("Exception when calling AreaApi->areaDetailsGet: $e\n");
 }
 
 ```
@@ -66,6 +65,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AreaApi*](doc/AreaApi.md) | [**areaDetailsGet**](doc/AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsIdGet**](doc/AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [*AreaApi*](doc/AreaApi.md) | [**areaGet**](doc/AreaApi.md#areaget) | **GET** /Area | 
 [*AreaApi*](doc/AreaApi.md) | [**areaIdDelete**](doc/AreaApi.md#areaiddelete) | **DELETE** /Area/{id} | 

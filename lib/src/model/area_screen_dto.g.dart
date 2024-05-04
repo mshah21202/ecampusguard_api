@@ -12,11 +12,16 @@ AreaScreenDto _$AreaScreenDtoFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AreaScreenDto(
+          id: $checkedConvert('id', (v) => v as int?),
+          name: $checkedConvert('name', (v) => v as String?),
+          gate: $checkedConvert('gate', (v) => v as String?),
           accessLogs: $checkedConvert(
               'accessLogs',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => AccessLogDto.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          occupied: $checkedConvert('occupied', (v) => v as int?),
+          capacity: $checkedConvert('capacity', (v) => v as int?),
         );
         return val;
       },
@@ -31,7 +36,12 @@ Map<String, dynamic> _$AreaScreenDtoToJson(AreaScreenDto instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  writeNotNull('name', instance.name);
+  writeNotNull('gate', instance.gate);
   writeNotNull(
       'accessLogs', instance.accessLogs?.map((e) => e.toJson()).toList());
+  writeNotNull('occupied', instance.occupied);
+  writeNotNull('capacity', instance.capacity);
   return val;
 }
