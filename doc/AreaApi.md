@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**areaDetailsAnplrIdPost**](AreaApi.md#areadetailsanplridpost) | **POST** /Area/details/anplr/{id} | The ANPLR posts the license plate to create an access log, etc.
 [**areaDetailsGet**](AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [**areaDetailsIdGet**](AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [**areaGet**](AreaApi.md#areaget) | **GET** /Area | 
@@ -17,6 +18,49 @@ Method | HTTP request | Description
 [**areaIdPost**](AreaApi.md#areaidpost) | **POST** /Area/{id} | 
 [**areaPost**](AreaApi.md#areapost) | **POST** /Area | 
 
+
+# **areaDetailsAnplrIdPost**
+> AnplrResultDto areaDetailsAnplrIdPost(id, anplrDto)
+
+The ANPLR posts the license plate to create an access log, etc.
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | Area Id
+final AnplrDto anplrDto = ; // AnplrDto | 
+
+try {
+    final response = api.areaDetailsAnplrIdPost(id, anplrDto);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AreaApi->areaDetailsAnplrIdPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Area Id | 
+ **anplrDto** | [**AnplrDto**](AnplrDto.md)|  | [optional] 
+
+### Return type
+
+[**AnplrResultDto**](AnplrResultDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **areaDetailsGet**
 > List<AreaScreenDto> areaDetailsGet()

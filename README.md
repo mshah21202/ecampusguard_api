@@ -49,12 +49,14 @@ import 'package:ecampusguardapi/ecampusguardapi.dart';
 
 
 final api = Ecampusguardapi().getAreaApi();
+final int id = 56; // int | Area Id
+final AnplrDto anplrDto = ; // AnplrDto | 
 
 try {
-    final response = await api.areaDetailsGet();
+    final response = await api.areaDetailsAnplrIdPost(id, anplrDto);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling AreaApi->areaDetailsGet: $e\n");
+    print("Exception when calling AreaApi->areaDetailsAnplrIdPost: $e\n");
 }
 
 ```
@@ -65,6 +67,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AreaApi*](doc/AreaApi.md) | [**areaDetailsAnplrIdPost**](doc/AreaApi.md#areadetailsanplridpost) | **POST** /Area/details/anplr/{id} | The ANPLR posts the license plate to create an access log, etc.
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsGet**](doc/AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsIdGet**](doc/AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [*AreaApi*](doc/AreaApi.md) | [**areaGet**](doc/AreaApi.md#areaget) | **GET** /Area | 
@@ -104,6 +107,8 @@ Class | Method | HTTP request | Description
  - [AcademicYear](doc/AcademicYear.md)
  - [AccessLogDto](doc/AccessLogDto.md)
  - [AccessLogType](doc/AccessLogType.md)
+ - [AnplrDto](doc/AnplrDto.md)
+ - [AnplrResultDto](doc/AnplrResultDto.md)
  - [ApplicationSummaryDto](doc/ApplicationSummaryDto.md)
  - [AreaDto](doc/AreaDto.md)
  - [AreaScreenDto](doc/AreaScreenDto.md)

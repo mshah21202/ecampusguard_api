@@ -1,4 +1,6 @@
 import 'package:ecampusguardapi/src/model/access_log_dto.dart';
+import 'package:ecampusguardapi/src/model/anplr_dto.dart';
+import 'package:ecampusguardapi/src/model/anplr_result_dto.dart';
 import 'package:ecampusguardapi/src/model/application_summary_dto.dart';
 import 'package:ecampusguardapi/src/model/area_dto.dart';
 import 'package:ecampusguardapi/src/model/area_screen_dto.dart';
@@ -46,6 +48,10 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
         case 'AccessLogType':
           
           
+        case 'AnplrDto':
+          return AnplrDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'AnplrResultDto':
+          return AnplrResultDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'ApplicationSummaryDto':
           return ApplicationSummaryDto.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'AreaDto':

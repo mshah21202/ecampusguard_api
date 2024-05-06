@@ -5,6 +5,8 @@ build.yaml
 doc/AcademicYear.md
 doc/AccessLogDto.md
 doc/AccessLogType.md
+doc/AnplrDto.md
+doc/AnplrResultDto.md
 doc/ApplicationSummaryDto.md
 doc/AreaApi.md
 doc/AreaDto.md
@@ -58,6 +60,8 @@ lib/src/deserialize.dart
 lib/src/model/academic_year.dart
 lib/src/model/access_log_dto.dart
 lib/src/model/access_log_type.dart
+lib/src/model/anplr_dto.dart
+lib/src/model/anplr_result_dto.dart
 lib/src/model/application_summary_dto.dart
 lib/src/model/area_dto.dart
 lib/src/model/area_screen_dto.dart
