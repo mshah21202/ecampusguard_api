@@ -15,6 +15,7 @@ AccessLogDto _$AccessLogDtoFromJson(Map<String, dynamic> json) =>
           timestamp: $checkedConvert('timestamp',
               (v) => v == null ? null : DateTime.parse(v as String)),
           licensePlate: $checkedConvert('licensePlate', (v) => v as String?),
+          permitName: $checkedConvert('permitName', (v) => v as String?),
           logType: $checkedConvert(
               'logType', (v) => $enumDecodeNullable(_$AccessLogTypeEnumMap, v)),
         );
@@ -33,6 +34,7 @@ Map<String, dynamic> _$AccessLogDtoToJson(AccessLogDto instance) {
 
   writeNotNull('timestamp', instance.timestamp?.toIso8601String());
   writeNotNull('licensePlate', instance.licensePlate);
+  writeNotNull('permitName', instance.permitName);
   writeNotNull('logType', _$AccessLogTypeEnumMap[instance.logType]);
   return val;
 }

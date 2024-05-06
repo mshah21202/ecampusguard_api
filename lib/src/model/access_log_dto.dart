@@ -23,6 +23,8 @@ class AccessLogDto {
 
      this.licensePlate,
 
+     this.permitName,
+
      this.logType,
   });
 
@@ -52,6 +54,18 @@ class AccessLogDto {
 
   @JsonKey(
     
+    name: r'permitName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? permitName;
+
+
+
+  @JsonKey(
+    
     name: r'logType',
     required: false,
     includeIfNull: false
@@ -66,12 +80,14 @@ class AccessLogDto {
   bool operator ==(Object other) => identical(this, other) || other is AccessLogDto &&
      other.timestamp == timestamp &&
      other.licensePlate == licensePlate &&
+     other.permitName == permitName &&
      other.logType == logType;
 
   @override
   int get hashCode =>
     timestamp.hashCode +
     (licensePlate == null ? 0 : licensePlate.hashCode) +
+    (permitName == null ? 0 : permitName.hashCode) +
     logType.hashCode;
 
   factory AccessLogDto.fromJson(Map<String, dynamic> json) => _$AccessLogDtoFromJson(json);
