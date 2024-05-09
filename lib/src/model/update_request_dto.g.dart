@@ -11,6 +11,10 @@ UpdateRequestDto _$UpdateRequestDtoFromJson(Map<String, dynamic> json) =>
       'UpdateRequestDto',
       json,
       ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const ['phoneNumber', 'phoneNumberCountry'],
+        );
         final val = UpdateRequestDto(
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$UpdateRequestStatusEnumMap, v)),
@@ -19,16 +23,16 @@ UpdateRequestDto _$UpdateRequestDtoFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : UserPermitDto.fromJson(v as Map<String, dynamic>)),
-          newPermit: $checkedConvert(
-              'newPermit',
-              (v) => v == null
-                  ? null
-                  : PermitDto.fromJson(v as Map<String, dynamic>)),
           updatedVehicle: $checkedConvert(
               'updatedVehicle',
               (v) => v == null
                   ? null
                   : VehicleDto.fromJson(v as Map<String, dynamic>)),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String),
+          phoneNumberCountry:
+              $checkedConvert('phoneNumberCountry', (v) => v as String),
+          drivingLicenseImgPath:
+              $checkedConvert('drivingLicenseImgPath', (v) => v as String?),
         );
         return val;
       },
@@ -45,8 +49,10 @@ Map<String, dynamic> _$UpdateRequestDtoToJson(UpdateRequestDto instance) {
 
   writeNotNull('status', _$UpdateRequestStatusEnumMap[instance.status]);
   writeNotNull('userPermit', instance.userPermit?.toJson());
-  writeNotNull('newPermit', instance.newPermit?.toJson());
   writeNotNull('updatedVehicle', instance.updatedVehicle?.toJson());
+  val['phoneNumber'] = instance.phoneNumber;
+  val['phoneNumberCountry'] = instance.phoneNumberCountry;
+  writeNotNull('drivingLicenseImgPath', instance.drivingLicenseImgPath);
   return val;
 }
 

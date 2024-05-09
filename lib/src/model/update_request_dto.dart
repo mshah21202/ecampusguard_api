@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:ecampusguardapi/src/model/vehicle_dto.dart';
 import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
-import 'package:ecampusguardapi/src/model/permit_dto.dart';
 import 'package:ecampusguardapi/src/model/update_request_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -26,9 +25,13 @@ class UpdateRequestDto {
 
      this.userPermit,
 
-     this.newPermit,
-
      this.updatedVehicle,
+
+    required  this.phoneNumber,
+
+    required  this.phoneNumberCountry,
+
+     this.drivingLicenseImgPath,
   });
 
   @JsonKey(
@@ -57,18 +60,6 @@ class UpdateRequestDto {
 
   @JsonKey(
     
-    name: r'newPermit',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final PermitDto? newPermit;
-
-
-
-  @JsonKey(
-    
     name: r'updatedVehicle',
     required: false,
     includeIfNull: false
@@ -79,19 +70,59 @@ class UpdateRequestDto {
 
 
 
+  @JsonKey(
+    
+    name: r'phoneNumber',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String phoneNumber;
+
+
+
+  @JsonKey(
+    
+    name: r'phoneNumberCountry',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String phoneNumberCountry;
+
+
+
+  @JsonKey(
+    
+    name: r'drivingLicenseImgPath',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? drivingLicenseImgPath;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateRequestDto &&
      other.status == status &&
      other.userPermit == userPermit &&
-     other.newPermit == newPermit &&
-     other.updatedVehicle == updatedVehicle;
+     other.updatedVehicle == updatedVehicle &&
+     other.phoneNumber == phoneNumber &&
+     other.phoneNumberCountry == phoneNumberCountry &&
+     other.drivingLicenseImgPath == drivingLicenseImgPath;
 
   @override
   int get hashCode =>
     status.hashCode +
     userPermit.hashCode +
-    newPermit.hashCode +
-    updatedVehicle.hashCode;
+    updatedVehicle.hashCode +
+    phoneNumber.hashCode +
+    phoneNumberCountry.hashCode +
+    (drivingLicenseImgPath == null ? 0 : drivingLicenseImgPath.hashCode);
 
   factory UpdateRequestDto.fromJson(Map<String, dynamic> json) => _$UpdateRequestDtoFromJson(json);
 
