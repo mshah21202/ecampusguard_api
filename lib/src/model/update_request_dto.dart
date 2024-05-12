@@ -21,6 +21,8 @@ class UpdateRequestDto {
   /// Returns a new [UpdateRequestDto] instance.
   UpdateRequestDto({
 
+     this.id,
+
      this.status,
 
      this.userPermit,
@@ -33,6 +35,18 @@ class UpdateRequestDto {
 
      this.drivingLicenseImgPath,
   });
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? id;
+
+
 
   @JsonKey(
     
@@ -108,6 +122,7 @@ class UpdateRequestDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateRequestDto &&
+     other.id == id &&
      other.status == status &&
      other.userPermit == userPermit &&
      other.updatedVehicle == updatedVehicle &&
@@ -117,6 +132,7 @@ class UpdateRequestDto {
 
   @override
   int get hashCode =>
+    id.hashCode +
     status.hashCode +
     userPermit.hashCode +
     updatedVehicle.hashCode +

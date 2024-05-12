@@ -16,6 +16,7 @@ UpdateRequestDto _$UpdateRequestDtoFromJson(Map<String, dynamic> json) =>
           requiredKeys: const ['phoneNumber', 'phoneNumberCountry'],
         );
         final val = UpdateRequestDto(
+          id: $checkedConvert('id', (v) => v as int?),
           status: $checkedConvert('status',
               (v) => $enumDecodeNullable(_$UpdateRequestStatusEnumMap, v)),
           userPermit: $checkedConvert(
@@ -47,6 +48,7 @@ Map<String, dynamic> _$UpdateRequestDtoToJson(UpdateRequestDto instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
   writeNotNull('status', _$UpdateRequestStatusEnumMap[instance.status]);
   writeNotNull('userPermit', instance.userPermit?.toJson());
   writeNotNull('updatedVehicle', instance.updatedVehicle?.toJson());
