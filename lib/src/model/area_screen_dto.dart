@@ -30,6 +30,10 @@ class AreaScreenDto {
      this.occupied,
 
      this.capacity,
+
+     this.entryCameraStreamUrl,
+
+     this.exitCameraStreamUrl,
   });
 
   @JsonKey(
@@ -104,6 +108,30 @@ class AreaScreenDto {
 
 
 
+  @JsonKey(
+    
+    name: r'entryCameraStreamUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? entryCameraStreamUrl;
+
+
+
+  @JsonKey(
+    
+    name: r'exitCameraStreamUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? exitCameraStreamUrl;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AreaScreenDto &&
      other.id == id &&
@@ -111,7 +139,9 @@ class AreaScreenDto {
      other.gate == gate &&
      other.accessLogs == accessLogs &&
      other.occupied == occupied &&
-     other.capacity == capacity;
+     other.capacity == capacity &&
+     other.entryCameraStreamUrl == entryCameraStreamUrl &&
+     other.exitCameraStreamUrl == exitCameraStreamUrl;
 
   @override
   int get hashCode =>
@@ -120,7 +150,9 @@ class AreaScreenDto {
     (gate == null ? 0 : gate.hashCode) +
     (accessLogs == null ? 0 : accessLogs.hashCode) +
     occupied.hashCode +
-    capacity.hashCode;
+    capacity.hashCode +
+    (entryCameraStreamUrl == null ? 0 : entryCameraStreamUrl.hashCode) +
+    (exitCameraStreamUrl == null ? 0 : exitCameraStreamUrl.hashCode);
 
   factory AreaScreenDto.fromJson(Map<String, dynamic> json) => _$AreaScreenDtoFromJson(json);
 

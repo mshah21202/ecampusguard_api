@@ -68,6 +68,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsAnplrIdPost**](doc/AreaApi.md#areadetailsanplridpost) | **POST** /Area/details/anplr/{id} | The ANPLR posts the license plate to create an access log, etc.
+[*AreaApi*](doc/AreaApi.md) | [**areaDetailsAnplrStreamIdPost**](doc/AreaApi.md#areadetailsanplrstreamidpost) | **POST** /Area/details/anplr/stream/{id} | Registers the camera stream url
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsGet**](doc/AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsIdGet**](doc/AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [*AreaApi*](doc/AreaApi.md) | [**areaGet**](doc/AreaApi.md#areaget) | **GET** /Area | 
@@ -95,6 +96,7 @@ Class | Method | HTTP request | Description
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitGet**](doc/UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdGet**](doc/UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdPost**](doc/UserPermitApi.md#userpermitidpost) | **POST** /UserPermit/{id} | Updates user permit details. Admin only
+[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitNotificationIdPost**](doc/UserPermitApi.md#userpermitnotificationidpost) | **POST** /UserPermit/notification/{id} | Sends a general notification to the user of a user permit.
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitRelevantGet**](doc/UserPermitApi.md#userpermitrelevantget) | **GET** /UserPermit/relevant | Gets the relevant user permit, mainly used for the home screen.
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsGet**](doc/UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdGet**](doc/UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request

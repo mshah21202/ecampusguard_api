@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**userPermitGet**](UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
 [**userPermitIdGet**](UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
 [**userPermitIdPost**](UserPermitApi.md#userpermitidpost) | **POST** /UserPermit/{id} | Updates user permit details. Admin only
+[**userPermitNotificationIdPost**](UserPermitApi.md#userpermitnotificationidpost) | **POST** /UserPermit/notification/{id} | Sends a general notification to the user of a user permit.
 [**userPermitRelevantGet**](UserPermitApi.md#userpermitrelevantget) | **GET** /UserPermit/relevant | Gets the relevant user permit, mainly used for the home screen.
 [**userPermitUpdateRequestsGet**](UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
 [**userPermitUpdateRequestsIdGet**](UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
@@ -184,6 +185,49 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **updateUserPermitDto** | [**UpdateUserPermitDto**](UpdateUserPermitDto.md)|  | [optional] 
+
+### Return type
+
+[**ResponseDto**](ResponseDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPermitNotificationIdPost**
+> ResponseDto userPermitNotificationIdPost(id, notificationDto)
+
+Sends a general notification to the user of a user permit.
+
+### Example
+```dart
+import 'package:ecampusguardapi/api.dart';
+
+final api = Ecampusguardapi().getUserPermitApi();
+final int id = 56; // int | 
+final NotificationDto notificationDto = ; // NotificationDto | 
+
+try {
+    final response = api.userPermitNotificationIdPost(id, notificationDto);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UserPermitApi->userPermitNotificationIdPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **notificationDto** | [**NotificationDto**](NotificationDto.md)|  | [optional] 
 
 ### Return type
 

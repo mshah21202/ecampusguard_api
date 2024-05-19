@@ -22,6 +22,10 @@ AreaScreenDto _$AreaScreenDtoFromJson(Map<String, dynamic> json) =>
                   .toList()),
           occupied: $checkedConvert('occupied', (v) => v as int?),
           capacity: $checkedConvert('capacity', (v) => v as int?),
+          entryCameraStreamUrl:
+              $checkedConvert('entryCameraStreamUrl', (v) => v as String?),
+          exitCameraStreamUrl:
+              $checkedConvert('exitCameraStreamUrl', (v) => v as String?),
         );
         return val;
       },
@@ -43,5 +47,7 @@ Map<String, dynamic> _$AreaScreenDtoToJson(AreaScreenDto instance) {
       'accessLogs', instance.accessLogs?.map((e) => e.toJson()).toList());
   writeNotNull('occupied', instance.occupied);
   writeNotNull('capacity', instance.capacity);
+  writeNotNull('entryCameraStreamUrl', instance.entryCameraStreamUrl);
+  writeNotNull('exitCameraStreamUrl', instance.exitCameraStreamUrl);
   return val;
 }
