@@ -18,12 +18,28 @@ class NotificationDto {
   /// Returns a new [NotificationDto] instance.
   NotificationDto({
 
+     this.id,
+
      this.timestamp,
 
      this.title,
 
      this.body,
+
+     this.read,
   });
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final int? id;
+
+
 
   @JsonKey(
     
@@ -61,17 +77,33 @@ class NotificationDto {
 
 
 
+  @JsonKey(
+    
+    name: r'read',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? read;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationDto &&
+     other.id == id &&
      other.timestamp == timestamp &&
      other.title == title &&
-     other.body == body;
+     other.body == body &&
+     other.read == read;
 
   @override
   int get hashCode =>
+    id.hashCode +
     timestamp.hashCode +
     (title == null ? 0 : title.hashCode) +
-    (body == null ? 0 : body.hashCode);
+    (body == null ? 0 : body.hashCode) +
+    read.hashCode;
 
   factory NotificationDto.fromJson(Map<String, dynamic> json) => _$NotificationDtoFromJson(json);
 

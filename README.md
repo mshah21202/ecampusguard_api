@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 [*AuthenticationApi*](doc/AuthenticationApi.md) | [**authenticationRegisterPost**](doc/AuthenticationApi.md#authenticationregisterpost) | **POST** /Authentication/register | 
 [*HomeScreenApi*](doc/HomeScreenApi.md) | [**homeScreenGet**](doc/HomeScreenApi.md#homescreenget) | **GET** /HomeScreen | 
 [*HomeScreenApi*](doc/HomeScreenApi.md) | [**homeScreenNotificationsGet**](doc/HomeScreenApi.md#homescreennotificationsget) | **GET** /HomeScreen/notifications | 
+[*HomeScreenApi*](doc/HomeScreenApi.md) | [**homeScreenNotificationsIdPost**](doc/HomeScreenApi.md#homescreennotificationsidpost) | **POST** /HomeScreen/notifications/{id} | 
 [*PermitApplicationApi*](doc/PermitApplicationApi.md) | [**permitApplicationApplyPost**](doc/PermitApplicationApi.md#permitapplicationapplypost) | **POST** /PermitApplication/apply | Submits permit application for user
 [*PermitApplicationApi*](doc/PermitApplicationApi.md) | [**permitApplicationGet**](doc/PermitApplicationApi.md#permitapplicationget) | **GET** /PermitApplication | Gets all permit applications for user, or gets all permit applications for all users if request is made by admin
 [*PermitApplicationApi*](doc/PermitApplicationApi.md) | [**permitApplicationIdGet**](doc/PermitApplicationApi.md#permitapplicationidget) | **GET** /PermitApplication/{id} | Gets permit application
