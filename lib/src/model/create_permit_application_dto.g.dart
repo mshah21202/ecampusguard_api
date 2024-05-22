@@ -16,7 +16,6 @@ CreatePermitApplicationDto _$CreatePermitApplicationDtoFromJson(
           json,
           requiredKeys: const [
             'studentId',
-            'studentName',
             'attendingDays',
             'siblingsCount',
             'academicYear',
@@ -29,7 +28,6 @@ CreatePermitApplicationDto _$CreatePermitApplicationDtoFromJson(
         );
         final val = CreatePermitApplicationDto(
           studentId: $checkedConvert('studentId', (v) => v as int),
-          studentName: $checkedConvert('studentName', (v) => v as String),
           attendingDays: $checkedConvert('attendingDays',
               (v) => (v as List<dynamic>).map((e) => e as bool).toList()),
           siblingsCount: $checkedConvert('siblingsCount', (v) => v as int),
@@ -51,7 +49,6 @@ Map<String, dynamic> _$CreatePermitApplicationDtoToJson(
         CreatePermitApplicationDto instance) =>
     <String, dynamic>{
       'studentId': instance.studentId,
-      'studentName': instance.studentName,
       'attendingDays': instance.attendingDays,
       'siblingsCount': instance.siblingsCount,
       'academicYear': _$AcademicYearEnumMap[instance.academicYear]!,

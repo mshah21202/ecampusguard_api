@@ -9,7 +9,6 @@ import 'package:ecampusguardapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **studentId** | **int** |  | 
-**studentName** | **String** |  | 
 **attendingDays** | **List&lt;bool&gt;** |  | 
 **siblingsCount** | **int** |  | 
 **academicYear** | [**AcademicYear**](AcademicYear.md) |  | 

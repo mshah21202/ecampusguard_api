@@ -91,4 +91,3 @@ lib/src/model/user_permit_order_by.dart
 lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 pubspec.yaml
-test/user_permits_api_test.dart

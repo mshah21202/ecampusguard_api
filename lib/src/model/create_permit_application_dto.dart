@@ -22,8 +22,6 @@ class CreatePermitApplicationDto {
 
     required  this.studentId,
 
-    required  this.studentName,
-
     required  this.attendingDays,
 
     required  this.siblingsCount,
@@ -50,18 +48,6 @@ class CreatePermitApplicationDto {
 
 
   final int studentId;
-
-
-
-  @JsonKey(
-    
-    name: r'studentName',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String studentName;
 
 
 
@@ -164,7 +150,6 @@ class CreatePermitApplicationDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreatePermitApplicationDto &&
      other.studentId == studentId &&
-     other.studentName == studentName &&
      other.attendingDays == attendingDays &&
      other.siblingsCount == siblingsCount &&
      other.academicYear == academicYear &&
@@ -177,7 +162,6 @@ class CreatePermitApplicationDto {
   @override
   int get hashCode =>
     studentId.hashCode +
-    studentName.hashCode +
     attendingDays.hashCode +
     siblingsCount.hashCode +
     academicYear.hashCode +
