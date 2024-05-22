@@ -10,7 +10,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**areaDetailsAnplrIdPost**](AreaApi.md#areadetailsanplridpost) | **POST** /Area/details/anplr/{id} | The ANPLR posts the license plate to create an access log, etc.
-[**areaDetailsAnplrStreamIdPost**](AreaApi.md#areadetailsanplrstreamidpost) | **POST** /Area/details/anplr/stream/{id} | Registers the camera stream url
 [**areaDetailsGet**](AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [**areaDetailsIdGet**](AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [**areaGet**](AreaApi.md#areaget) | **GET** /Area | 
@@ -60,50 +59,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **areaDetailsAnplrStreamIdPost**
-> areaDetailsAnplrStreamIdPost(id, url, entry)
-
-Registers the camera stream url
-
-### Example
-```dart
-import 'package:ecampusguardapi/api.dart';
-
-final api = Ecampusguardapi().getAreaApi();
-final int id = 56; // int | 
-final String url = url_example; // String | 
-final bool entry = true; // bool | 
-
-try {
-    api.areaDetailsAnplrStreamIdPost(id, url, entry);
-} catch on DioException (e) {
-    print('Exception when calling AreaApi->areaDetailsAnplrStreamIdPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **url** | **String**|  | [optional] 
- **entry** | **bool**|  | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -13,7 +13,7 @@ import 'package:ecampusguardapi/src/api/home_screen_api.dart';
 import 'package:ecampusguardapi/src/api/permit_application_api.dart';
 import 'package:ecampusguardapi/src/api/permits_api.dart';
 import 'package:ecampusguardapi/src/api/search_api.dart';
-import 'package:ecampusguardapi/src/api/user_permit_api.dart';
+import 'package:ecampusguardapi/src/api/user_permits_api.dart';
 
 class Ecampusguardapi {
   static const String basePath = r'http://localhost';
@@ -102,9 +102,9 @@ class Ecampusguardapi {
     return SearchApi(dio);
   }
 
-  /// Get UserPermitApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get UserPermitsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  UserPermitApi getUserPermitApi() {
-    return UserPermitApi(dio);
+  UserPermitsApi getUserPermitsApi() {
+    return UserPermitsApi(dio);
   }
 }

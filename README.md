@@ -68,7 +68,6 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsAnplrIdPost**](doc/AreaApi.md#areadetailsanplridpost) | **POST** /Area/details/anplr/{id} | The ANPLR posts the license plate to create an access log, etc.
-[*AreaApi*](doc/AreaApi.md) | [**areaDetailsAnplrStreamIdPost**](doc/AreaApi.md#areadetailsanplrstreamidpost) | **POST** /Area/details/anplr/stream/{id} | Registers the camera stream url
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsGet**](doc/AreaApi.md#areadetailsget) | **GET** /Area/details | 
 [*AreaApi*](doc/AreaApi.md) | [**areaDetailsIdGet**](doc/AreaApi.md#areadetailsidget) | **GET** /Area/details/{id} | 
 [*AreaApi*](doc/AreaApi.md) | [**areaGet**](doc/AreaApi.md#areaget) | **GET** /Area | 
@@ -93,16 +92,16 @@ Class | Method | HTTP request | Description
 [*PermitsApi*](doc/PermitsApi.md) | [**permitsIdPost**](doc/PermitsApi.md#permitsidpost) | **POST** /Permits/{id} | 
 [*PermitsApi*](doc/PermitsApi.md) | [**permitsPost**](doc/PermitsApi.md#permitspost) | **POST** /Permits | 
 [*SearchApi*](doc/SearchApi.md) | [**searchGet**](doc/SearchApi.md#searchget) | **GET** /Search | 
-[*UserPermitApi*](doc/UserPermitApi.md) | [**updatePost**](doc/UserPermitApi.md#updatepost) | **POST** /update | Submits an update request for user permit
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitGet**](doc/UserPermitApi.md#userpermitget) | **GET** /UserPermit | Gets all user permit for user, or gets all user permits for all users if user is admin
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdGet**](doc/UserPermitApi.md#userpermitidget) | **GET** /UserPermit/{id} | Gets user permit
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitIdPost**](doc/UserPermitApi.md#userpermitidpost) | **POST** /UserPermit/{id} | Updates user permit details. Admin only
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitNotificationIdPost**](doc/UserPermitApi.md#userpermitnotificationidpost) | **POST** /UserPermit/notification/{id} | Sends a general notification to the user of a user permit.
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitRelevantGet**](doc/UserPermitApi.md#userpermitrelevantget) | **GET** /UserPermit/relevant | Gets the relevant user permit, mainly used for the home screen.
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsGet**](doc/UserPermitApi.md#userpermitupdaterequestsget) | **GET** /UserPermit/update-requests | Get all update requests
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdGet**](doc/UserPermitApi.md#userpermitupdaterequestsidget) | **GET** /UserPermit/update-requests/{id} | Get update request
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitUpdateRequestsIdResponsePost**](doc/UserPermitApi.md#userpermitupdaterequestsidresponsepost) | **POST** /UserPermit/update-requests/{id}/response | 
-[*UserPermitApi*](doc/UserPermitApi.md) | [**userPermitWithdrawIdPost**](doc/UserPermitApi.md#userpermitwithdrawidpost) | **POST** /UserPermit/withdraw/{id} | Withdraws user permit. Admin only.
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**updatePost**](doc/UserPermitsApi.md#updatepost) | **POST** /update | Submits an update request for user permit
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsGet**](doc/UserPermitsApi.md#userpermitsget) | **GET** /UserPermits | Gets all user permit for user, or gets all user permits for all users if user is admin
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsIdGet**](doc/UserPermitsApi.md#userpermitsidget) | **GET** /UserPermits/{id} | Gets user permit
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsIdPost**](doc/UserPermitsApi.md#userpermitsidpost) | **POST** /UserPermits/{id} | Updates user permit details. Admin only
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsNotificationIdPost**](doc/UserPermitsApi.md#userpermitsnotificationidpost) | **POST** /UserPermits/notification/{id} | Sends a general notification to the user of a user permit.
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsRelevantGet**](doc/UserPermitsApi.md#userpermitsrelevantget) | **GET** /UserPermits/relevant | Gets the relevant user permit, mainly used for the home screen.
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsUpdateRequestsGet**](doc/UserPermitsApi.md#userpermitsupdaterequestsget) | **GET** /UserPermits/update-requests | Get all update requests
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsUpdateRequestsIdGet**](doc/UserPermitsApi.md#userpermitsupdaterequestsidget) | **GET** /UserPermits/update-requests/{id} | Get update request
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsUpdateRequestsIdResponsePost**](doc/UserPermitsApi.md#userpermitsupdaterequestsidresponsepost) | **POST** /UserPermits/update-requests/{id}/response | 
+[*UserPermitsApi*](doc/UserPermitsApi.md) | [**userPermitsWithdrawIdPost**](doc/UserPermitsApi.md#userpermitswithdrawidpost) | **POST** /UserPermits/withdraw/{id} | Withdraws user permit. Admin only.
 
 
 ## Documentation For Models

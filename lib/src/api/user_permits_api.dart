@@ -9,24 +9,27 @@ import 'dart:convert';
 import 'package:ecampusguardapi/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:ecampusguardapi/src/model/anplr_dto.dart';
-import 'package:ecampusguardapi/src/model/anplr_result_dto.dart';
-import 'package:ecampusguardapi/src/model/area_dto.dart';
-import 'package:ecampusguardapi/src/model/area_screen_dto.dart';
+import 'package:ecampusguardapi/src/model/create_update_request_dto.dart';
+import 'package:ecampusguardapi/src/model/notification_dto.dart';
 import 'package:ecampusguardapi/src/model/response_dto.dart';
+import 'package:ecampusguardapi/src/model/update_request_dto.dart';
+import 'package:ecampusguardapi/src/model/update_request_status.dart';
+import 'package:ecampusguardapi/src/model/update_user_permit_dto.dart';
+import 'package:ecampusguardapi/src/model/user_permit_dto.dart';
+import 'package:ecampusguardapi/src/model/user_permit_order_by.dart';
+import 'package:ecampusguardapi/src/model/user_permit_status.dart';
 
-class AreaApi {
+class UserPermitsApi {
 
   final Dio _dio;
 
-  const AreaApi(this._dio);
+  const UserPermitsApi(this._dio);
 
-  /// The ANPLR posts the license plate to create an access log, etc.
+  /// Submits an update request for user permit
   /// 
   ///
   /// Parameters:
-  /// * [id] - Area Id
-  /// * [anplrDto] 
+  /// * [createUpdateRequestDto] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,11 +37,10 @@ class AreaApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AnplrResultDto] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AnplrResultDto>> areaDetailsAnplrIdPost({ 
-    required int id,
-    AnplrDto? anplrDto,
+  Future<Response<ResponseDto>> updatePost({ 
+    CreateUpdateRequestDto? createUpdateRequestDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -46,7 +48,7 @@ class AreaApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/Area/details/anplr/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/update';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -69,7 +71,7 @@ class AreaApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(anplrDto);
+_bodyData=jsonEncode(createUpdateRequestDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -91,11 +93,11 @@ _bodyData=jsonEncode(anplrDto);
       onReceiveProgress: onReceiveProgress,
     );
 
-    AnplrResultDto? _responseData;
+    ResponseDto? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AnplrResultDto, AnplrResultDto>(rawData, 'AnplrResultDto', growable: true);
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -106,7 +108,7 @@ _responseData = rawData == null ? null : deserialize<AnplrResultDto, AnplrResult
       );
     }
 
-    return Response<AnplrResultDto>(
+    return Response<ResponseDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -118,162 +120,16 @@ _responseData = rawData == null ? null : deserialize<AnplrResultDto, AnplrResult
     );
   }
 
-  /// areaDetailsGet
+  /// Gets all user permit for user, or gets all user permits for all users if user is admin
   /// 
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [List<AreaScreenDto>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<AreaScreenDto>>> areaDetailsGet({ 
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/Area/details';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'Bearer',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    List<AreaScreenDto>? _responseData;
-
-    try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<AreaScreenDto>, AreaScreenDto>(rawData, 'List<AreaScreenDto>', growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<List<AreaScreenDto>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// areaDetailsIdGet
-  /// 
-  ///
-  /// Parameters:
-  /// * [id] 
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [AreaScreenDto] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<AreaScreenDto>> areaDetailsIdGet({ 
-    required int id,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/Area/details/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'Bearer',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    AreaScreenDto? _responseData;
-
-    try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDto>(rawData, 'AreaScreenDto', growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<AreaScreenDto>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// areaGet
-  /// 
-  ///
-  /// Parameters:
+  /// * [studentId] 
+  /// * [plateNumber] 
+  /// * [permitId] 
+  /// * [status] 
+  /// * [orderBy] 
+  /// * [orderByDirection] 
   /// * [pageNumber] 
   /// * [pageSize] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -283,9 +139,15 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<AreaDto>] as data
+  /// Returns a [Future] containing a [Response] with a [List<UserPermitDto>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<AreaDto>>> areaGet({ 
+  Future<Response<List<UserPermitDto>>> userPermitsGet({ 
+    String? studentId,
+    String? plateNumber,
+    int? permitId,
+    UserPermitStatus? status,
+    UserPermitOrderBy? orderBy,
+    String? orderByDirection,
     int? pageNumber,
     int? pageSize,
     CancelToken? cancelToken,
@@ -295,7 +157,7 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/Area';
+    final _path = r'/UserPermits';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -315,6 +177,12 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
     );
 
     final _queryParameters = <String, dynamic>{
+      if (studentId != null) r'StudentId': studentId,
+      if (plateNumber != null) r'PlateNumber': plateNumber,
+      if (permitId != null) r'PermitId': permitId,
+      if (status != null) r'Status': status,
+      if (orderBy != null) r'OrderBy': orderBy,
+      if (orderByDirection != null) r'OrderByDirection': orderByDirection,
       if (pageNumber != null) r'PageNumber': pageNumber,
       if (pageSize != null) r'PageSize': pageSize,
     };
@@ -328,11 +196,11 @@ _responseData = rawData == null ? null : deserialize<AreaScreenDto, AreaScreenDt
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<AreaDto>? _responseData;
+    List<UserPermitDto>? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<AreaDto>, AreaDto>(rawData, 'List<AreaDto>', growable: true);
+_responseData = rawData == null ? null : deserialize<List<UserPermitDto>, UserPermitDto>(rawData, 'List<UserPermitDto>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -343,7 +211,7 @@ _responseData = rawData == null ? null : deserialize<List<AreaDto>, AreaDto>(raw
       );
     }
 
-    return Response<List<AreaDto>>(
+    return Response<List<UserPermitDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -355,11 +223,11 @@ _responseData = rawData == null ? null : deserialize<List<AreaDto>, AreaDto>(raw
     );
   }
 
-  /// areaIdDelete
+  /// Gets user permit
   /// 
   ///
   /// Parameters:
-  /// * [id] 
+  /// * [id] - UserPermit Id
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -367,9 +235,9 @@ _responseData = rawData == null ? null : deserialize<List<AreaDto>, AreaDto>(raw
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
+  /// Returns a [Future] containing a [Response] with a [UserPermitDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseDto>> areaIdDelete({ 
+  Future<Response<UserPermitDto>> userPermitsIdGet({ 
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -378,84 +246,7 @@ _responseData = rawData == null ? null : deserialize<List<AreaDto>, AreaDto>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/Area/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'Bearer',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    ResponseDto? _responseData;
-
-    try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<ResponseDto>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// areaIdGet
-  /// 
-  ///
-  /// Parameters:
-  /// * [id] 
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [AreaDto] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<AreaDto>> areaIdGet({ 
-    required int id,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/Area/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/UserPermits/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -482,11 +273,11 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
       onReceiveProgress: onReceiveProgress,
     );
 
-    AreaDto? _responseData;
+    UserPermitDto? _responseData;
 
     try {
 final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 'AreaDto', growable: true);
+_responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDto>(rawData, 'UserPermitDto', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -497,7 +288,7 @@ _responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 
       );
     }
 
-    return Response<AreaDto>(
+    return Response<UserPermitDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -509,12 +300,12 @@ _responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 
     );
   }
 
-  /// areaIdPost
+  /// Updates user permit details. Admin only
   /// 
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [areaDto] 
+  /// * [id] - 
+  /// * [updateUserPermitDto] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -524,9 +315,9 @@ _responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseDto>> areaIdPost({ 
+  Future<Response<ResponseDto>> userPermitsIdPost({ 
     required int id,
-    AreaDto? areaDto,
+    UpdateUserPermitDto? updateUserPermitDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -534,7 +325,7 @@ _responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/Area/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/UserPermits/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -557,7 +348,7 @@ _responseData = rawData == null ? null : deserialize<AreaDto, AreaDto>(rawData, 
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(areaDto);
+_bodyData=jsonEncode(updateUserPermitDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -606,11 +397,12 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
     );
   }
 
-  /// areaPost
+  /// Sends a general notification to the user of a user permit.
   /// 
   ///
   /// Parameters:
-  /// * [areaDto] 
+  /// * [id] - 
+  /// * [notificationDto] - 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -620,8 +412,9 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseDto>> areaPost({ 
-    AreaDto? areaDto,
+  Future<Response<ResponseDto>> userPermitsNotificationIdPost({ 
+    required int id,
+    NotificationDto? notificationDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -629,7 +422,7 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/Area';
+    final _path = r'/UserPermits/notification/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -652,7 +445,7 @@ _responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(areaDto);
+_bodyData=jsonEncode(notificationDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -668,6 +461,416 @@ _bodyData=jsonEncode(areaDto);
     final _response = await _dio.request<Object>(
       _path,
       data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseDto? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ResponseDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Gets the relevant user permit, mainly used for the home screen.
+  /// 
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [UserPermitDto] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<UserPermitDto>> userPermitsRelevantGet({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/UserPermits/relevant';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    UserPermitDto? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<UserPermitDto, UserPermitDto>(rawData, 'UserPermitDto', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<UserPermitDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get all update requests
+  /// 
+  ///
+  /// Parameters:
+  /// * [studentId] 
+  /// * [plateNumber] 
+  /// * [permitId] 
+  /// * [status] 
+  /// * [pageNumber] 
+  /// * [pageSize] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [List<UpdateRequestDto>] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<List<UpdateRequestDto>>> userPermitsUpdateRequestsGet({ 
+    String? studentId,
+    String? plateNumber,
+    int? permitId,
+    UpdateRequestStatus? status,
+    int? pageNumber,
+    int? pageSize,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/UserPermits/update-requests';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (studentId != null) r'StudentId': studentId,
+      if (plateNumber != null) r'PlateNumber': plateNumber,
+      if (permitId != null) r'PermitId': permitId,
+      if (status != null) r'Status': status,
+      if (pageNumber != null) r'PageNumber': pageNumber,
+      if (pageSize != null) r'PageSize': pageSize,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    List<UpdateRequestDto>? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<UpdateRequestDto>, UpdateRequestDto>(rawData, 'List<UpdateRequestDto>', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<List<UpdateRequestDto>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get update request
+  /// 
+  ///
+  /// Parameters:
+  /// * [id] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [UpdateRequestDto] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<UpdateRequestDto>> userPermitsUpdateRequestsIdGet({ 
+    required int id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/UserPermits/update-requests/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    UpdateRequestDto? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<UpdateRequestDto, UpdateRequestDto>(rawData, 'UpdateRequestDto', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<UpdateRequestDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// userPermitsUpdateRequestsIdResponsePost
+  /// 
+  ///
+  /// Parameters:
+  /// * [id] 
+  /// * [accept] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ResponseDto>> userPermitsUpdateRequestsIdResponsePost({ 
+    required int id,
+    bool? accept,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/UserPermits/update-requests/{id}/response'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (accept != null) r'accept': accept,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseDto? _responseData;
+
+    try {
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ResponseDto, ResponseDto>(rawData, 'ResponseDto', growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ResponseDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Withdraws user permit. Admin only.
+  /// 
+  ///
+  /// Parameters:
+  /// * [id] - 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ResponseDto] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ResponseDto>> userPermitsWithdrawIdPost({ 
+    required int id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/UserPermits/withdraw/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

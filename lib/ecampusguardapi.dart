@@ -14,7 +14,7 @@ export 'package:ecampusguardapi/src/api/home_screen_api.dart';
 export 'package:ecampusguardapi/src/api/permit_application_api.dart';
 export 'package:ecampusguardapi/src/api/permits_api.dart';
 export 'package:ecampusguardapi/src/api/search_api.dart';
-export 'package:ecampusguardapi/src/api/user_permit_api.dart';
+export 'package:ecampusguardapi/src/api/user_permits_api.dart';
 
 export 'package:ecampusguardapi/src/model/academic_year.dart';
 export 'package:ecampusguardapi/src/model/access_log_dto.dart';

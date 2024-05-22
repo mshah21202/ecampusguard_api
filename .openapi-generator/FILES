@@ -37,10 +37,10 @@ doc/UpdateRequestDto.md
 doc/UpdateRequestStatus.md
 doc/UpdateUserPermitDto.md
 doc/UserDto.md
-doc/UserPermitApi.md
 doc/UserPermitDto.md
 doc/UserPermitOrderBy.md
 doc/UserPermitStatus.md
+doc/UserPermitsApi.md
 doc/VehicleDto.md
 lib/ecampusguardapi.dart
 lib/src/api.dart
@@ -50,7 +50,7 @@ lib/src/api/home_screen_api.dart
 lib/src/api/permit_application_api.dart
 lib/src/api/permits_api.dart
 lib/src/api/search_api.dart
-lib/src/api/user_permit_api.dart
+lib/src/api/user_permits_api.dart
 lib/src/auth/api_key_auth.dart
 lib/src/auth/auth.dart
 lib/src/auth/basic_auth.dart
@@ -91,3 +91,4 @@ lib/src/model/user_permit_order_by.dart
 lib/src/model/user_permit_status.dart
 lib/src/model/vehicle_dto.dart
 pubspec.yaml
+test/user_permits_api_test.dart
